@@ -60,4 +60,4 @@ The app is then deployed to Heroku by the following steps:
 + In the Manual deploy section, select the branch to deploy and click on **Deploy Branch**.
 
 # Credits
-
+The initial template for this app was from Code Institute's [Moments project template](https://github.com/Code-Institute-Org/cra-template-moments.git). 
