@@ -1,14 +1,14 @@
 import logo from './logo.svg';
-import './App.css';
+import styles from "./App.module.css";
 import { Container } from 'react-bootstrap';
 import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 
 function App() {
   return (
-    <div>
+    <div className={styles.App}>
       <NavBar />
-      <Container>
+      <Container className={styles.Main}>
         <Switch>
           <Route exact path="/" render={() => <h1>Home page</h1>} />
           <Route exact path="/signin" render={() => <h1>Sign in</h1>} />
