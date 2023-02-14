@@ -10,6 +10,17 @@ Authentication - Refreshing access tokens: As a user I can maintain my logged-in
 Navigation: Conditional rendering - As a logged out user I can see sign in and sign up options so that I can sign in/sign up
 Avatar: As a user I can view user's avatars so that I can easily identify users of the application
 
+# React Design
+
+# Features
+
+# Agile Development
+
+# Testing
+
+# Technology Used
+
+
 # Project Creation
 The front end for this project will use the Moments walkthrough as a model. Since the creation of that video, there are new releases of React, Bootstrap, and react-router-dom. Many of these upgrades involve breaking changes. Therefore, I chose to use the starting template provided by Code Institute and then install any additional libraries as needed.
 
@@ -44,3 +55,6 @@ The app is then deployed to Heroku by the following steps:
 + In the Deployment method section, select GitHub
 + Search for and select the proper repo. In this case it is [nonnas-kitchen](https://github.com/tony-albanese/nonnas-kitchen) and click **connect**
 + In the Manual deploy section, select the branch to deploy and click on **Deploy Branch**.
+
+# Credits
+
