@@ -9,3 +9,12 @@ Authentication - Logged in Status: As a user I can tell if I am logged in or not
 Authentication - Refreshing access tokens: As a user I can maintain my logged-in status until I choose to log out so that my user experience is not compromised
 Navigation: Conditional rendering - As a logged out user I can see sign in and sign up options so that I can sign in/sign up
 Avatar: As a user I can view user's avatars so that I can easily identify users of the application
+
+# Project Creation
+## Initial Setup
++ Cloned Code Institute Repository and gave the new respositry the name [nonnas-kitchen](https://github.com/tony-albanese/nonnas-kitchen).
++ Initialized GitPod Workspace by clicking on the GitPod button on the respository
++ GitPod has npm installed. Created a new React app in the project directory:
+```
+npx create-react-app . --use-npm
+```
