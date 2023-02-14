@@ -19,6 +19,9 @@ Avatar: As a user I can view user's avatars so that I can easily identify users 
 # Testing
 
 # Technology Used
++ [React Bootstrap](https://react-bootstrap-v4.netlify.app/) - This package contains ready to use React components that are compatible with the React library. This makes creating a responsive React app much simpler.
++ [axios](https://www.npmjs.com/package/axios) - A lightweight but very powerful library for making network calls in JavaScript.
++ [react-router-dom](https://reactrouter.com/en/main) - A simple to use React library to simplify routing and navigation without the need to refresh the page.
 
 
 # Project Creation
