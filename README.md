@@ -29,6 +29,7 @@ Goal: Project environment, authentication functionality, bare minimum styling
 + Setup minimal navbar with routing
 + Design minimal sign in and sign up forms
 + Connect sign in and sign up to backend
++ Fix hamburger toggle
 
 ### Sprint 2 - Making a Post
 Goal:  Users can see posts on home page and add a post. Minimal styling
