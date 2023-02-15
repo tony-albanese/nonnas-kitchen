@@ -5,7 +5,8 @@ import NavBar from './components/NavBar';
 import './api/axiosDefaults';
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
+import axios from "axios";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
@@ -16,13 +17,13 @@ function App() {
   const handleMount = async () => {
     try { 
       const { data } = await axios.get("dj-rest-auth/user/");
-      setCurrentUser(data)
+      setCurrentUser(data);
     } catch (err) {
-      console.log(err)
+      console.log(err);
      }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     handleMount();
   }, []);
 
@@ -42,7 +43,6 @@ function App() {
         </div>
       </SetCurrentUserContext.Provider>
     </CurrentUserContext.Provider>
-
   );
 }
 
