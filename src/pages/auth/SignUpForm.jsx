@@ -1,9 +1,21 @@
 //The SignUpForm component will go here.
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { Form, Button, Image, Col, Row, Container } from "react-bootstrap";
 
 const SignUpForm = () => {
+//store data in variable and use setSignUpData to update state
+//destructure the variables and set the initial value in useState()
+const [signUpData, setSignUpData] = useState(
+  {
+    username: '',
+    password1: '',
+    password2: '',
+  }
+);
+
+const {username, password1, password2} = signUpData;
+
   return (
     <Row>
       <Col className="my-auto py-2 p-md-2" md={6}>
