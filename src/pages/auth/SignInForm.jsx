@@ -11,7 +11,7 @@ import {
   Alert,
 } from "react-bootstrap";
 
-function SignInForm() {
+const SignInForm = () => {
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
@@ -90,8 +90,14 @@ function SignInForm() {
           </Form>
         </Container>
       </Col>
+
+      <Container className={`mt-3`}>
+          <Link to="/signup">
+            Don't have an account?<span>Sign Up</span>
+          </Link>
+        </Container>
     </Row>
   );
 }
 
-export default SignInForm
+export default SignInForm;
