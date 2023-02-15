@@ -5,18 +5,10 @@ import NavBar from './components/NavBar';
 import './api/axiosDefaults';
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
-import { useEffect, useState, createContext } from 'react';
-import axios from "axios";
-
-export const CurrentUserContext = createContext();
-export const SetCurrentUserContext = createContext();
 
 function App() {
-
-
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <SetCurrentUserContext.Provider value={setCurrentUser}>
+
         <div className={styles.App}>
           <NavBar />
           <Container className={styles.Main}>
@@ -28,8 +20,6 @@ function App() {
             </Switch>
           </Container>
         </div>
-      </SetCurrentUserContext.Provider>
-    </CurrentUserContext.Provider>
   );
 }
 
