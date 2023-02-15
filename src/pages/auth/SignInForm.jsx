@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import {
@@ -10,8 +10,12 @@ import {
   Container,
   Alert,
 } from "react-bootstrap";
+import { CurrentUserContext, SetCurrentUserContext } from "../../App";
 
 const SignInForm = () => {
+  const setCurrentUser = useContext(SetCurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
+
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
