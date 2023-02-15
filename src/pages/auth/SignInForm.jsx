@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
 import {
   Form,
   Button,
@@ -10,7 +11,7 @@ import {
   Alert,
 } from "react-bootstrap";
 
-export default function SignInForm() {
+function SignInForm() {
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
@@ -44,7 +45,7 @@ export default function SignInForm() {
       <Col md={6}>
         <Container>
           <h1>Sign In</h1>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
               <Form.Label className="d-none">Username</Form.Label>
               <Form.Control
@@ -62,7 +63,7 @@ export default function SignInForm() {
               </Alert>
             ))}
 
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group controlId="password">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
                 type="password"
@@ -86,13 +87,11 @@ export default function SignInForm() {
                 {message}
               </Alert>
             ))}
-
-            <Form.Text className="text-muted">
-              Don't have an account? Sign Up.
-            </Form.Text>
           </Form>
         </Container>
       </Col>
     </Row>
   );
 }
+
+export default SignInForm
