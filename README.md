@@ -15,6 +15,38 @@ Avatar: As a user I can view user's avatars so that I can easily identify users 
 # Features
 
 # Agile Development
+An Agile approach was used to manage the completion of this project. Specifically, this meant breaking the project down into smaller tasks with a focus on minimum functionality first. Only when a minimally viable product is ready will extra features be added. In addition, GitHub projects and Issues were used a tool to keep track of the tasks.
+
+## Outline of Sprints
+The following is an outline of the sprints that were done during the completion of this project. Each sprint was designed to be one day's work.
+
+### Sprint 1 - Project setup
+Goal: Project environment, authentication functionality, bare minimum styling
++ Setup project
++ Outline project creation and deployment steps in README
++ Install additional libraries
++ Write User Stories for Navigation and Authorization
++ Setup minimal navbar with routing
++ Design minimal sign in and sign up forms
++ Connect sign in and sign up to backend
+
+### Sprint 2 - Making a Post
+Goal:  Users can see posts on home page and add a post. Minimal styling
++ Design content page
++ Connect to backed to display current posts
++ Design Post form
++ Connect Post form to backend
++ Add links to navbar
+
+### Sprint 3 - Likes, Comments
+Goal: Users can add a comment and like a post. Users can see the posts they've liked
++ Design add commment form
++ Connect comment form to backend
++ Add favorites link to navbar for logged in user
++ Add filter by like 
+
+## Use of GitHub
+
 
 # Testing
 
