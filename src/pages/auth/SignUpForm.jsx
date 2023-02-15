@@ -16,6 +16,13 @@ const [signUpData, setSignUpData] = useState(
 
 const {username, password1, password2} = signUpData;
 
+const handleChange = (event) => {
+  setSignUpData({
+    ...signUpData,
+    [event.target.name]: event.target.value
+  });
+};
+
   return (
     <Row>
       <Col className="my-auto py-2 p-md-2" md={6}>
@@ -29,6 +36,7 @@ const {username, password1, password2} = signUpData;
                 placeholder="Username"
                 name="username"
                 value={username}
+                onChange={handleChange}
               />
             </Form.Group>
 
@@ -39,6 +47,7 @@ const {username, password1, password2} = signUpData;
                 placeholder="Password"
                 name="password1"
                 value={password1}
+                onChange={handleChange}
               />
             </Form.Group>
 
@@ -49,6 +58,7 @@ const {username, password1, password2} = signUpData;
                 placeholder="Confirm Password"
                 name="password2"
                 value={password2}
+                onChange={handleChange}
               />
             </Form.Group>
 
