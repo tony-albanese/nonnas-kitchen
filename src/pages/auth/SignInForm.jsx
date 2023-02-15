@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import {
   Form,
   Button,
@@ -10,6 +11,17 @@ import {
 } from "react-bootstrap";
 
 export default function SignInForm() {
+  const [signInData, setSignInData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const { username, password } = signInData;
+
+  const [errors, setErrors] = useState({});
+
+  const history = useHistory();
+
   return (
     <Row>
       <Col md={6}>
@@ -18,12 +30,22 @@ export default function SignInForm() {
           <Form>
             <Form.Group controlId="username">
               <Form.Label className="d-none">Username</Form.Label>
-              <Form.Control type="text" placeholder="Username" />
+              <Form.Control
+                type="text"
+                placeholder="Username"
+                name="username"
+                value={username}
+              />
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
               <Form.Label className="d-none">Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={password}
+              />
             </Form.Group>
 
             <Button variant="primary" type="submit">
