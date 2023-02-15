@@ -12,7 +12,10 @@ Avatar: As a user I can view user's avatars so that I can easily identify users 
 
 # React Design
 
-# Features
+# UI Design
+Note: Justify copying the basics from CI.
+Include sketches.
+
 
 # Agile Development
 An Agile approach was used to manage the completion of this project. Specifically, this meant breaking the project down into smaller tasks with a focus on minimum functionality first. Only when a minimally viable product is ready will extra features be added. In addition, GitHub projects and Issues were used a tool to keep track of the tasks.
