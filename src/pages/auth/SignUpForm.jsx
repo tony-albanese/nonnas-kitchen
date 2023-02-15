@@ -28,6 +28,7 @@ const {username, password1, password2} = signUpData;
                 type="text"
                 placeholder="Username"
                 name="username"
+                value={username}
               />
             </Form.Group>
 
@@ -37,6 +38,7 @@ const {username, password1, password2} = signUpData;
                 type="password"
                 placeholder="Password"
                 name="password1"
+                value={password1}
               />
             </Form.Group>
 
@@ -46,6 +48,7 @@ const {username, password1, password2} = signUpData;
                 type="password"
                 placeholder="Confirm Password"
                 name="password2"
+                value={password2}
               />
             </Form.Group>
 
