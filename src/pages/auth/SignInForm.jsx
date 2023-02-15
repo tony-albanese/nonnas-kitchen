@@ -86,11 +86,11 @@ export default function SignInForm() {
                 {message}
               </Alert>
             ))}
-          </Form>
 
-          <Form.Text className="text-muted">
-            Don't have an account? Sign Up.
-          </Form.Text>
+            <Form.Text className="text-muted">
+              Don't have an account? Sign Up.
+            </Form.Text>
+          </Form>
         </Container>
       </Col>
     </Row>
