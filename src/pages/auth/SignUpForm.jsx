@@ -70,6 +70,12 @@ const SignUpForm = () => {
               />
             </Form.Group>
 
+            {errors.password1?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+
             <Form.Group controlId="password2">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
@@ -81,9 +87,21 @@ const SignUpForm = () => {
               />
             </Form.Group>
 
+            {errors.password2?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+
             <Button variant="primary" type="submit">
               Sign Up
             </Button>
+
+            {errors.non_field_errors?.map((message, idx) => (
+              <Alert key={idx} variant="warning" className="mt-3">
+                {message}
+              </Alert>
+            ))}
           </Form>
         </Container>
         <Container className={`mt-3`}>
