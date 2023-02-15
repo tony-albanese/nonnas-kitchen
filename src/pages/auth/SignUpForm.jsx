@@ -1,5 +1,5 @@
 //The SignUpForm component will go here.
-import React, { isValidElement, useState } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Form, Button, Image, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
