@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
+
 import {
   Form,
   Button,
@@ -10,11 +11,10 @@ import {
   Container,
   Alert,
 } from "react-bootstrap";
-import { CurrentUserContext, SetCurrentUserContext } from "../../App";
+import { SetCurrentUserContext } from "../../App";
 
-const SignInForm = () => {
+function SignInForm() {
   const setCurrentUser = useContext(SetCurrentUserContext);
-  const currentUser = useContext(CurrentUserContext);
 
   const [signInData, setSignInData] = useState({
     username: "",
@@ -27,6 +27,18 @@ const SignInForm = () => {
 
   const history = useHistory();
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const {data} = await axios.post("dj-rest-auth/login/", signInData);
+      setCurrentUser(data.user);
+      history.push("/");
+    } catch (err) {
+      console.log("An error triggered in sign in");
+      setErrors(err.response?.data);
+    }
+  };
+
   const handleChange = (event) => {
     setSignInData({
       ...signInData,
@@ -34,15 +46,7 @@ const SignInForm = () => {
     });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      await axios.post("/dj-rest-auth/login/", signInData);
-      history.push("/");
-    } catch (err) {
-      setErrors(err.response?.data);
-    }
-  };
+
 
   return (
     <Row>
