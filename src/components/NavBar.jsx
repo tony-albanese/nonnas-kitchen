@@ -1,13 +1,47 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser } from "../contexts/CurrentUserContext";
+import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
 import styles from "../styles/NavBar.module.css";
+import axios from "axios";
 
 const NavBar = () => {
 
   const currentUser = useCurrentUser();
-  const loggedInNavItems = <>{currentUser?.username}</>
+  const setCurrentUser = useSetCurrentUser();
+
+  const handleSignOut = async () => {
+    try {
+      await axios.post("dj-rest-auth/logout/");
+      setCurrentUser(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const addBlogPostNavItem = (
+    <NavLink className={styles.NavLink} to="/posts/create">
+      Add post
+    </NavLink>
+  );
+
+
+
+  const loggedInNavItems = <>
+        <NavLink to="/feed" className={styles.NavLink}>
+        Feed
+      </NavLink>
+      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+        Sign out
+      </NavLink>
+      <NavLink to="#" className={styles.NavLink}>
+        {currentUser?.username}
+      </NavLink>
+  </>
+
+
+
+
   const loggedOutNavItems = (
     <>
       <NavLink to="/signin" className={styles.NavLink}>
@@ -25,6 +59,7 @@ const NavBar = () => {
         <NavLink to="/" className={styles.NavLink}>
           <Navbar.Brand>Nonna's Kitchen</Navbar.Brand>
         </NavLink>
+        {currentUser && addBlogPostNavItem}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
