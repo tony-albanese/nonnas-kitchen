@@ -22,6 +22,23 @@ export default function SignInForm() {
 
   const history = useHistory();
 
+  const handleChange = (event) => {
+    setSignInData({
+      ...signInData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post("/dj-rest-auth/login/", signInData);
+      history.push("/");
+    } catch (err) {
+      setErrors(err.response?.data);
+    }
+  };
+
   return (
     <Row>
       <Col md={6}>
@@ -35,6 +52,7 @@ export default function SignInForm() {
                 placeholder="Username"
                 name="username"
                 value={username}
+                onChange={handleChange}
               />
             </Form.Group>
 
@@ -45,6 +63,7 @@ export default function SignInForm() {
                 placeholder="Password"
                 name="password"
                 value={password}
+                onChange={handleChange}
               />
             </Form.Group>
 
