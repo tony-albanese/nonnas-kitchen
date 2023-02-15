@@ -34,7 +34,6 @@ function SignInForm() {
       setCurrentUser(data.user);
       history.push("/");
     } catch (err) {
-      console.log("An error triggered in sign in");
       setErrors(err.response?.data);
     }
   };
