@@ -1,38 +1,40 @@
 //The SignUpForm component will go here.
-import React, {isValidElement, useState} from "react";
+import React, { isValidElement, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Form, Button, Image, Col, Row, Container } from "react-bootstrap";
+import { Form, Button, Image, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 
 const SignUpForm = () => {
-//store data in variable and use setSignUpData to update state
-//destructure the variables and set the initial value in useState()
-const [signUpData, setSignUpData] = useState(
-  {
-    username: '',
-    password1: '',
-    password2: '',
-  }
-);
-
-const {username, password1, password2} = signUpData;
-
-const history = useHistory();
-
-const handleChange = (event) => {
-  setSignUpData({
-    ...signUpData,
-    [event.target.name]: event.target.value
+  //store data in variable and use setSignUpData to update state
+  //destructure the variables and set the initial value in useState()
+  const [signUpData, setSignUpData] = useState({
+    username: "",
+    password1: "",
+    password2: "",
   });
-};
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
-  try {
-    await axios.post("/dj-rest-auth/registration/", signUpData);
-    history.push('/signin')
-  } catch (err) {}
-};
+  const { username, password1, password2 } = signUpData;
+
+  const [errors, setErrors] = useState({});
+
+  const history = useHistory();
+
+  const handleChange = (event) => {
+    setSignUpData({
+      ...signUpData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post("/dj-rest-auth/registration/", signUpData);
+      history.push("/signin");
+    } catch (err) {
+      setErrors(err.response?.data);
+    }
+  };
 
   return (
     <Row>
@@ -50,6 +52,12 @@ const handleSubmit = async (event) => {
                 onChange={handleChange}
               />
             </Form.Group>
+
+            {errors.username?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
 
             <Form.Group controlId="password1">
               <Form.Label className="d-none">Password</Form.Label>
