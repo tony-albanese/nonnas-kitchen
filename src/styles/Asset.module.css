@@ -1,3 +1,12 @@
 /*
 The styles for the Asset form will go here.
 */
+
+.Asset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 120px;
+  }
+  

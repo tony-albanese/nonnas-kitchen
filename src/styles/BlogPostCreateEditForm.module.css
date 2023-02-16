@@ -1,3 +1,6 @@
 /*
 The styles for the BlogPost form will go here.
 */
+.Container {
+    min-height: 343px;
+  }
