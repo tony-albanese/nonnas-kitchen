@@ -110,7 +110,10 @@ function BlogPostCreateForm() {
         />
       </Form.Group>
 
-      <Button variant="secondary">Cancel</Button>
+      <Button
+       variant="secondary"
+       onClick={() => history.goBack()}
+       >Cancel</Button>
       <Button variant="primary" type="submit">
         Sumbit
       </Button>
