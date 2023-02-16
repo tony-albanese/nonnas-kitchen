@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import {
   Form,
   Button,
@@ -42,19 +42,18 @@ function BlogPostCreateForm() {
   const handelSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append('title', title);
-    formData.append('body', body);
-    formData.append('category', category);
-    formData.append('post_image', imageInput.current.files[0]);
-
+    formData.append("title", title);
+    formData.append("body", body);
+    formData.append("category", category);
+    formData.append("post_image", imageInput.current.files[0]);
 
     try {
-      const {data} = await axiosRequest.post('/posts/', formData);
+      const { data } = await axiosRequest.post("/posts/", formData);
       console.log(data);
       history.push(`/posts/${data.id}`);
-    }catch (err) {
+    } catch (err) {
       console.log(err);
-      if (err.response?.status !==401) {
+      if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
     }
@@ -90,6 +89,11 @@ function BlogPostCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group controlId="body">
         <Form.Label>Body</Form.Label>
@@ -100,6 +104,11 @@ function BlogPostCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.body?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group controlId="category">
         <Form.Label>Example select</Form.Label>
@@ -109,11 +118,15 @@ function BlogPostCreateForm() {
           options={selectOptions}
         />
       </Form.Group>
+      {errors?.category?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
-      <Button
-       variant="secondary"
-       onClick={() => history.goBack()}
-       >Cancel</Button>
+      <Button variant="secondary" onClick={() => history.goBack()}>
+        Cancel
+      </Button>
       <Button variant="primary" type="submit">
         Sumbit
       </Button>
@@ -145,6 +158,11 @@ function BlogPostCreateForm() {
                 ref={imageInput}
               />
             </Form.Group>
+            {errors?.post_image?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
             <div className="d-md-none">{formFields}</div>
           </Container>
         </Col>
