@@ -5,7 +5,7 @@ import NavBar from './components/NavBar';
 import './api/axiosDefaults';
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
-import BlogPostCreateForm from "./pages/auth/BlogPostCreateForm";
+import BlogPostCreateForm from "./pages/posts/BlogPostCreateForm";
 
 function App() {
   return (
