@@ -28,17 +28,17 @@ function BlogPostCreateForm() {
 
   const formFields = (
     <div>
-      <Form.Group>
+      <Form.Group controlId="title">
         <Form.Label>Title</Form.Label>
         <FormControl type="text" name="title" value={title}/>
       </Form.Group>
 
-      <Form.Group>
+      <Form.Group controlId="body">
         <Form.Label>Body</Form.Label>
         <FormControl as="textarea" name="body" value={body} />
       </Form.Group>
 
-      <Form.Group controlId="exampleForm.ControlSelect1">
+      <Form.Group controlId="category">
         <Form.Label>Example select</Form.Label>
         <Form.Control as="select">
           <option>Anecdote</option>
@@ -51,7 +51,7 @@ function BlogPostCreateForm() {
       </Form.Group>
 
       <Button variant="secondary">Cancel</Button>
-      <Button variant="primary">sumbit</Button>
+      <Button variant="primary">Sumbit</Button>
     </div>
   );
 
