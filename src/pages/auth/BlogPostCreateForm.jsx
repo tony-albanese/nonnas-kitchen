@@ -14,6 +14,7 @@ import Asset from "../../components/Asset";
 import Upload from "../../assets/upload.png";
 import styles from "../../styles/BlogPostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
+import FormSelections from "../../components/FormSelections";
 
 function BlogPostCreateForm() {
   const [errors, setErrors] = useState();
@@ -39,33 +40,50 @@ function BlogPostCreateForm() {
     console.log(blogPostData);
   };
 
+  const selectOptions = [
+    {"anec": "Anecdote"},
+    {"tip": "Tip"},
+    {"hist": "History"},
+    {"fact":"Fun Fact"},
+    {"orig": "Origin"},
+    {"remin": "Reminiscence"}
+  ];
 
   const formFields = (
     <div>
       <Form.Group controlId="title">
         <Form.Label>Title</Form.Label>
-        <FormControl type="text" name="title" value={title} onChange={handleChange}/>
+        <FormControl
+          type="text"
+          name="title"
+          value={title}
+          onChange={handleChange}
+        />
       </Form.Group>
 
       <Form.Group controlId="body">
         <Form.Label>Body</Form.Label>
-        <FormControl as="textarea" name="body" value={body} onChange={handleChange}/>
+        <FormControl
+          as="textarea"
+          name="body"
+          value={body}
+          onChange={handleChange}
+        />
       </Form.Group>
 
       <Form.Group controlId="category">
         <Form.Label>Example select</Form.Label>
-        <Form.Control as="select" name={category} onChange={handleChange}>
-          <option value="a">Anecdote</option>
-          <option value="b">Tip</option>
-          <option value="c">History</option>
-          <option value="d">Fun Fact</option>
-          <option value="e">Origin</option>
-          <option value="f">Reminiscence</option>
-        </Form.Control>
+        <FormSelections
+          controlName="category"
+          onChangeHandler={handleChange}
+          options={selectOptions}
+        />
       </Form.Group>
 
       <Button variant="secondary">Cancel</Button>
-      <Button variant="primary" type="submit">Sumbit</Button>
+      <Button variant="primary" type="submit">
+        Sumbit
+      </Button>
     </div>
   );
 

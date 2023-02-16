@@ -3,14 +3,16 @@ import { Form, FormControl } from "react-bootstrap";
 
 
 const FormSelections = ({ controlName, onChangeHandler, options }) => {
+
   return (
     <Form.Control as="select" name={controlName} onChange={onChangeHandler}>
-      <option value="a">Anecdote</option>
-      <option value="b">Tip</option>
-      <option value="c">History</option>
-      <option value="d">Fun Fact</option>
-      <option value="e">Origin</option>
-      <option value="f">Reminiscence</option>
+        {
+    options.map((obj)=>{
+        let databaseValue = Object.keys(obj)[0];
+        let friendlyValue = obj[databaseValue];
+        return <option key={databaseValue} value={databaseValue}>{friendlyValue}</option>
+    })}
+
     </Form.Control>
   );
 };
