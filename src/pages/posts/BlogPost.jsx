@@ -13,22 +13,40 @@ const BlogPost = (props) => {
     posted_on,
     post_image,
     is_author,
+    postPage,
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === author;
 
+  const categories = [
+    { anec: "Anecdote" },
+    { tip: "Tip" },
+    { hist: "History" },
+    { fact: "Fun Fact" },
+    { orig: "Origin" },
+    { remin: "Reminiscence" },
+  ];
+
+
   return (
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="https://picsum.photos/200/300" />
+        <Card.Header>
+            First Header
+        </Card.Header>
+        <Card.Header>
+            {author}
+            <span>{posted_on}</span>
+            {is_owner && postPage  && "   ..."}
+        </Card.Header>
+      <Card.Img variant="top" src={post_image} alt={title} />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <Card.Title>{title}</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+         {body}
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
       </Card.Body>
+      <Card.Footer className="text-muted">Some footer text.</Card.Footer>
     </Card>
   );
 };
