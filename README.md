@@ -21,6 +21,8 @@ The project uses Code Institute's [Moments](https://github.com/Code-Institute-So
 + axios interceptors - Web token management would be a problem in any project requiring user state management. I have chosen to use the solution in the Moments project as it would be a standard way of solving this problem.
 + context objects for user state - Managing user state and passing it through the component tree would be a common problem in any React app requiring a logged in user. Code Institute's solution using custom context hooks for getting and updating the logged in user was used because it is simple and follows industry practice.
 
+## NavBar
+The NavBar component displays the standard items a user expects to see. What is rendered depends on the user's authentication status. If they are logged out, they are presented with links to sign in and sign up. If they are authenticated, links to add a post, a recipe, and their custom content are presented as well as a logout link. The NavBar is responsive. On medium size screens the menu collapses into a menu with a hamburger icon.
 
 # Agile Development
 An Agile approach was used to manage the completion of this project. Specifically, this meant breaking the project down into smaller tasks with a focus on minimum functionality first. Only when a minimally viable product is ready will extra features be added. In addition, GitHub projects and Issues were used a tool to keep track of the tasks.
