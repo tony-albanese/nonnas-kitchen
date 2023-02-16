@@ -14,7 +14,11 @@ function BlogPostCreateForm() {
 
 const [errors, setErrors] = useState();
 const formFields = (
-    <div>Form fields will go here.</div>
+    <div>
+    <Button variant="secondary">Cancel</Button>
+    <Button variant="primary">sumbit</Button>
+    </div>
+
 )
 
   return (
@@ -24,7 +28,7 @@ const formFields = (
             <Container>
                 <Form.Group>
                     <Form.Label>
-                        
+                        ASSET
                     </Form.Label>
                 </Form.Group>
                 <div className="d-md-none">{formFields}</div>
