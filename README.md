@@ -28,6 +28,19 @@ The project uses Code Institute's [Moments](https://github.com/Code-Institute-So
 ## NavBar
 The NavBar component displays the standard items a user expects to see. What is rendered depends on the user's authentication status. If they are logged out, they are presented with links to sign in and sign up. If they are authenticated, links to add a post, a recipe, and their custom content are presented as well as a logout link. The NavBar is responsive. On medium size screens the menu collapses into a menu with a hamburger icon.
 
+
+
+ADD USER STORIES!
+## Create BlogPost Form
+### Reusable Form Dropdown
+
+## Post Detail Component
+### Reusable Footer Component
+
+## Post Page
+
+
+
 # Agile Development
 An Agile approach was used to manage the completion of this project. Specifically, this meant breaking the project down into smaller tasks with a focus on minimum functionality first. Only when a minimally viable product is ready will extra features be added. In addition, GitHub projects and Issues were used a tool to keep track of the tasks.
 
