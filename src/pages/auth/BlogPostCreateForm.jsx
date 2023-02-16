@@ -25,7 +25,7 @@ function BlogPostCreateForm() {
     category: "anec",
   });
 
-  const {title, body, post_image, category} = blogPostData;
+  const { title, body, post_image, category } = blogPostData;
 
   const handleChange = (event) => {
     setBlogPostData({
@@ -40,13 +40,23 @@ function BlogPostCreateForm() {
     console.log(blogPostData);
   };
 
+  const handleChangeImageChoice = (event) => {
+    if (event.target.files.length) {
+      URL.revokeObjectURL(post_image);
+      setBlogPostData({
+        ...blogPostData,
+        post_image: URL.createObjectURL(event.target.files[0]),
+      });
+    }
+  };
+
   const selectOptions = [
-    {"anec": "Anecdote"},
-    {"tip": "Tip"},
-    {"hist": "History"},
-    {"fact":"Fun Fact"},
-    {"orig": "Origin"},
-    {"remin": "Reminiscence"}
+    { anec: "Anecdote" },
+    { tip: "Tip" },
+    { hist: "History" },
+    { fact: "Fun Fact" },
+    { orig: "Origin" },
+    { remin: "Reminiscence" },
   ];
 
   const formFields = (
@@ -93,9 +103,23 @@ function BlogPostCreateForm() {
         <Col>
           <Container>
             <Form.Group>
-              <Form.Label>
-                <Asset message="Upload an image." src={Upload} />
-              </Form.Label>
+              {post_image ? (
+                <>
+                  <figure>
+                    <Image src={post_image} rounded />
+                  </figure>
+                </>
+              ) : (
+                <Form.Label>
+                  <Asset message="Upload an image." src={Upload} />
+                </Form.Label>
+              )}
+
+              <Form.File
+                id="image-upload-field"
+                accept="image/*"
+                onChange={handleChangeImageChoice}
+              />
             </Form.Group>
             <div className="d-md-none">{formFields}</div>
           </Container>
