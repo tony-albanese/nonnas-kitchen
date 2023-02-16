@@ -33,6 +33,12 @@ function BlogPostCreateForm() {
     });
   };
 
+  const handelSubmit = (event) => {
+    event.preventDefault();
+    console.log("blogPostData: ");
+    console.log(blogPostData);
+  };
+
   const formFields = (
     <div>
       <Form.Group controlId="title">
@@ -58,12 +64,12 @@ function BlogPostCreateForm() {
       </Form.Group>
 
       <Button variant="secondary">Cancel</Button>
-      <Button variant="primary">Sumbit</Button>
+      <Button variant="primary" type="submit">Sumbit</Button>
     </div>
   );
 
   return (
-    <Form>
+    <Form onSubmit={handelSubmit}>
       <Row>
         <Col>
           <Container>
