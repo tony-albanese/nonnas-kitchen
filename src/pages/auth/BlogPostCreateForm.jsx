@@ -9,6 +9,10 @@ import {
     Alert,
     FormText,
   } from "react-bootstrap";
+import Asset from '../../components/Asset';
+import Upload from "../../assets/upload.png";
+import styles from "../../styles/BlogPostCreateEditForm.module.css";
+import appStyles from "../../App.module.css";
 
 function BlogPostCreateForm() {
 
@@ -28,7 +32,7 @@ const formFields = (
             <Container>
                 <Form.Group>
                     <Form.Label>
-                        ASSET
+                        <Asset message="Upload an image." src={Upload}/>
                     </Form.Label>
                 </Form.Group>
                 <div className="d-md-none">{formFields}</div>
