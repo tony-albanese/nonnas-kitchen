@@ -24,16 +24,18 @@ function BlogPostCreateForm() {
     category: "anec",
   });
 
+  const {title, body, post_image, category} = blogPostData;
+
   const formFields = (
     <div>
       <Form.Group>
         <Form.Label>Title</Form.Label>
-        <FormControl type="text" name="title" />
+        <FormControl type="text" name="title" value={title}/>
       </Form.Group>
 
       <Form.Group>
         <Form.Label>Body</Form.Label>
-        <FormControl as="textarea" name="body" />
+        <FormControl as="textarea" name="body" value={body} />
       </Form.Group>
 
       <Form.Group controlId="exampleForm.ControlSelect1">
