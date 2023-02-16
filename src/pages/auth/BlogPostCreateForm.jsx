@@ -8,6 +8,7 @@ import {
     Container,
     Alert,
     FormText,
+    FormControl,
   } from "react-bootstrap";
 import Asset from '../../components/Asset';
 import Upload from "../../assets/upload.png";
@@ -19,6 +20,27 @@ function BlogPostCreateForm() {
 const [errors, setErrors] = useState();
 const formFields = (
     <div>
+      <Form.Group>
+        <Form.Label>Title</Form.Label>
+        <FormControl type="text" name="title"/>
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>Body</Form.Label>
+        <FormControl as = "textarea" name="body"/>
+      </Form.Group>
+
+      <Form.Group controlId="exampleForm.ControlSelect1">
+    <Form.Label>Example select</Form.Label>
+    <Form.Control as="select">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </Form.Control>
+  </Form.Group>
+
     <Button variant="secondary">Cancel</Button>
     <Button variant="primary">sumbit</Button>
     </div>
