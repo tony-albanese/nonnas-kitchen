@@ -26,16 +26,23 @@ function BlogPostCreateForm() {
 
   const {title, body, post_image, category} = blogPostData;
 
+  const handleChange = (event) => {
+    setBlogPostData({
+      ...blogPostData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   const formFields = (
     <div>
       <Form.Group controlId="title">
         <Form.Label>Title</Form.Label>
-        <FormControl type="text" name="title" value={title}/>
+        <FormControl type="text" name="title" value={title} onChange={handleChange}/>
       </Form.Group>
 
       <Form.Group controlId="body">
         <Form.Label>Body</Form.Label>
-        <FormControl as="textarea" name="body" value={body} />
+        <FormControl as="textarea" name="body" value={body} onChange={handleChange}/>
       </Form.Group>
 
       <Form.Group controlId="category">
