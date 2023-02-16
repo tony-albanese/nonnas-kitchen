@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import {
   Form,
   Button,
@@ -15,6 +15,8 @@ import Upload from "../../assets/upload.png";
 import styles from "../../styles/BlogPostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import FormSelections from "../../components/FormSelections";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { axiosRequest } from "../../api/axiosDefaults";
 
 function BlogPostCreateForm() {
   const [errors, setErrors] = useState();
@@ -27,6 +29,9 @@ function BlogPostCreateForm() {
 
   const { title, body, post_image, category } = blogPostData;
 
+  const imageInput = useRef(null);
+  const history = useHistory();
+
   const handleChange = (event) => {
     setBlogPostData({
       ...blogPostData,
@@ -34,10 +39,25 @@ function BlogPostCreateForm() {
     });
   };
 
-  const handelSubmit = (event) => {
+  const handelSubmit = async (event) => {
     event.preventDefault();
-    console.log("blogPostData: ");
-    console.log(blogPostData);
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('body', body);
+    formData.append('category', category);
+    formData.append('post_image', imageInput.current.files[0]);
+
+
+    try {
+      const {data} = await axiosRequest.post('/posts/', formData);
+      console.log(data);
+      history.push(`/posts/${data.id}`);
+    }catch (err) {
+      console.log(err);
+      if (err.response?.status !==401) {
+        setErrors(err.response?.data);
+      }
+    }
   };
 
   const handleChangeImageChoice = (event) => {
@@ -119,6 +139,7 @@ function BlogPostCreateForm() {
                 id="image-upload-field"
                 accept="image/*"
                 onChange={handleChangeImageChoice}
+                ref={imageInput}
               />
             </Form.Group>
             <div className="d-md-none">{formFields}</div>
