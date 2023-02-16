@@ -39,6 +39,7 @@ function BlogPostCreateForm() {
     console.log(blogPostData);
   };
 
+
   const formFields = (
     <div>
       <Form.Group controlId="title">
@@ -53,13 +54,13 @@ function BlogPostCreateForm() {
 
       <Form.Group controlId="category">
         <Form.Label>Example select</Form.Label>
-        <Form.Control as="select">
-          <option>Anecdote</option>
-          <option>Tip</option>
-          <option>History</option>
-          <option>Fun Fact</option>
-          <option>Origin</option>
-          <option>Reminiscence</option>
+        <Form.Control as="select" name={category} onChange={handleChange}>
+          <option value="a">Anecdote</option>
+          <option value="b">Tip</option>
+          <option value="c">History</option>
+          <option value="d">Fun Fact</option>
+          <option value="e">Origin</option>
+          <option value="f">Reminiscence</option>
         </Form.Control>
       </Form.Group>
 
