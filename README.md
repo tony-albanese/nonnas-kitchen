@@ -27,6 +27,22 @@ The project uses Code Institute's [Moments](https://github.com/Code-Institute-So
 
 ## NavBar
 The NavBar component displays the standard items a user expects to see. What is rendered depends on the user's authentication status. If they are logged out, they are presented with links to sign in and sign up. If they are authenticated, links to add a post, a recipe, and their custom content are presented as well as a logout link. The NavBar is responsive. On medium size screens the menu collapses into a menu with a hamburger icon.
+> + As a user I can view a navbar from every page so that I can navigate easily between pages
+> + Logged in Status: As a user I can tell if I am logged in or not so that I can log in if I need to
+> + Conditional rendering - As a logged out user I can see sign in and sign up options so that I can sign in/sign up
+
+## SignUp/SignIn Form
+There is a Sign Up form that allows the user to create an account if they do not already have one. In addition, there is a Sign In form as well that allows the user to log in to access additional content.
+> + As a user I can create a new account so that I can access all the features for signed up users
+> + As a user I can sign in to the app so that I can access functionality for logged in users
+
+## Routing
+The react-router-dom libary was used to manage page navigation. This libary manages the rendering components so that the page is not continuosly refreshed when the user navigates through the site.
+> + As a user I can navigate through pages quickly so that I can view content seamlessly without page refresh
+
+## Web Token Refresh
+Normally, web tokens expire after a short time and thus the user would be continously logged out the site. These tokens must be refreshed so that the user maintains logged in satus for an extended period of time. The axios library has utiltity objects called interceptors to help manage and refresh the tokens automatically. The code to manage the interceptors was taken from the Moments walkthrough project from Code Institute.
+> + Refreshing access tokens: As a user I can maintain my logged-in status until I choose to log out so that my user experience is not compromised
 
 
 
@@ -111,7 +127,7 @@ Issues often are related to each other - this includes user stories and addition
 
 # Technology Used
 + [React Bootstrap](https://react-bootstrap-v4.netlify.app/) - This package contains ready to use React components that are compatible with the React library. This makes creating a responsive React app much simpler.
-+ [axios](https://www.npmjs.com/package/axios) - A lightweight but very powerful library for making network calls in JavaScript.
++ [axios](https://www.npmjs.com/package/axios) - A lightweight but very powerful library for making network calls in JavaScript. It includes utilities for managing and refreshing web tokens.
 + [react-router-dom](https://reactrouter.com/en/main) - A simple to use React library to simplify routing and navigation without the need to refresh the page.
 
 
