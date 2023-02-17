@@ -41,16 +41,15 @@ const BlogPost = (props) => {
     remin: "Reminiscence",
   };
 
-const handleLike = async () => {
-try {
-  console.log("like");
-//const {data} = await axiosResponse.post('/likes', {post: id});
-//console.log(data);
-} catch (err){
-  console.log(err);
-}
-};
-
+  const handleLike = async () => {
+    try {
+      console.log("like");
+      //const {data} = await axiosResponse.post('/likes', {post: id});
+      //console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Card style={{ width: "18rem" }}>
@@ -61,13 +60,17 @@ try {
         {is_owner && postPage && "..."}
       </Media>
       <Link to={`/posts/${id}`}>
-      <Card.Img variant="top" src={post_image} alt={title} />
+        <Card.Img variant="top" src={post_image} alt={title} />
       </Link>
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{body}</Card.Text>
       </Card.Body>
-      <PostFooterContent isOwner={is_author} isLiked={is_liked} loggedInUser={currentUser}/>
+      <PostFooterContent
+        isOwner={is_author}
+        isLiked={is_liked}
+        loggedInUser={currentUser}
+      />
     </Card>
   );
 };
