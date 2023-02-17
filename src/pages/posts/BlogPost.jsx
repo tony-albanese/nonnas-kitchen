@@ -43,6 +43,7 @@ const BlogPost = (props) => {
 
 const handleLike = async () => {
 try {
+  console.log("like");
 //const {data} = await axiosResponse.post('/likes', {post: id});
 //console.log(data);
 } catch (err){
@@ -66,11 +67,7 @@ try {
         <Card.Title>{title}</Card.Title>
         <Card.Text>{body}</Card.Text>
       </Card.Body>
-      <Card.Footer className="text-muted">
-
-      <PostFooterContent />
-        
-        </Card.Footer>
+      <PostFooterContent isOwner={is_author} isLiked={is_liked} loggedInUser={currentUser}/>
     </Card>
   );
 };
