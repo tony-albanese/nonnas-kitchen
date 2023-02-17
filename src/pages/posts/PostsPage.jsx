@@ -32,7 +32,14 @@ function PostsPage({message, filter=""}) {
 
             };
             setDataLoaded(false);
-            getPosts();
+            const timer = setTimeout(
+                () => {
+                    getPosts();
+                }, 1200);
+            return () =>{
+                clearTimeout(timer);
+            }
+           
         },
         [filter, pathname, queryString]
     );
