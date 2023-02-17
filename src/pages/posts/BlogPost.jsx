@@ -27,6 +27,7 @@ const BlogPost = (props) => {
     is_author,
     postPage,
     is_liked,
+    likes_count
   } = props;
 
   const currentUser = useCurrentUser();
@@ -43,9 +44,9 @@ const BlogPost = (props) => {
 
   const handleLike = async () => {
     try {
-      console.log("like");
-      //const {data} = await axiosResponse.post('/likes', {post: id});
-      //console.log(data);
+      console.log("like clicked");
+      const {data} = await axiosResponse.post('/likes', {post: id});
+      console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -70,6 +71,8 @@ const BlogPost = (props) => {
         isOwner={is_author}
         isLiked={is_liked}
         loggedInUser={currentUser}
+        onLike={handleLike}
+        likesCount={likes_count}
       />
     </Card>
   );
