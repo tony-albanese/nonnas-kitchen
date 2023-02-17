@@ -14,7 +14,14 @@
 ## BlogPost
 + As a logged in user, I can create a BlogPost so that I can share my food related content with other users on the platform.
 
-# React Design
+# React Features
+## Routing
+The react-router-dom libary was used to manage page navigation. This libary manages the rendering components so that the page is not continuosly refreshed when the user navigates through the site.
+> + As a user I can navigate through pages quickly so that I can view content seamlessly without page refresh
+
+## Web Token Refresh
+Normally, web tokens expire after a short time and thus the user would be continously logged out the site. These tokens must be refreshed so that the user maintains logged in satus for an extended period of time. The axios library has utiltity objects called interceptors to help manage and refresh the tokens automatically. The code to manage the interceptors was taken from the Moments walkthrough project from Code Institute.
+> + Refreshing access tokens: As a user I can maintain my logged-in status until I choose to log out so that my user experience is not compromised
 
 # UI Design
 The project uses Code Institute's [Moments](https://github.com/Code-Institute-Solutions/moments) project as a starting framework. Therefore, there are is a certain level of code overlap. The following parts of Nonna's Kitchen are taken from the Moments project:
@@ -35,14 +42,6 @@ The NavBar component displays the standard items a user expects to see. What is 
 There is a Sign Up form that allows the user to create an account if they do not already have one. In addition, there is a Sign In form as well that allows the user to log in to access additional content.
 > + As a user I can create a new account so that I can access all the features for signed up users
 > + As a user I can sign in to the app so that I can access functionality for logged in users
-
-## Routing
-The react-router-dom libary was used to manage page navigation. This libary manages the rendering components so that the page is not continuosly refreshed when the user navigates through the site.
-> + As a user I can navigate through pages quickly so that I can view content seamlessly without page refresh
-
-## Web Token Refresh
-Normally, web tokens expire after a short time and thus the user would be continously logged out the site. These tokens must be refreshed so that the user maintains logged in satus for an extended period of time. The axios library has utiltity objects called interceptors to help manage and refresh the tokens automatically. The code to manage the interceptors was taken from the Moments walkthrough project from Code Institute.
-> + Refreshing access tokens: As a user I can maintain my logged-in status until I choose to log out so that my user experience is not compromised
 
 
 
