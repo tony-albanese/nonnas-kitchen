@@ -32,8 +32,8 @@ const NavBar = () => {
 
 
   const loggedInNavItems = <>
-        <NavLink to="/feed" className={styles.NavLink}>
-        Feed
+        <NavLink to="/liked" className={styles.NavLink}>
+        Liked
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         Sign out
