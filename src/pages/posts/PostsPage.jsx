@@ -19,12 +19,15 @@ function PostsPage({message, filter=""}) {
             const getPosts = async () => {
                 try {
                     const {data} = await axiosRequest.get(`/posts/?${filter}`)
+                    setPosts(data);
+                    setDataLoaded(true);
                     
                 }catch (err){
                     console.log(err);
                 }
 
             };
+            setDataLoaded(false);
             getPosts();
         },
         [filter, pathname]
