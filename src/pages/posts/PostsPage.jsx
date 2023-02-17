@@ -9,6 +9,7 @@ import { axiosRequest } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png";
 import BlogPost from './BlogPost';
 import Asset from "../../components/Asset";
+import FormSelections from "../../components/FormSelections";
 
 
 function PostsPage({message, filter=""}) {
@@ -17,12 +18,13 @@ function PostsPage({message, filter=""}) {
     const [dataLoaded, setDataLoaded] = useState(false);
     const pathname = useLocation();
     const [queryString, setQueryString] = useState("");
+    const [filterOption, setFilterOption] = useState("")
 
     useEffect(
         ()=>{
             const getPosts = async () => {
                 try {
-                    const {data} = await axiosRequest.get(`/posts/?${filter}search=${queryString}`)
+                    const {data} = await axiosRequest.get(`/posts/?${filter}search=${queryString}&category=${filterOption}`)
                     setPosts(data);
                     setDataLoaded(true);
                     
@@ -41,12 +43,31 @@ function PostsPage({message, filter=""}) {
             }
            
         },
-        [filter, pathname, queryString]
+        [filter, pathname, queryString,filterOption]
     );
 
     const handleSearchChange = (event) =>{
         setQueryString(event.target.value);
     };
+
+    const handleFilterCategoryChange = (event)=>{
+        if (event.target.value === 'blank'){
+            setFilterOption("");
+        } else {
+            setFilterOption(event.target.value);
+        }
+        
+    }
+
+    const filterCategories = [
+        {blank: "None"},
+        { anec: "Anecdote" },
+        { tip: "Tip" },
+        { hist: "History" },
+        { fact: "Fun Fact" },
+        { orig: "Origin" },
+        { remin: "Reminiscence" },
+      ];
 
   return (
     <Row className="h100">
@@ -60,6 +81,15 @@ function PostsPage({message, filter=""}) {
             value={queryString}
             onChange={handleSearchChange}
           />
+
+          <Form.Group controlId="category-filter">
+            <Form.Label>Example select</Form.Label>
+            <FormSelections
+              controlName="category-filter"
+              onChangeHandler={handleFilterCategoryChange}
+              options={filterCategories}
+            />
+          </Form.Group>
         </Form>
         {dataLoaded ? (
           <>
