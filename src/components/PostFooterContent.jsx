@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 
-export default function PostFooterContent({ isOwner, isLiked, loggedInUser, onLike , likesCount}) {
+export default function PostFooterContent({ isOwner, isLiked, loggedInUser, onLike , likesCount, onUnlike}) {
   const cantLikeOwnPostToolTip = <Tooltip>Can't like own post!</Tooltip>;
   const logInPromptToolTip = <Tooltip>Please log in to like.</Tooltip>;
 
@@ -12,7 +12,7 @@ export default function PostFooterContent({ isOwner, isLiked, loggedInUser, onLi
   );
 
   const iconPostIsLiked = (
-    <span onClick={() => {}}>
+    <span onClick={onUnlike}>
       <i className="fa-solid fa-heart"></i>{" "}
     </span>
   );
