@@ -13,6 +13,15 @@
 
 ## BlogPost
 + As a logged in user, I can create a BlogPost so that I can share my food related content with other users on the platform.
++ As a user, I can view the details of a signle post so that I can enjoy additional content about that post.
++ As a user, I can view all the blog posts sorted by date created so that I can enjoy the most recently created content.
++ As a user, I can search posts so that I can quickly find content that is interesting to me.
++ As a user, I can filter the post by category so that I can quickly find content that I am most interested in.
+
+## Likes
++ As a logged in user, i can view all of the content that I have liked so that I can easily access my favorite content.
++ As a user, I can like a post so that I can mark content that is relevant to me.
+
 
 # React Features
 ## Routing
@@ -23,6 +32,10 @@ The react-router-dom libary was used to manage page navigation. This libary mana
 Normally, web tokens expire after a short time and thus the user would be continously logged out the site. These tokens must be refreshed so that the user maintains logged in satus for an extended period of time. The axios library has utiltity objects called interceptors to help manage and refresh the tokens automatically. The code to manage the interceptors was taken from the Moments walkthrough project from Code Institute.
 > + Refreshing access tokens: As a user I can maintain my logged-in status until I choose to log out so that my user experience is not compromised
 
+## Reusable Components
++ Reusable Footer Component
++ Reusable Form Dropdown
+
 # UI Design
 The project uses Code Institute's [Moments](https://github.com/Code-Institute-Solutions/moments) project as a starting framework. Therefore, there are is a certain level of code overlap. The following parts of Nonna's Kitchen are taken from the Moments project:
 + project structure - this is an industry standard way to organize a React Project
@@ -31,6 +44,7 @@ The project uses Code Institute's [Moments](https://github.com/Code-Institute-So
 + the form elements for login and sign up - The styling is unique, but the form fields and methods used to login/register/logout are taken from the project. This process would be similar in any project. The styling and layout of these components is unique.
 + axios interceptors - Web token management would be a problem in any project requiring user state management. I have chosen to use the solution in the Moments project as it would be a standard way of solving this problem.
 + context objects for user state - Managing user state and passing it through the component tree would be a common problem in any React app requiring a logged in user. Code Institute's solution using custom context hooks for getting and updating the logged in user was used because it is simple and follows industry practice.
+
 
 ## NavBar
 The NavBar component displays the standard items a user expects to see. What is rendered depends on the user's authentication status. If they are logged out, they are presented with links to sign in and sign up. If they are authenticated, links to add a post, a recipe, and their custom content are presented as well as a logout link. The NavBar is responsive. On medium size screens the menu collapses into a menu with a hamburger icon.
@@ -44,17 +58,24 @@ There is a Sign Up form that allows the user to create an account if they do not
 > + As a user I can sign in to the app so that I can access functionality for logged in users
 
 
-
-ADD USER STORIES!
-Give credit for icon logic and updating state.
 ## Create BlogPost Form
-### Reusable Form Dropdown
+The form to create a BlogPost has all the necessesary fields for ther user to create an entry. There is an option to select an image as well as a dropdown form for users to select the category. Upon successful submission, the user is taken to the post detail page for the newly created post. If they cancel the submission, they are redirected to the home page.
++ As a logged in user, I can create a BlogPost so that I can share my food related content with other users on the platform.
 
 ## Post Detail Component
-### Reusable Footer Component
+When the user clicks on a post, they are redirected to the PostDetail page where additional details about the post are displayed.
+> + As a user, I can view the details of a single post so that I can enjoy additional content about that post.
 
 ## Post Page
+The Post Page displays a list of all the posts. The posts are sorted by date so the most recent posts are displayed first. On the top of the page is a search bar in which the user can enter search terms. When the user has finished typing the site makes an api call and the data is refreshed. In addition, there is a dropdown menu that the user can use to filter the results by post category.
+> + As a user, I can view all the blog posts sorted by date created so that I can enjoy the most recently created content.
+> + As a user, I can search posts so that I can quickly find content that is interesting to me.
+> + As a user, I can filter the post by category so that I can quickly find content that I am most interested in.
 
+## Post Likes
+Each BlogPost component has a footer in which the total likes are displayed next to a heart icon. A logged in user can like a post if they are not the owner of that post by clicking on the heart icon. The icon changes from outlined to filled to reflect the change. The user can like a post either from the posts page or the post details page. In the nav bar, there is a link for the user see a list of BlogPosts that they have liked.
+> + As a logged in user, i can view all of the content that I have liked so that I can easily access my favorite content.
+> + As a user, I can like a post so that I can mark content that is relevant to me.
 
 
 # Agile Development
