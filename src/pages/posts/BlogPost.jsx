@@ -68,6 +68,7 @@ try {
       </Card.Body>
       <Card.Footer className="text-muted">
 
+      <PostFooterContent />
         
         </Card.Footer>
     </Card>
