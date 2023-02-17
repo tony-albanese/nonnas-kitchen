@@ -9,7 +9,11 @@ import {
   Row,
   Container,
   Media,
+  OverlayTrigger,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import PostFooterContent from "../../components/PostFooterContent";
+import { axiosResponse } from "../../api/axiosDefaults";
 
 const BlogPost = (props) => {
   const {
@@ -22,6 +26,7 @@ const BlogPost = (props) => {
     post_image,
     is_author,
     postPage,
+    is_liked,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -36,6 +41,16 @@ const BlogPost = (props) => {
     remin: "Reminiscence",
   };
 
+const handleLike = async () => {
+try {
+//const {data} = await axiosResponse.post('/likes', {post: id});
+//console.log(data);
+} catch (err){
+  console.log(err);
+}
+};
+
+
   return (
     <Card style={{ width: "18rem" }}>
       <Card.Header>{categories[category]}</Card.Header>
@@ -44,13 +59,17 @@ const BlogPost = (props) => {
         <span>{posted_on}</span>
         {is_owner && postPage && "..."}
       </Media>
+      <Link to={`/posts/${id}`}>
       <Card.Img variant="top" src={post_image} alt={title} />
-
+      </Link>
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{body}</Card.Text>
       </Card.Body>
-      <Card.Footer className="text-muted">Some footer text.</Card.Footer>
+      <Card.Footer className="text-muted">
+
+        
+        </Card.Footer>
     </Card>
   );
 };
