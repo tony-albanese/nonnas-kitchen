@@ -27,7 +27,8 @@ const BlogPost = (props) => {
     is_author,
     postPage,
     is_liked,
-    likes_count
+    likes_count,
+    setPosts
   } = props;
 
   const currentUser = useCurrentUser();
@@ -44,9 +45,16 @@ const BlogPost = (props) => {
 
   const handleLike = async () => {
     try {
-      console.log("like clicked");
-      const {data} = await axiosResponse.post('/likes', {post: id});
-      console.log(data);
+      const { data } = await axiosResponse.post("/likes", { post: id });
+
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, likes_count: post.likes_count + 1, is_liked: true }
+            : post;
+        }),
+      }));
     } catch (err) {
       console.log(err);
     }
