@@ -86,32 +86,7 @@ const BlogPost = (props) => {
   
   };
 
-  const cantLikeOwnPostToolTip = <Tooltip>Can't like own post!</Tooltip>;
-  const logInPromptToolTip = <Tooltip>Please log in to like.</Tooltip>;
-
-  const iconPostIsOwner = (
-    <OverlayTrigger placement="top" overlay={cantLikeOwnPostToolTip}>
-      <i className="fa-regular fa-heart"></i>
-    </OverlayTrigger>
-  );
-
-  const iconPostIsLiked = (
-    <span onClick={handleUnlike}>
-      <i className="fa-solid fa-heart"></i>{" "}
-    </span>
-  );
-
-  const iconUserIsLoggedIn = (
-    <span onClick={handleLike}>
-      <i className="fa-regular fa-heart"></i>{" "}
-    </span>
-  );
-
-  const iconUserNotLoggedIn = (
-    <OverlayTrigger placement="top" overlay={logInPromptToolTip}>
-      <i className="fa-regular fa-heart"></i>
-    </OverlayTrigger>
-  );
+  
 
   return (
     <Card style={{ width: "18rem" }}>
@@ -128,13 +103,14 @@ const BlogPost = (props) => {
         <Card.Title>{title}</Card.Title>
         <Card.Text>{body}</Card.Text>
       </Card.Body>
-      <Card.Footer className="text-muted">
-      {
-        is_owner ? iconPostIsOwner : is_liked ? iconPostIsLiked : currentUser ? iconUserIsLoggedIn : iconUserNotLoggedIn
-      }
-
-        {likes_count}
-    </Card.Footer>
+        <PostFooterContent 
+        isOwner={is_owner}
+        isLiked={is_liked}
+        loggedInUser={currentUser}
+        onLike={handleLike}
+        onUnlike={handleUnlike}
+        likesCount={likes_count}
+        />
     </Card>
   );
 };
