@@ -46,10 +46,11 @@ Give credit for icon logic and updating state.
 An Agile approach was used to manage the completion of this project. Specifically, this meant breaking the project down into smaller tasks with a focus on minimum functionality first. Only when a minimally viable product is ready will extra features be added. In addition, GitHub projects and Issues were used a tool to keep track of the tasks.
 
 ## Outline of Sprints
-The following is an outline of the sprints that were done during the completion of this project. Each sprint was designed to be one day's work.
+The following is an outline of the sprints that were done during the completion of this project. Each sprint was designed to be from one to three days' work.
 
-### Sprint 1 - Project setup
+### Sprint 1 - Project setup 
 Goal: Project environment, authentication functionality, bare minimum styling
+Time: One Day
 + Setup project
 + Outline project creation and deployment steps in README
 + Install additional libraries
@@ -61,18 +62,46 @@ Goal: Project environment, authentication functionality, bare minimum styling
 
 ### Sprint 2 - Making a Post
 Goal:  Users can see posts on home page and add a post. Minimal styling
+Time: One Day
 + Design content page
 + Connect to backed to display current posts
 + Design Post form
-+ Connect Post form to backend
++ Create a Post
++ Display a Post
++ Like a Post
 + Add links to navbar
 
 ### Sprint 3 - Likes, Comments
 Goal: Users can add a comment and like a post. Users can see the posts they've liked
-+ Design add commment form
-+ Connect comment form to backend
+Time: Three Days
 + Add favorites link to navbar for logged in user
 + Add filter by like 
++ Add filter by category
++ Add edit and delete function for BlogPost.
++ Design add commment form
++ Add, delete, update, and display comments.
+
+### Sprint 4 - Style
+Goal: Adjust layou and basic styles for components
+Time: Two Days
++ Configure layouts
++ Set colors
++ Set fonts
+
+### Sprint 5 - Test Deploy
+Goal: Deploy the site to make sure it works.
+Time: One Day
++ lint code
++ prepare for deployment
++ deploy to Heroku
+
+### Sprint 6 - Recipes
+Goal: CRUD operations for a Recipe
+Time: Two Days
++ Recipe Component
++ Display Recipe
++ Recipe Form
++ CRUD operations on Recipe
 
 ## Use of GitHub
 Each larger scale task was given a GitHub issue. This included the user stories, and anything else that would require attention. Issues were assigned labels to help prioritize them in the work flow. As can be seen, some issues are marked as "Must Do" while others are marked as "Should Do". Some issues are enhancements, others are questions requiring research. Often, if I ran into a problem that was not critical to fix or if I thought of a feature that I would like to add, I created an issue and assigned it a label to help me keep track of how important it is. The key is that essential features and critical issues were fixed first.
