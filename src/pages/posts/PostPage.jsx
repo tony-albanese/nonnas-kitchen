@@ -12,11 +12,12 @@ import {
   } from "react-bootstrap";
 import { useParams } from 'react-router-dom';
 import { axiosRequest } from "../../api/axiosDefaults";
+import BlogPost from './BlogPost';
 
 export default function PostPage() {
 
   const {id} = useParams();
-  const [blogPost, setBlogPost] = useState({results: []});
+  const [post, setPost] = useState({results: []});
 
   useEffect(()=>{
     const handleMount = async () => {
@@ -24,7 +25,7 @@ export default function PostPage() {
         const [{data: post}] = await Promise.all([
           axiosRequest.get(`/posts/${id}`),
         ]);
-        setBlogPost({results: [post]});
+        setPost({results: [post]});
         console.log(post);
 
       } catch (err){
@@ -39,7 +40,7 @@ export default function PostPage() {
   return (
     <Row className="h-100">
         <Col lg={8}>
-            <p>Post component will go here.</p>
+            <BlogPost {...post.results[0]} setPosts={setPost} postPage />
             <Container>
                 Comments will go here.
             </Container>
