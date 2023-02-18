@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Form } from 'react-bootstrap'
-import { axiosRequest } from "../../api/axiosDefaults";
+import { Form , Button} from 'react-bootstrap'
+import { axiosResponse } from "../../api/axiosDefaults";
 
-function CommentCreateForm({post}) {
+function CommentCreateForm({postId}) {
 
     const [body, setBody] = useState("")
 
@@ -10,14 +10,18 @@ function CommentCreateForm({post}) {
         setBody(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-
-
+        console.log(`Comment submitted for post with id: ${postId}`);
+        const { data } = await axiosResponse.post("/comments/", {
+            body: body,
+            blog_post: postId,
+          });
+        console.log(data);
     };
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
         <Form.Group>
             <p>User Profile Image Goes Here</p>
             <Form.Control 
