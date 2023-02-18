@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "../../styles/BlogPost.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import {
@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import PostFooterContent from "../../components/PostFooterContent";
 import { axiosResponse } from "../../api/axiosDefaults";
 import CardEdit from "../../components/CardEdit";
+import ModalAlert from "../../components/ModalAlert";
 
 const BlogPost = (props) => {
   const {
@@ -82,37 +83,51 @@ const BlogPost = (props) => {
 
   const handleDelete = (event) => {
     console.log("delete icon clicked");
+    setShow(true);
   };
 
   const handleEdit = (event) => {
     console.log("edit icon clicked");
   };
   
+  
+  const [show, setShow] = useState(false);
+
+  
 
   return (
-    <Card style={{ width: "20rem" }}>
-      <Card.Header>{categories[category]}</Card.Header>
-      <Media className="align-items-center justify-content-between">
-        {author}
-        <span>{posted_on}</span>
-      </Media>
-      <Link to={`/posts/${id}`}>
-        <Card.Img variant="top" src={post_image} alt={title} />
-      </Link>
-      <Card.Body>
-        <Card.Title>{title}</Card.Title>
-        <Card.Text>{body}</Card.Text>
-      </Card.Body>
-      {is_owner && postPage && <CardEdit onDelete={handleDelete} onEdit={handleEdit}/>}
-        <PostFooterContent 
-        isOwner={is_owner}
-        isLiked={is_liked}
-        loggedInUser={currentUser}
-        onLike={handleLike}
-        onUnlike={handleUnlike}
-        likesCount={likes_count}
+    <>
+      <Card style={{ width: "20rem" }}>
+        <Card.Header>{categories[category]}</Card.Header>
+        <Media className="align-items-center justify-content-between">
+          {author}
+          <span>{posted_on}</span>
+        </Media>
+        <Link to={`/posts/${id}`}>
+          <Card.Img variant="top" src={post_image} alt={title} />
+        </Link>
+        <Card.Body>
+          <Card.Title>{title}</Card.Title>
+          <Card.Text>{body}</Card.Text>
+        </Card.Body>
+        {is_owner && postPage && (
+          <CardEdit onDelete={handleDelete} onEdit={handleEdit} />
+        )}
+        <PostFooterContent
+          isOwner={is_owner}
+          isLiked={is_liked}
+          loggedInUser={currentUser}
+          onLike={handleLike}
+          onUnlike={handleUnlike}
+          likesCount={likes_count}
         />
-    </Card>
+      </Card>
+      <ModalAlert
+        show={show}
+        handleClose={() => setShow(false)}
+
+      />
+    </>
   );
 };
 
