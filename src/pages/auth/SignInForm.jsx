@@ -5,7 +5,6 @@ import axios from "axios";
 import {
   Form,
   Button,
-  Image,
   Col,
   Row,
   Container,

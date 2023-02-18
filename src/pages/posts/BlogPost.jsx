@@ -3,14 +3,7 @@ import styles from "../../styles/BlogPost.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import {
   Card,
-  Button,
-  Image,
-  Col,
-  Row,
-  Container,
   Media,
-  OverlayTrigger,
-  Tooltip
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PostFooterContent from "../../components/PostFooterContent";
@@ -89,12 +82,12 @@ const BlogPost = (props) => {
   
 
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "20rem" }}>
       <Card.Header>{categories[category]}</Card.Header>
       <Media className="align-items-center justify-content-between">
         {author}
         <span>{posted_on}</span>
-        {is_owner && postPage && "..."}
+        {is_owner && postPage && "You can edit"}
       </Media>
       <Link to={`/posts/${id}`}>
         <Card.Img variant="top" src={post_image} alt={title} />

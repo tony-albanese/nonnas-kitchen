@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 
 export default function PostFooterContent({ isOwner, isLiked, loggedInUser, onLike , likesCount, onUnlike}) {
   const cantLikeOwnPostToolTip = <Tooltip>Can't like own post!</Tooltip>;

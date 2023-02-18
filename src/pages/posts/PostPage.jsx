@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {
-    Form,
-    Button,
-    Image,
     Col,
     Row,
     Container,
-    Alert,
-    FormText,
-    FormControl,
   } from "react-bootstrap";
 import { useParams } from 'react-router-dom';
 import { axiosRequest } from "../../api/axiosDefaults";

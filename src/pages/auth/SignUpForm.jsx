@@ -1,7 +1,7 @@
 //The SignUpForm component will go here.
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Form, Button, Image, Col, Row, Container, Alert } from "react-bootstrap";
+import { Form, Button,Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 
 const SignUpForm = () => {
