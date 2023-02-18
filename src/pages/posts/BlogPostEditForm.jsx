@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Form,
   Button,
@@ -7,7 +7,6 @@ import {
   Row,
   Container,
   Alert,
-  FormText,
   FormControl,
 } from "react-bootstrap";
 import Asset from "../../components/Asset";
@@ -15,7 +14,7 @@ import Upload from "../../assets/upload.png";
 import styles from "../../styles/BlogPostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import FormSelections from "../../components/FormSelections";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosRequest } from "../../api/axiosDefaults";
 
 function BlogPostEditForm() {
@@ -28,9 +27,24 @@ function BlogPostEditForm() {
   });
 
   const { title, body, post_image, category } = blogPostData;
-
   const imageInput = useRef(null);
   const history = useHistory();
+  const {id} = useParams(); 
+
+  useEffect(()=> {
+    const handleMount = async () =>{
+        try {
+          const {data} = await axiosRequest.get(`/posts/${id}/`);
+          const {title, body, category, post_image, is_author} = data;
+          console.log(data);
+          is_author ? setBlogPostData({title, body, post_image, category}): history.push("/")
+        }catch (err){
+            console.log(err);
+        }
+    };
+    handleMount()
+  }, [id]);
+
 
   const handleChange = (event) => {
     setBlogPostData({
@@ -45,12 +59,16 @@ function BlogPostEditForm() {
     formData.append("title", title);
     formData.append("body", body);
     formData.append("category", category);
-    formData.append("post_image", imageInput.current.files[0]);
+    
+    if(imageInput?.current?.files[0]){
+        formData.append("post_image", imageInput.current.files[0]);
+    }
+    
 
     try {
-      const { data } = await axiosRequest.post("/posts/", formData);
+      const { data } = await axiosRequest.put(`/posts/${id}/`, formData);
       console.log(data);
-      history.push(`/posts/${data.id}`);
+      history.push(`/posts/${id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -80,6 +98,7 @@ function BlogPostEditForm() {
 
   const formFields = (
     <div>
+        <h1>Edit Post page</h1>
       <Form.Group controlId="title">
         <Form.Label>Title</Form.Label>
         <FormControl
@@ -128,7 +147,7 @@ function BlogPostEditForm() {
         Cancel
       </Button>
       <Button variant="primary" type="submit">
-        Sumbit
+        Save
       </Button>
     </div>
   );
