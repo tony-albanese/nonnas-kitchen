@@ -8,6 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import PostFooterContent from "../../components/PostFooterContent";
 import { axiosResponse } from "../../api/axiosDefaults";
+import CardEdit from "../../components/CardEdit";
 
 const BlogPost = (props) => {
   const {
@@ -79,6 +80,13 @@ const BlogPost = (props) => {
   
   };
 
+  const handleDelete = (event) => {
+    console.log("delete icon clicked");
+  };
+
+  const handleEdit = (event) => {
+    console.log("edit icon clicked");
+  };
   
 
   return (
@@ -87,7 +95,6 @@ const BlogPost = (props) => {
       <Media className="align-items-center justify-content-between">
         {author}
         <span>{posted_on}</span>
-        {is_owner && postPage && "You can edit"}
       </Media>
       <Link to={`/posts/${id}`}>
         <Card.Img variant="top" src={post_image} alt={title} />
@@ -96,6 +103,7 @@ const BlogPost = (props) => {
         <Card.Title>{title}</Card.Title>
         <Card.Text>{body}</Card.Text>
       </Card.Body>
+      {is_owner && postPage && <CardEdit onDelete={handleDelete} onEdit={handleEdit}/>}
         <PostFooterContent 
         isOwner={is_owner}
         isLiked={is_liked}
