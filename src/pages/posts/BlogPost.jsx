@@ -10,6 +10,7 @@ import PostFooterContent from "../../components/PostFooterContent";
 import { axiosResponse } from "../../api/axiosDefaults";
 import CardEdit from "../../components/CardEdit";
 import ModalAlert from "../../components/ModalAlert";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const BlogPost = (props) => {
   const {
@@ -30,6 +31,7 @@ const BlogPost = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === author;
+  const history = useHistory();
 
   const categories = {
     anec: "Anecdote",
@@ -86,10 +88,17 @@ const BlogPost = (props) => {
 
   const handleEdit = (event) => {
     console.log("edit icon clicked");
+    history.push(`/posts/${id}/edit`);
   };
   
-  const handleDelete = () => {
-    console.log("Now delete the post.")
+  const handleDelete = async () => {
+    console.log("Now delete the post.");
+    try {
+      const { data } = await axiosResponse.delete(`/posts/${id}`);
+      history.goBack();
+    }catch(err){
+      console.log(err);
+    }
     setShow(false);
   }
   
