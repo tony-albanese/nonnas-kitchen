@@ -6,12 +6,15 @@ import {
   } from "react-bootstrap";
 import { useParams } from 'react-router-dom';
 import { axiosRequest } from "../../api/axiosDefaults";
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import CommentCreateForm from '../comments/CommentCreateForm';
 import BlogPost from './BlogPost';
 
 export default function PostPage() {
-
+  const currentUser = useCurrentUser();
   const {id} = useParams();
   const [post, setPost] = useState({results: []});
+
 
   useEffect(()=>{
     const handleMount = async () => {
@@ -20,7 +23,6 @@ export default function PostPage() {
           axiosRequest.get(`/posts/${id}`),
         ]);
         setPost({results: [post]});
-        console.log(post);
 
       } catch (err){
         console.log(err);
@@ -36,7 +38,9 @@ export default function PostPage() {
         <Col lg={8}>
             <BlogPost {...post.results[0]} setPosts={setPost} postPage />
             <Container>
-                Comments will go here.
+                
+                {currentUser ? (<CommentCreateForm postId={id}/>) : (<p>Comments Go Here if there are any.</p>)}
+                
             </Container>
         </Col>
     </Row>
