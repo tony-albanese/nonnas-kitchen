@@ -41,7 +41,7 @@ Normally, web tokens expire after a short time and thus the user would be contin
 + Reusable Form Dropdown
 
 # UI Design
-The project uses Code Institute's [Moments](https://github.com/Code-Institute-Solutions/moments) project as a starting framework. Therefore, there are is a certain level of code overlap. The following parts of Nonna's Kitchen are taken from the Moments project:
+The project uses Code Institute's [Moments](https://github.com/Code-Institute-Solutions/moments) project as a starting framework as both sites involve creating, filtering, and searching posts. Therefore, there are is a certain level of code overlap. The following parts of Nonna's Kitchen are taken from the Moments project:
 + project structure - this is an industry standard way to organize a React Project
 + the NavBar - the implementation of the NavBar is also standard and code similarity is to be expected. The NavItems in the NavBar are unique
 + hamburger menu toggle - fixing the behavior of the hamburger menu toggle in the NavBar would be required in any project. I have chosen to use Code Institute's solution.
@@ -84,6 +84,11 @@ Each BlogPost component has a footer in which the total likes are displayed next
 
 # Agile Development
 An Agile approach was used to manage the completion of this project. Specifically, this meant breaking the project down into smaller tasks with a focus on minimum functionality first. Only when a minimally viable product is ready will extra features be added. In addition, GitHub projects and Issues were used a tool to keep track of the tasks.
+
+What does minimally functioning mean in this context? As with any project, there are real constraints (time, energy, know-how) that force a developer to prioritize the work. Based on my abilities and constraints, I have prioritized the project requirements in the following way:
+* A functioning front-end with authentication, registration, CRUD operations for a BlogPost. The focus is on working code.
+* Implementation of code for adding likes and comments to a BlogPost.
+* Aesthetics/Design - This is of course important in an advanced front end project, but the goal here is to have just minimal styling at first and then as time permits improve the visual design. The reasons are two-fold. 1) Having a beautiful design is meaningless if the code behind it does not function and 2) My particular focus in learning is getting the code behind the front end as clean as possible.
 
 ## Outline of Sprints
 The following is an outline of the sprints that were done during the completion of this project. Each sprint was designed to be from one to three days' work.
