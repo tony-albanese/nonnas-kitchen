@@ -37,8 +37,75 @@ Normally, web tokens expire after a short time and thus the user would be contin
 > + Refreshing access tokens: As a user I can maintain my logged-in status until I choose to log out so that my user experience is not compromised
 
 ## Reusable Components
-+ Reusable Footer Component
+The strength of the React framework is the idea of abstracting functionality into reusable components.
++ Reusable Footer Component  
+The footer of a blog post holds icons for the like icon. I used the code from Moments as a starting point. In the walkthrough, all of the logic behind the icon behavior is included in the Blog Card component. Since I plan on using a similar footer in a Recipe component, I selected this for refactoring into its own component.
+
+This is the outline of the component. onLike and onUnlike are callback functions to handle the clicks on the like icon. The rest are data passed in by the parent component. 
+```
+export default function PostFooterContent({ isOwner, isLiked, loggedInUser, onLike , likesCount, onUnlike}) {
+  return (
+    <Card.Footer className="text-muted">
+      {isOwner
+        ? iconPostIsOwner
+        : isLiked
+        ? iconPostIsLiked
+        : loggedInUser
+        ? iconUserIsLoggedIn
+        : iconUserNotLoggedIn}
+
+        {likesCount}
+    </Card.Footer>
+  );
+}
+```
+I deciced to user the logic from the Moments walkthrough to deterine how the like icon behaves. However, the code in the walkthrough had a lot of nested components which made the code very hard to read, understand, and expand. I therefore extracted the icons into their own variables. For example, these two icons are for when the post is liked and unliked. They execute the onLike/onUnlike callbacks passed in from the parent.
+```
+  const iconPostIsLiked = (
+    <span onClick={onUnlike}>
+      <i className="fa-solid fa-heart"></i>{" "}
+    </span>
+  );
+
+  const iconUserIsLoggedIn = (
+    <span onClick={onLike}>
+      <i className="fa-regular fa-heart"></i>{" "}
+    </span>
+  );
+```
+
+The OverlayTrigger and Tooltip components were also extracted.
+```
+const cantLikeOwnPostToolTip = <Tooltip>Can't like own post!</Tooltip>;
+const logInPromptToolTip = <Tooltip>Please log in to like.</Tooltip>;
+
+  const iconPostIsOwner = (
+    <OverlayTrigger placement="top" overlay={cantLikeOwnPostToolTip}>
+      <i className="fa-regular fa-heart"></i>
+    </OverlayTrigger>
+  );
+```
+
+This makes the code much easier to expand if I later decide to add more functions to the Footer.
 + Reusable Form Dropdown
+A dropdown form element is used on the BlogPostCreateForm component to allow the user to select a category for a BlogPost. There is need for a similar component in the PostsPage component to allow filtering the results of all the posts - the user should filter the posts they want to see based on category. Instead of building two components that behave in exactly the same way, I extracted this into a reusable component called FormSelections. To further increase the reusability, this object accepts a name, a change handler, and a list of objects representing the choices to be displayed.
+```
+const FormSelections = ({ controlName, onChangeHandler, options }) => {
+  return (
+    <Form.Control as="select" name={controlName} onChange={onChangeHandler}>
+        {
+    options.map((obj)=>{
+        let databaseValue = Object.keys(obj)[0];
+        let friendlyValue = obj[databaseValue];
+        return <option key={databaseValue} value={databaseValue}>{friendlyValue}</option>
+    })}
+
+    </Form.Control>
+  );
+};
+```
+To generate the list, the map function is called which iterates over the objects in the list and constructions an **option** element and sets its value and text from the passed in objects list. Since the values are unique, they can be used as the key.
+
 
 # UI Design
 The project uses Code Institute's [Moments](https://github.com/Code-Institute-Solutions/moments) project as a starting framework as both sites involve creating, filtering, and searching posts. Therefore, there are is a certain level of code overlap. The following parts of Nonna's Kitchen are taken from the Moments project:
@@ -127,7 +194,7 @@ Time: Three Days
 + Add, delete, update, and display comments.
 
 ### Sprint 4 - Style
-Goal: Adjust layou and basic styles for components
+Goal: Adjust layout and basic styles for components
 Time: Two Days
 + Configure layouts
 + Set colors
