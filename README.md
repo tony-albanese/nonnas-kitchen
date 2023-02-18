@@ -1,5 +1,9 @@
 # Nonna's Kitchen Frontend
+Nonna's kitchen is an online space for people who love food to share their experiences around food. The purpose of this site is not so much for people to share what they are eating but rather to share the emotional connection that often comes from a particular dish. The more specific purpose of this site is for people to share their emotional connections with a particular dish or type of food and to have other share in those experiences. That is why the site is called Nonna's Kitchen - "Nonna" is Italian for "grandmother" and the site is supposed to evoke memories, feelings, and connections to one's ancestors and culture.
 
+The main type content on the site is a blog post in which users can share an image of a particular food and provide a short (1-2 paragraph) description of their connection to that dish. For example, a user can share an image of a plate of *spaghetti al pomodorro*, (the classic spaghetti with tomato sauce) and then write how they are emotionally connected to that dish - that connection could be one of several types (Anecdote, History, Reminiscence, Tip). The idea here is for site users to be more specific in the type of information they are sharing and consuming. 
+
+There are many sites for sharing recipes and Twitter/Instagram/Facebook are full of food posts. However, this site is intended to focus on the *emotional* connection people have with food. That is how this site adds value to for its users.
 # User Stories
 ## Navigation and Authentication
 + As a user I can view a navbar from every page so that I can navigate easily between pages
