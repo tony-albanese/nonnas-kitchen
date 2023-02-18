@@ -98,7 +98,6 @@ function BlogPostEditForm() {
 
   const formFields = (
     <div>
-        <h1>Edit Post page</h1>
       <Form.Group controlId="title">
         <Form.Label>Title</Form.Label>
         <FormControl
@@ -130,7 +129,7 @@ function BlogPostEditForm() {
       ))}
 
       <Form.Group controlId="category">
-        <Form.Label>Example select</Form.Label>
+        <Form.Label>Category</Form.Label>
         <FormSelections
           controlName="category"
           onChangeHandler={handleChange}

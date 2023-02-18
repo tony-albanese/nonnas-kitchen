@@ -111,7 +111,7 @@ function BlogPostCreateForm() {
       ))}
 
       <Form.Group controlId="category">
-        <Form.Label>Example select</Form.Label>
+        <Form.Label>Category</Form.Label>
         <FormSelections
           controlName="category"
           onChangeHandler={handleChange}
