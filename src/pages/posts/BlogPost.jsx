@@ -73,16 +73,14 @@ const BlogPost = (props) => {
             : post;
         }),
       }));
-  
-  
     } catch (err) {
       console.log(err);
     }
   
   };
 
-  const handleDelete = (event) => {
-    console.log("delete icon clicked");
+  const showConfirmDeleteModal = (event) => {
+    console.log("Ask for confirmation.");
     setShow(true);
   };
 
@@ -90,6 +88,10 @@ const BlogPost = (props) => {
     console.log("edit icon clicked");
   };
   
+  const handleDelete = () => {
+    console.log("Now delete the post.")
+    setShow(false);
+  }
   
   const [show, setShow] = useState(false);
 
@@ -111,7 +113,7 @@ const BlogPost = (props) => {
           <Card.Text>{body}</Card.Text>
         </Card.Body>
         {is_owner && postPage && (
-          <CardEdit onDelete={handleDelete} onEdit={handleEdit} />
+          <CardEdit onDelete={showConfirmDeleteModal} onEdit={handleEdit} />
         )}
         <PostFooterContent
           isOwner={is_owner}
@@ -125,7 +127,7 @@ const BlogPost = (props) => {
       <ModalAlert
         show={show}
         handleClose={() => setShow(false)}
-
+        onConfirm={handleDelete}
       />
     </>
   );
