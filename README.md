@@ -196,6 +196,7 @@ Time: Three Days
 ### Sprint 4 - Style
 Goal: Adjust layout and basic styles for components
 Time: Two Days
++ Add icons to navbar
 + Configure layouts
 + Set colors
 + Set fonts
