@@ -21,6 +21,8 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
 + As a user, I can view all the blog posts sorted by date created so that I can enjoy the most recently created content.
 + As a user, I can search posts so that I can quickly find content that is interesting to me.
 + As a user, I can filter the post by category so that I can quickly find content that I am most interested in.
++ As a logged in user, I can delete a post I have made so that I can remove content I no longer wish to share.  
++ As a logged in user, I can edit a post I have created so that I can update content or correct mistakes I have made.
 
 ## Likes
 + As a logged in user, i can view all of the content that I have liked so that I can easily access my favorite content.
@@ -85,8 +87,8 @@ const logInPromptToolTip = <Tooltip>Please log in to like.</Tooltip>;
     </OverlayTrigger>
   );
 ```
-
 This makes the code much easier to expand if I later decide to add more functions to the Footer.
+
 + Reusable Form Dropdown
 A dropdown form element is used on the BlogPostCreateForm component to allow the user to select a category for a BlogPost. There is need for a similar component in the PostsPage component to allow filtering the results of all the posts - the user should filter the posts they want to see based on category. Instead of building two components that behave in exactly the same way, I extracted this into a reusable component called FormSelections. To further increase the reusability, this object accepts a name, a change handler, and a list of objects representing the choices to be displayed.
 ```
@@ -106,6 +108,28 @@ const FormSelections = ({ controlName, onChangeHandler, options }) => {
 ```
 To generate the list, the map function is called which iterates over the objects in the list and constructions an **option** element and sets its value and text from the passed in objects list. Since the values are unique, they can be used as the key.
 
++ Reusable Modal
+This modal component can be called from multiple components to either display warnings to the user or ask for confirmation before an action takes place.
+```
+function ModalAlert({show,  handleClose, onConfirm}) {
+  return (
+    <Modal show={show} onHide={handleClose} onClose={handleClose}>
+    <Modal.Header closeButton>
+      <Modal.Title>Modal heading</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+    <Modal.Footer>
+      <Button variant="secondary" onClick={handleClose}>
+        Close
+      </Button>
+      <Button variant="primary" onClick={onConfirm}>
+        Confirm Delete
+      </Button>
+    </Modal.Footer>
+  </Modal>
+  )
+}
+```
 
 # UI Design
 The project uses Code Institute's [Moments](https://github.com/Code-Institute-Solutions/moments) project as a starting framework as both sites involve creating, filtering, and searching posts. Therefore, there are is a certain level of code overlap. The following parts of Nonna's Kitchen are taken from the Moments project:
@@ -136,6 +160,10 @@ The form to create a BlogPost has all the necessesary fields for ther user to cr
 ## Post Detail Component
 When the user clicks on a post, they are redirected to the PostDetail page where additional details about the post are displayed.
 > + As a user, I can view the details of a single post so that I can enjoy additional content about that post.
+
+If the user has written the post, a menu is shown with two icons. The trash icon is for deleting a post. When the user clicks on this icon, a modal popup appears asking the user to confirm their wish to delete the post. If they click on the edit icon, they are taken to a page with a form pre-populated with the post data. The user can change one or several of the fields. When they hit Save, the database is updated through the api and the user is redireced back to the post detail page. If they hit cancel, they are also taken back to the post detail page.
+> + As a logged in user, I can delete a post I have made so that I can remove content I no longer wish to share.  
+> + As a logged in user, I can edit a post I have created so that I can update content or correct mistakes I have made.
 
 ## Post Page
 The Post Page displays a list of all the posts. The posts are sorted by date so the most recent posts are displayed first. On the top of the page is a search bar in which the user can enter search terms. When the user has finished typing the site makes an api call and the data is refreshed. In addition, there is a dropdown menu that the user can use to filter the results by post category.
