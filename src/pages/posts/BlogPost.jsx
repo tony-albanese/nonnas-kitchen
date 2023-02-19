@@ -21,10 +21,10 @@ const BlogPost = (props) => {
     category,
     posted_on,
     post_image,
-    is_author,
     postPage,
     is_liked,
     likes_count,
+    comments_count,
     setPosts,
     like_id
   } = props;
@@ -131,6 +131,7 @@ const BlogPost = (props) => {
           onLike={handleLike}
           onUnlike={handleUnlike}
           likesCount={likes_count}
+          commentsCount={comments_count}
         />
       </Card>
       <ModalAlert
