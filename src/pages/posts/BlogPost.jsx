@@ -132,6 +132,7 @@ const BlogPost = (props) => {
           onUnlike={handleUnlike}
           likesCount={likes_count}
           commentsCount={comments_count}
+          postId={id}
         />
       </Card>
       <ModalAlert

@@ -1,7 +1,17 @@
 import React from "react";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export default function PostFooterContent({ isOwner, isLiked, loggedInUser, onLike , likesCount, commentsCount, onUnlike}) {
+export default function PostFooterContent({
+  isOwner,
+  isLiked,
+  loggedInUser,
+  onLike,
+  likesCount,
+  commentsCount,
+  onUnlike,
+  postId,
+}) {
   const cantLikeOwnPostToolTip = <Tooltip>Can't like own post!</Tooltip>;
   const logInPromptToolTip = <Tooltip>Please log in.</Tooltip>;
 
@@ -30,37 +40,35 @@ export default function PostFooterContent({ isOwner, isLiked, loggedInUser, onLi
   );
 
   const commentIconUserNotLoggedIn = (
-    <OverlayTrigger placement="top" overlay={logInPromptToolTip} >
+    <OverlayTrigger placement="top" overlay={logInPromptToolTip}>
       <span>
-      <i className="fa-solid fa-comments"></i>
-      {commentsCount}
+        <i className="fa-solid fa-comments"></i>
+        {commentsCount}
       </span>
     </OverlayTrigger>
-    
-  )
+  );
 
   const commentIconUserLoggedIn = (
-    <>
-    <i className="fa-solid fa-comments"></i>
-    {commentsCount}
-    </>
-  )
+    <Link to={`/posts/${postId}`}>
+      <i className="fa-solid fa-comments"></i>
+      {commentsCount}
+    </Link>
+  );
 
   return (
     <Card.Footer className="text-muted">
       <>
-      {isOwner
-        ? iconPostIsOwner
-        : isLiked
-        ? iconPostIsLiked
-        : loggedInUser
-        ? iconUserIsLoggedIn
-        : iconUserNotLoggedIn}
+        {isOwner
+          ? iconPostIsOwner
+          : isLiked
+          ? iconPostIsLiked
+          : loggedInUser
+          ? iconUserIsLoggedIn
+          : iconUserNotLoggedIn}
 
         {likesCount}
-       {loggedInUser ? commentIconUserLoggedIn : commentIconUserNotLoggedIn}
-        </>
-       
+        {loggedInUser ? commentIconUserLoggedIn : commentIconUserNotLoggedIn}
+      </>
     </Card.Footer>
   );
 }
