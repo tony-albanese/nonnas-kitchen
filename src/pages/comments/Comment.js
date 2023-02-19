@@ -7,11 +7,13 @@ import CardEdit from '../../components/CardEdit';
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import ModalAlert from "../../components/ModalAlert";
 import { axiosResponse } from '../../api/axiosDefaults';
+import CommentEditForm from './CommentEditForm';
 
 function Comment({ id, author, created_on, body, setPost, setComments }) {
     const [show, setShow] = useState(false);
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === author;
+    const [showCommentEditForm, setShowCommentEditForm] = useState(false);
 
     const showConfirmDeleteModal = (event) => {
         setShow(true);
@@ -19,6 +21,7 @@ function Comment({ id, author, created_on, body, setPost, setComments }) {
 
     const handleEdit = (event) => {
         console.log("Edit the comment.");
+        setShowCommentEditForm(true);
     };
 
     const handleDelete = async () => {
@@ -54,11 +57,17 @@ function Comment({ id, author, created_on, body, setPost, setComments }) {
                         <span>{created_on}</span>
                     </Row>
                     <Row>
-                        <p>{body}</p>
+                        {showCommentEditForm ?
+                            (<CommentEditForm
+                                id={id}
+                                body={body}
+                                setComments={setComments}
+                                setShowCommentEditForm={setShowCommentEditForm}
+                            />) : <p>{body}</p>}
                     </Row>
                 </Card.Body>
-
             </Card>
+    
             <ModalAlert
                 show={show}
                 handleClose={() => setShow(false)}
