@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 
-export default function PostFooterContent({ isOwner, isLiked, loggedInUser, onLike , likesCount, onUnlike}) {
+export default function PostFooterContent({ isOwner, isLiked, loggedInUser, onLike , likesCount, commentsCount, onUnlike}) {
   const cantLikeOwnPostToolTip = <Tooltip>Can't like own post!</Tooltip>;
-  const logInPromptToolTip = <Tooltip>Please log in to like.</Tooltip>;
+  const logInPromptToolTip = <Tooltip>Please log in.</Tooltip>;
 
   const iconPostIsOwner = (
     <OverlayTrigger placement="top" overlay={cantLikeOwnPostToolTip}>
@@ -29,8 +29,26 @@ export default function PostFooterContent({ isOwner, isLiked, loggedInUser, onLi
     </OverlayTrigger>
   );
 
+  const commentIconUserNotLoggedIn = (
+    <OverlayTrigger placement="top" overlay={logInPromptToolTip} >
+      <span>
+      <i className="fa-solid fa-comments"></i>
+      {commentsCount}
+      </span>
+    </OverlayTrigger>
+    
+  )
+
+  const commentIconUserLoggedIn = (
+    <>
+    <i className="fa-solid fa-comments"></i>
+    {commentsCount}
+    </>
+  )
+
   return (
     <Card.Footer className="text-muted">
+      <>
       {isOwner
         ? iconPostIsOwner
         : isLiked
@@ -40,6 +58,9 @@ export default function PostFooterContent({ isOwner, isLiked, loggedInUser, onLi
         : iconUserNotLoggedIn}
 
         {likesCount}
+       {loggedInUser ? commentIconUserLoggedIn : commentIconUserNotLoggedIn}
+        </>
+       
     </Card.Footer>
   );
 }
