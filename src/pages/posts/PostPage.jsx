@@ -51,7 +51,7 @@ export default function PostPage() {
         }
         {comments.results.length ? 
         comments.results.map(comment => (
-          <Comment key={comment.id} {...comment} />
+          <Comment key={comment.id} {...comment} setPost={setPost}/>
         )) : (<span>No comments to display.</span>)
         
       }
