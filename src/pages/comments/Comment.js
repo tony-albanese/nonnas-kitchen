@@ -72,6 +72,8 @@ function Comment({ id, author, created_on, body, setPost, setComments }) {
                 show={show}
                 handleClose={() => setShow(false)}
                 onConfirm={handleDelete}
+                title="Nonna Says..."
+                message="Delete comment?"
             />
         </>
     )

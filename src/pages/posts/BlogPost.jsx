@@ -136,6 +136,8 @@ const BlogPost = (props) => {
         show={show}
         handleClose={() => setShow(false)}
         onConfirm={handleDelete}
+        title="Nonna Says.."
+        message={"Delete post?"}
       />
     </>
   );
