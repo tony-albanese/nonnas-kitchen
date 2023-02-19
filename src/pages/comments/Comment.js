@@ -6,8 +6,9 @@ import {
 import CardEdit from '../../components/CardEdit';
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import ModalAlert from "../../components/ModalAlert";
+import { axiosResponse } from '../../api/axiosDefaults';
 
-function Comment({author, created_on, body}) {
+function Comment({id, author, created_on, body, setPost}) {
     const [show, setShow] = useState(false);
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === author;
@@ -20,8 +21,22 @@ function Comment({author, created_on, body}) {
         console.log("Edit the comment.");
     };
 
-    const handleDelete = () => {
-        console.log("Delete the comment.")
+    const handleDelete = async () => {
+        console.log("Delete the comment.");
+        try {
+            await axiosResponse.delete(`/comments/${id}/`);
+            setPost((prevPost) => ({
+                results: [
+                  {
+                    ...prevPost.results[0],
+                    comments_count: prevPost.results[0].comments_count - 1,
+                  },
+                ],
+              }));
+        }catch (err){
+            console.log(err);
+        }
+        setShow(false);
     };
 
     return (
