@@ -2,36 +2,34 @@ import React, { useState } from 'react'
 import { Form , Button} from 'react-bootstrap'
 import { axiosResponse } from "../../api/axiosDefaults";
 
-function CommentEditForm({postId, setComments, setPost}) {
+function CommentEditForm({id, body, setComments, setShowCommentEditForm}) {
 
-    const [body, setBody] = useState("")
+   const [formBody, setFormBody] = useState(body);
 
     const handleChange = (event) => {
-        setBody(event.target.value);
+        setFormBody(event.target.value);
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(`Comment submitted for post with id: ${postId}`);
-        const { data } = await axiosResponse.post("/comments/", {
-            body: body,
-            blog_post: postId,
-          });
 
+        await axiosResponse.put(`/comments/${id}/`, {
+            body: formBody.trim(),
+          });
+       
           setComments((prevComments) => ({
             ...prevComments,
-            results: [data, ...prevComments.results],
+            results: prevComments.results.map((comment) => {
+              return comment.id === id
+                ? {
+                    ...comment,
+                    body: formBody.trim(),
+                  }
+                : comment;
+            }),
           }));
-
-          setPost((prevPost) => ({
-            results: [
-              {
-                ...prevPost.results[0],
-                comments_count: prevPost.results[0].comments_count + 1,
-              },
-            ],
-          }));
-          setBody("");
+          setShowCommentEditForm(false);
+      
     };
 
   return (
@@ -40,13 +38,14 @@ function CommentEditForm({postId, setComments, setPost}) {
             <Form.Control 
             as="textarea"
             placeholder='Leave a comment...'
-            value={body}
+            value={formBody}
             onChange={handleChange}
             rows={3}
             />
         </Form.Group>
+        <Button variant="secondary" onClick={() => setShowCommentEditForm(false)}>cancel</Button>
         <Button variant="primary" type="submit" disabled={!body.trim()}>
-            post
+            save
         </Button>
     </Form>
   )
