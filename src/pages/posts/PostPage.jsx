@@ -7,6 +7,7 @@ import {
 import { useParams } from 'react-router-dom';
 import { axiosRequest } from "../../api/axiosDefaults";
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import Comment from '../comments/Comment';
 import CommentCreateForm from '../comments/CommentCreateForm';
 import BlogPost from './BlogPost';
 
@@ -48,7 +49,12 @@ export default function PostPage() {
              />
           ) :null
         }
-        {<p>Number of comments: {comments.results.length}</p>}
+        {comments.results.length ? 
+        comments.results.map(comment => (
+          <Comment key={comment.id} {...comment} />
+        )) : (<span>No comments to display.</span>)
+        
+      }
         </Container>
       </Col>
     </Row>
