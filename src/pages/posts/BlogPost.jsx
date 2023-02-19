@@ -82,17 +82,14 @@ const BlogPost = (props) => {
   };
 
   const showConfirmDeleteModal = (event) => {
-    console.log("Ask for confirmation.");
     setShow(true);
   };
 
   const handleEdit = (event) => {
-    console.log("edit icon clicked");
     history.push(`/posts/${id}/edit`);
   };
   
   const handleDelete = async () => {
-    console.log("Now delete the post.");
     try {
       const { data } = await axiosResponse.delete(`/posts/${id}`);
       history.goBack();
