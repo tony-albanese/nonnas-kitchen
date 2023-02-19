@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Form , Button} from 'react-bootstrap'
 import { axiosResponse } from "../../api/axiosDefaults";
 
-function CommentCreateForm({postId}) {
+function CommentCreateForm({postId, setComments, setPost}) {
 
     const [body, setBody] = useState("")
 
@@ -17,13 +17,26 @@ function CommentCreateForm({postId}) {
             body: body,
             blog_post: postId,
           });
-        console.log(data);
+
+          setComments((prevComments) => ({
+            ...prevComments,
+            results: [data, ...prevComments.results],
+          }));
+
+          setPost((prevPost) => ({
+            results: [
+              {
+                ...prevPost.results[0],
+                comments_count: prevPost.results[0].comments_count + 1,
+              },
+            ],
+          }));
+          setBody("");
     };
 
   return (
     <Form onSubmit={handleSubmit}>
         <Form.Group>
-            <p>User Profile Image Goes Here</p>
             <Form.Control 
             as="textarea"
             placeholder='Leave a comment...'
