@@ -317,3 +317,12 @@ The app is then deployed to Heroku by the following steps:
 + The initial template for this app was from Code Institute's [Moments project template](https://github.com/Code-Institute-Org/cra-template-moments.git). 
 + The upload image was taken from Code Institute.
 
++ The grandmother icon is from <a href="https://www.flaticon.com/free-icons/grandmother" title="grandmother icons">Grandmother icons created by Freepik - Flaticon</a>
++ The sign in photo is from Photo by [Andrea Piacquadio](https://www.pexels.com/photo/crop-cook-preparing-noodles-in-kitchen-3771814/).
++ Image of family cooking is from <a href="https://www.freepik.com/free-vector/mother-father-with-kids-cooking-dishes-kitchen_9650120.htm#query=recipes&position=8&from_view=search&track=sph">pch.vector</a> on Freepik
++ Young women presenting food is from <a href="https://www.freepik.com/free-vector/young-women-presenting-high-fat-foods_7732680.htm#query=recipes&position=9&from_view=search&track=sph">Image by pch.vector</a> on Freepik
++ Image of healthy food is from <a href="https://www.freepik.com/free-vector/people-keeping-healthy-diet_8610283.htm#query=recipes&position=2&from_view=search&track=sph">Image by pch.vector</a> on Freepik
++ Grandmother and granddaughter cooking<a href="https://www.freepik.com/free-vector/happy-grandma-granddaughter-cooking-together-kitchen-interior-with-utensils-table-grandmother-grandchild-kneading-dough-baking-pie-with-berries-family-relationship_28849871.htm#query=grandmother%20kitchen&position=3&from_view=search&track=ais">Image by studio4rt</a> on Freepik
+
++ Grandmother with Grandchild - Image by <a href="https://www.freepik.com/free-vector/flat-grandparents-day-illustration-with-grandmother-grandchild_28148596.htm#query=grandmother%20kitchen&position=17&from_view=search&track=ais">Freepik</a>
+
