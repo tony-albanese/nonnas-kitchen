@@ -109,21 +109,21 @@ const FormSelections = ({ controlName, onChangeHandler, options }) => {
 To generate the list, the map function is called which iterates over the objects in the list and constructions an **option** element and sets its value and text from the passed in objects list. Since the values are unique, they can be used as the key.
 
 + Reusable Modal
-This modal component can be called from multiple components to either display warnings to the user or ask for confirmation before an action takes place.
+This modal component can be called from multiple components to either display warnings to the user or ask for confirmation before an action takes place. The message, title, and handlers to handle click events on the button are passed in as props.
 ```
-function ModalAlert({show,  handleClose, onConfirm}) {
+function ModalAlert({show,  handleClose, onConfirm, title, message}) {
   return (
     <Modal show={show} onHide={handleClose} onClose={handleClose}>
     <Modal.Header closeButton>
-      <Modal.Title>Modal heading</Modal.Title>
+      <Modal.Title>{title}</Modal.Title>
     </Modal.Header>
-    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+    <Modal.Body>{message}</Modal.Body>
     <Modal.Footer>
       <Button variant="secondary" onClick={handleClose}>
         Close
       </Button>
       <Button variant="primary" onClick={onConfirm}>
-        Confirm Delete
+        Delete
       </Button>
     </Modal.Footer>
   </Modal>
