@@ -34,6 +34,9 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
 + As a logged in user, I can see a list of comments for a post so that I can see what other users think of a particular post.
 + As a logged in user, I can delete a comment I have made so that I can remove content I no longer wish to share with the community,
 
+## Infinite Scroll
++ As a user, I can see a list of posts in a long list so I do not have to navigate through pagination links.
+
 
 # React Features
 ## Routing
@@ -187,10 +190,13 @@ If a user is logged in, they can comment on a post. The form to enter a comment 
 > +As a logged in user, I can comment on a post so that I can share my opinions on a post I find interesting.  
 
 If the user is logged in and goes to a post, a list of all the comments for that post is displayed. If the user is the author of a comment, two icons (edit and trash can) appear in the header of that icon that allow them to edit or delete the comment. If the user clicks on the trash can, a modal dialog appears asking them to confirm the delete. If they agree, the comment is deleted and removed from the list. If they cancel, the modal is dismissed. If the user clicks on the edit icon, a form is rendered right underneath the comment populated with the comment body data. The user can update the text as they see fit. Upon save, the database is updated through an api call and the comment list is updated as well. If they click on cancel, the form is dismissed.
-+ As a logged in user, I can see a list of comments for a post so that I can see what other users think of a particular post.
-+ As a logged in user, I can edit a comment I have created so that I can correct mistakes I have made.
-+ As a logged in user, I can delete a comment I have made so that I can remove content I no longer wish to share with the community.
+> + As a logged in user, I can see a list of comments for a post so that I can see what other users think of a particular post.
+> + As a logged in user, I can edit a comment I have created so that I can correct mistakes I have made.
+> + As a logged in user, I can delete a comment I have made so that I can remove content I no longer wish to share with the community.
 
+## Infinite Scroll
+The api returns results in groups of ten (BlogPost or Comments) in order to conserve bandwidth. For the user to continue accessing the data, they would have to see either a pagination widget at the bottom of the page or the next batch of results should be downloaded automatically. The latter is what today's users expect. The react-infinite-scroll-component library was used to simplify this process. When the user reaches the bottom of the page, the next batch of results are loaded automatically.
+> + As a user, I can see a list of posts in a long list so I do not have to navigate through pagination links.
 
 # Agile Development
 An Agile approach was used to manage the completion of this project. Specifically, this meant breaking the project down into smaller tasks with a focus on minimum functionality first. Only when a minimally viable product is ready will extra features be added. In addition, GitHub projects and Issues were used a tool to keep track of the tasks.
@@ -269,6 +275,7 @@ Issues often are related to each other - this includes user stories and addition
 + [React Bootstrap](https://react-bootstrap-v4.netlify.app/) - This package contains ready to use React components that are compatible with the React library. This makes creating a responsive React app much simpler.
 + [axios](https://www.npmjs.com/package/axios) - A lightweight but very powerful library for making network calls in JavaScript. It includes utilities for managing and refreshing web tokens.
 + [react-router-dom](https://reactrouter.com/en/main) - A simple to use React library to simplify routing and navigation without the need to refresh the page.
++ [react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component) - A library that simplifies the implementation of an infinite scroll for long lists of data.
 
 
 # Project Creation
