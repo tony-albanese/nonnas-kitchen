@@ -5,18 +5,14 @@ import {
   Image,
   Col,
   Row,
-  Container,
   Alert,
-  FormText,
   FormControl,
 } from "react-bootstrap";
-import Asset from "../../components/Asset";
-import Upload from "../../assets/upload.png";
-import styles from "../../styles/BlogPostCreateEditForm.module.css";
-import appStyles from "../../App.module.css";
+import Upload from "../../assets/old-woman.png";
 import FormSelections from "../../components/FormSelections";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosRequest } from "../../api/axiosDefaults";
+import styles from "../../styles/BlogPostCreateEditForm.module.css";
 
 function BlogPostCreateForm() {
   const [errors, setErrors] = useState();
@@ -100,6 +96,7 @@ function BlogPostCreateForm() {
         <FormControl
           as="textarea"
           name="body"
+          rows={5}
           value={body}
           onChange={handleChange}
         />
@@ -124,50 +121,52 @@ function BlogPostCreateForm() {
         </Alert>
       ))}
 
-      <Button variant="secondary" onClick={() => history.goBack()}>
-        Cancel
-      </Button>
-      <Button variant="primary" type="submit">
-        Sumbit
-      </Button>
+      <Row className="d-flex justify-content-end mt-5">
+        <Button
+          className={styles.CancelButton}
+          onClick={() => history.goBack()}
+        >
+          Cancel
+        </Button>
+        <Button className={styles.SubmitButton} type="submit">
+          Sumbit
+        </Button>
+      </Row>
     </div>
   );
 
   return (
-    <Form onSubmit={handelSubmit}>
-      <Row>
-        <Col>
-          <Container>
-            <Form.Group>
-              {post_image ? (
-                <>
-                  <figure>
-                    <Image src={post_image} rounded />
-                  </figure>
-                </>
-              ) : (
-                <Form.Label>
-                  <Asset message="Upload an image." src={Upload} />
-                </Form.Label>
-              )}
-
-              <Form.File
-                id="image-upload-field"
-                accept="image/*"
-                onChange={handleChangeImageChoice}
-                ref={imageInput}
-              />
-            </Form.Group>
-            {errors?.post_image?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
-            <div className="d-md-none">{formFields}</div>
-          </Container>
+    <Form className={styles.PostForm} onSubmit={handelSubmit}>
+      <Row className="d-flex justify-content-center mt-5">
+        <Col md={6} lg={4} className="d-flex align-items-center">
+          <Form.Group>
+            {post_image ? (
+              <figure>
+                <Image src={post_image} rounded fluid />
+              </figure>
+            ) : (
+              <Form.Label>
+                <div className="my-3">
+                  <Image src={Upload} fluid />
+                </div>
+              </Form.Label>
+            )}
+            <Form.File
+              id="image-upload-field"
+              accept="image/*"
+              onChange={handleChangeImageChoice}
+              ref={imageInput}
+            />
+          </Form.Group>
+          {errors?.post_image?.map((message, idx) => (
+            <Alert variant="warning" key={idx}>
+              {message}
+            </Alert>
+          ))}
+          <div className="d-md-none">{formFields}</div>
         </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container>{formFields}</Container>
+        <Col md={6} lg={8} className="d-none d-md-block p-0 p-md-2">
+          {formFields}
         </Col>
       </Row>
     </Form>

@@ -1,6 +1,50 @@
 /*
 The styles for the BlogPost form will go here.
 */
-.Container {
-    min-height: 343px;
-  }
+.PostForm .Label {
+
+}
+
+.PostForm Image {
+  padding: 10px;
+}
+
+Label {
+  font-size: x-large;
+  color: #622a0e;
+}
+
+Label Image {
+  margin-bottom: 10em;
+}
+
+Button {
+  margin-left: 10px;
+ 
+}
+
+.SubmitButton {
+  border-radius: 20px;
+  background-color: #ce6835;
+  border-color: #622a0e;
+}
+
+.SubmitButton:hover {
+  background-color: #622a0e;
+}
+
+.CancelButton {
+  border-radius: 20px;
+  border-color: #622a0e;
+  color: #622a0e;
+  background-color: aliceblue;
+}
+
+.CancelButton:hover{
+  border-color: #622a0e;
+  color: aliceblue;
+  font-weight: 800;
+  background-color: #622a0e;
+
+}
+
