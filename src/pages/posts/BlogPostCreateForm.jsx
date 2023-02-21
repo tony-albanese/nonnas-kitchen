@@ -7,6 +7,7 @@ import {
   Row,
   Alert,
   FormControl,
+  Container,
 } from "react-bootstrap";
 import Upload from "../../assets/old-woman.png";
 import FormSelections from "../../components/FormSelections";
@@ -137,41 +138,41 @@ function BlogPostCreateForm() {
 
   return (
     <Form className={styles.PostForm} onSubmit={handelSubmit}>
-      <Row className="d-flex justify-content-center mt-5">
-        <Col md={6} lg={4} className="d-flex align-items-center">
-          <Form.Group>
-            {post_image ? (
-              <Form.Label htmlFor="image-upload-field">
-              <figure>
-                <Image src={post_image} fluid />
-              </figure>
-              </Form.Label>
-            ) : (
-              <Form.Label htmlFor="image-upload-field">
-                <div className="my-3">
-                  <Image src={Upload} fluid />
-                </div>
-                <p>Click the granny to upload a photo.</p>
-              </Form.Label>
-            )}
-            <Form.File
-              id="image-upload-field"
-              accept="image/*"
-              onChange={handleChangeImageChoice}
-              ref={imageInput}
-            />
-          </Form.Group>
-          {errors?.post_image?.map((message, idx) => (
-            <Alert variant="warning" key={idx}>
-              {message}
-            </Alert>
-          ))}
-          <div className="d-md-none">{formFields}</div>
-        </Col>
-        <Col md={6} lg={8} className="d-none d-md-block p-0 p-md-2">
-          {formFields}
-        </Col>
-      </Row>
+      <Container>
+        <Row className="d-flex justify-content-center mt-5">
+          <Col md={6} className="d-flex align-items-center">
+            <Form.Group>
+              {post_image ? (
+                <Form.Label htmlFor="image-upload-field">
+                  <figure>
+                    <Image src={post_image} fluid />
+                  </figure>
+                </Form.Label>
+              ) : (
+                <Form.Label htmlFor="image-upload-field">
+                  <div className="my-3">
+                    <Image src={Upload} fluid />
+                  </div>
+                  <p>Click the granny to upload a photo.</p>
+                </Form.Label>
+              )}
+              <Form.File
+                id="image-upload-field"
+                accept="image/*"
+                onChange={handleChangeImageChoice}
+                ref={imageInput}
+              />
+            </Form.Group>
+            {errors?.post_image?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+          </Col>
+
+          <Col md={6}>{formFields}</Col>
+        </Row>
+      </Container>
     </Form>
   );
 }
