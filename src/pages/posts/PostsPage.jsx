@@ -73,7 +73,7 @@ function PostsPage({message, filter=""}) {
 
   return (
     <Row className="h100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
+      <Col className="py-2 p-0 p-lg-2 mx-auto" lg={10}>
         <i className="fa-solid fa-magnifying-glass"></i>
         <Form onSubmit={(event) => event.preventDefault()}>
           <Form.Control
@@ -95,6 +95,8 @@ function PostsPage({message, filter=""}) {
         </Form>
         {dataLoaded ? (
           <>
+          <Row>
+            <Col className='mx-auto'>
             {posts.results.length ? (
               <InfiniteScroll 
               children={posts.results.map((post) => (
@@ -110,6 +112,8 @@ function PostsPage({message, filter=""}) {
                 <Asset src={NoResults} message={message} />
               </Container>
             )}
+            </Col>
+            </Row>
           </>
         ) : (
           <Container>
