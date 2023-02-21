@@ -37,7 +37,7 @@ export default function PostPage() {
 
   return (
     <Row className="h-100">
-      <Col lg={8}>
+      <Col lg={8} className="mx-auto">
         <BlogPost {...post.results[0]} setPosts={setPost} postPage />
         <Container>
           {currentUser ? (
