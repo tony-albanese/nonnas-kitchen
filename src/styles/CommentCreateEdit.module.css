@@ -1,3 +1,16 @@
 /*
 This is for the styles for the CommentCreate form and the CommentEdit form.
 */
+
+.Button {
+    border-radius: 20px;
+    background-color: #7c449e;
+    border-color: #7c449e;
+    font-weight: 600;
+}
+
+.Button:disabled {
+background-color: #7c449e;
+border-color: #7c449e;
+font-weight: 600;
+}
