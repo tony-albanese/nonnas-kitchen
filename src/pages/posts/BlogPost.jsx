@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import styles from "../../styles/BlogPost.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import {
   Card,
@@ -7,10 +6,12 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PostFooterContent from "../../components/PostFooterContent";
-import { axiosResponse } from "../../api/axiosDefaults";
 import CardEdit from "../../components/CardEdit";
 import ModalAlert from "../../components/ModalAlert";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { axiosResponse } from "../../api/axiosDefaults";
+import styles from "../../styles/BlogPost.module.css";
+
 
 const BlogPost = (props) => {
   const {
