@@ -42,7 +42,7 @@ function BlogPostEditForm() {
         }
     };
     handleMount()
-  }, [id]);
+  }, [id, history]);
 
 
   const handleChange = (event) => {

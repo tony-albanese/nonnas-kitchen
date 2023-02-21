@@ -42,7 +42,7 @@ const BlogPost = (props) => {
   const handleLike = async () => {
     try {
       console.log(`id: ${id}`);
-      const { data } = await axiosResponse.post("/likes/", { blog_post: id });
+      await axiosResponse.post("/likes/", { blog_post: id });
 
       setPosts((prevPosts) => ({
         ...prevPosts,

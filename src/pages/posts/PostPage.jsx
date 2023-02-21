@@ -16,8 +16,6 @@ export default function PostPage() {
   const [post, setPost] = useState({ results: [] });
   const [comments, setComments] = useState({ results: [] });
 
-  const profile_image = currentUser?.profile_image;
-
   useEffect(() => {
     const handleMount = async () => {
       try {
