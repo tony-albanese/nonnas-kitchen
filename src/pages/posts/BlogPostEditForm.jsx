@@ -12,7 +12,6 @@ import {
 import Asset from "../../components/Asset";
 import Upload from "../../assets/upload.png";
 import styles from "../../styles/BlogPostCreateEditForm.module.css";
-import appStyles from "../../App.module.css";
 import FormSelections from "../../components/FormSelections";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosRequest } from "../../api/axiosDefaults";
@@ -142,29 +141,36 @@ function BlogPostEditForm() {
         </Alert>
       ))}
 
-      <Button variant="secondary" onClick={() => history.goBack()}>
-        Cancel
-      </Button>
-      <Button variant="primary" type="submit">
-        Save
-      </Button>
+<Row className="d-flex justify-content-end mt-5">
+        <Button
+          className={styles.CancelButton}
+          onClick={() => history.goBack()}
+        >
+          Cancel
+        </Button>
+        <Button className={styles.SubmitButton} type="submit">
+          Sumbit
+        </Button>
+      </Row>
     </div>
   );
 
   return (
-    <Form onSubmit={handelSubmit}>
-      <Row>
-        <Col>
-          <Container>
+    <Form onSubmit={handelSubmit} className={styles.PostForm}>
+      <Container>
+      <Row className="d-flex justify-content-center mt-5">
+
+        <Col md={6} className="d-flex align-items-center">
             <Form.Group>
               {post_image ? (
-                <>
+                <Form.Label htmlFor="image-upload-field">
                   <figure>
-                    <Image src={post_image} rounded />
+                    <Image src={post_image} rounded fluid/>
                   </figure>
-                </>
+                  <p>Click on the picture to update.</p>
+                </Form.Label>
               ) : (
-                <Form.Label>
+                <Form.Label htmlFor="image-upload-field">
                   <Asset message="Upload an image." src={Upload} />
                 </Form.Label>
               )}
@@ -180,14 +186,14 @@ function BlogPostEditForm() {
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
-            ))}
-            <div className="d-md-none">{formFields}</div>
-          </Container>
+            ))}  
         </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container>{formFields}</Container>
+
+        <Col md={6}>
+          {formFields}
         </Col>
       </Row>
+      </Container>
     </Form>
   );
 }
