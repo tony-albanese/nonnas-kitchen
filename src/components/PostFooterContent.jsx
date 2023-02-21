@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import styles from "../../src/styles/PostFooterContent.module.css";
 
 export default function PostFooterContent({
   isOwner,
@@ -56,7 +57,7 @@ export default function PostFooterContent({
   );
 
   return (
-    <Card.Footer className="text-muted">
+    <Card.Footer className="text-muted text-center">
       <>
         {isOwner
           ? iconPostIsOwner
