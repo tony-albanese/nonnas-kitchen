@@ -1,11 +1,12 @@
 .App {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f8f8f8;
+    background-color: #fcfbf9;
     min-height: 100vh;
   }
 
   .Main {
     padding-top: 81px;
+
   }
   
   * {
