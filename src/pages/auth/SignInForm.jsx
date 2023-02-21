@@ -53,7 +53,7 @@ function SignInForm() {
       <Col md={4}>
         
           <h2 className={styles.Header}>Sign In</h2>
-          <Form className={styles.SignInForm} onSubmit={handleSubmit}>
+          <Form className={styles.Authentication} onSubmit={handleSubmit}>
             <Form.Group controlId="username">
               <Form.Label className="d-none">Username</Form.Label>
               <Form.Control
@@ -97,7 +97,7 @@ function SignInForm() {
             ))}
           </Form>
           <Link className={styles.Link} to="/signup">
-            Don't have an account? <span className={styles.SignUp}>Sign Up</span>
+            Don't have an account? <span className={styles.LinkText}>Sign Up</span>
           </Link>
        
       </Col>

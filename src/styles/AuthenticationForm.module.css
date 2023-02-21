@@ -9,12 +9,12 @@ This is the styling for the sign-in and sign-up forms
 
 }
 
-.SignInForm input {
+.Authentication input {
     border-radius: 20px;
     background-color: #f9f3e5;
 }
 
-.SignInForm Button {
+.Authentication Button {
     background-color: #8257b1;
     border-radius: 20px;
     border-color: #f086b6;
@@ -23,15 +23,19 @@ This is the styling for the sign-in and sign-up forms
     font-size: larger;
     margin-bottom: 20px;
 }
+.Authentication Button:hover {
+    background-color: #7d23dd;
+}
 
 .Link {
+color: black;
 font-size: large;
 }
 
 .Link:hover{
     color: #561e03;
 }
-.SignUp {
+.LinkText {
     color: #561e03;
     font-weight: 600;
 }
