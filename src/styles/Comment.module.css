@@ -3,7 +3,11 @@ Style declarations for the Comment component.
 */
 
 .Comment {
-    width: 80%;
+    width: 100%;
+}
+
+.Body {
+    padding: 10px;
 }
 
 .Badge {
