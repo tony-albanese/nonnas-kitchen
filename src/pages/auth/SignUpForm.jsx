@@ -1,8 +1,10 @@
 //The SignUpForm component will go here.
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Form, Button,Col, Row, Container, Alert } from "react-bootstrap";
+import { Form, Button,Col, Row, Image, Alert } from "react-bootstrap";
 import axios from "axios";
+import styles from "../../styles/AuthenticationForm.module.css";
+import SignUpImage from "../../assets/elderly-cooking.jpg";
 
 const SignUpForm = () => {
   //store data in variable and use setSignUpData to update state
@@ -38,10 +40,12 @@ const SignUpForm = () => {
 
   return (
     <Row>
-      <Col className="my-auto py-2 p-md-2" md={6}>
-        <Container>
-          <h1>Sign Up</h1>
-          <Form onSubmit={handleSubmit}>
+      <Col md={8}>
+      <Image src={SignUpImage} fluid />
+      </Col>
+      <Col className="my-auto py-2 p-md-2" md={4}>
+          <h2 className={styles.Header}>Sign Up</h2>
+          <Form className={styles.Authentication} onSubmit={handleSubmit}>
             <Form.Group controlId="username">
               <Form.Label className="d-none">username</Form.Label>
               <Form.Control
@@ -103,12 +107,10 @@ const SignUpForm = () => {
               </Alert>
             ))}
           </Form>
-        </Container>
-        <Container className={`mt-3`}>
-          <Link to="/signin">
-            Already have an account? <span>Sign in</span>
+  
+          <Link className={styles.Link} to="/signin">
+            Already have an account? <span className={styles.LinkText}>Sign in</span>
           </Link>
-        </Container>
       </Col>
     </Row>
   );
