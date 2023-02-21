@@ -5,12 +5,12 @@
 
   .NavLink {
     padding: 5px;
-    color: #c46681;
+    color: #a30633;
   }
 
   .NavTextItem {
     padding: 5px;
-    color: #c46681;
+    color: #a30633;
   }
   
   .NavLink:hover {
@@ -25,6 +25,6 @@
     color: #c46681;
   }
 
-  /*
-  TODO: Style text in links and logo.
-  */
+.BrandText {
+  font-size: xx-large;
+}

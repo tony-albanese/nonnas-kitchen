@@ -74,7 +74,7 @@ const NavBar = () => {
           <Navbar.Brand>
             <img src={nonna} alt="nonna logo" height="45" />
           </Navbar.Brand>
-          <span>Nonna's Kitchen</span>
+          <span className={styles.BrandText}>Nonna's Kitchen</span>
         </NavLink>
         <Navbar.Toggle
           ref={burgerIconRef}
