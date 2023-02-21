@@ -28,35 +28,36 @@ const NavBar = () => {
   const addBlogPostNavItem = (
     <>
       <NavLink className={styles.NavLink} to="/posts/create">
-        Add post
+      <i className="fa-solid fa-plus"></i> Add post
       </NavLink>
       <NavLink className={styles.NavLink} to="#">
-        Add Recipe
+      <i className="fa-solid fa-plus"></i> Add Recipe
       </NavLink>
     </>
   );
 
   const loggedInNavItems = (
     <>
+    {addBlogPostNavItem}
       <NavLink to="/liked" className={styles.NavLink}>
-        Liked
+      <i className="fa-solid fa-heart"></i> Liked
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        Sign out
+      <i className="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
       </NavLink>
-      <NavLink to="#" className={styles.NavLink}>
-        {currentUser?.username}
-      </NavLink>
+      <span to="#" className={styles.NavTextItem}>
+      <i className="fa-regular fa-user"></i> {currentUser?.username}
+      </span>
     </>
   );
 
   const loggedOutNavItems = (
     <>
       <NavLink to="/signin" className={styles.NavLink}>
-        Sign in
+      <i className="fa-solid fa-arrow-right-to-bracket"></i> Sign In
       </NavLink>
       <NavLink to="/signup" className={styles.NavLink}>
-        Sign up
+      <i className="fa-solid fa-user-plus"></i> Sign up
       </NavLink>
     </>
   );
@@ -65,7 +66,7 @@ const NavBar = () => {
     <Navbar
       className={styles.NavBar}
       expanded={expanded}
-      expand="md"
+      expand="lg"
       fixed="top"
     >
       <Container>
@@ -82,9 +83,8 @@ const NavBar = () => {
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
-            {addBlogPostNavItem}
             <NavLink exact to="/" className={styles.NavLink}>
-              Home
+            <i className="fa-solid fa-house"></i> Home
             </NavLink>
             {currentUser ? loggedInNavItems : loggedOutNavItems}
           </Nav>
