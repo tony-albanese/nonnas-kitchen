@@ -49,7 +49,7 @@ function Comment({ id, author, created_on, body, setPost, setComments }) {
 
     return (
         <>
-            <Card style={{ width: "20rem" }}>
+            <Card>
                 <Card.Body>
                     {is_owner && (<CardEdit onDelete={showConfirmDeleteModal} onEdit={handleEdit} />)}
                     <Row>
