@@ -2,9 +2,11 @@ import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
+import { useClickOutsideToggle } from "../hooks/useClickOutsideToggle";
+import nonna from "../assets/old-woman.png";
 import styles from "../styles/NavBar.module.css";
 import axios from "axios";
-import { useClickOutsideToggle } from "../hooks/useClickOutsideToggle";
+
 
 const NavBar = () => {
 
@@ -58,10 +60,12 @@ const NavBar = () => {
   );
 
   return (
-    <Navbar expanded={expanded} expand="md" fixed="top">
+    <Navbar className={styles.NavBar} expanded={expanded} expand="md" fixed="top">
       <Container>
         <NavLink to="/" className={styles.NavLink}>
-          <Navbar.Brand>Nonna's Kitchen</Navbar.Brand>
+        <Navbar.Brand><img src={nonna} alt="nonna logo" height="45" /></Navbar.Brand>
+        <span>Nonna's Kitchen</span>
+        
         </NavLink>
         {currentUser && addBlogPostNavItem}
         <Navbar.Toggle
