@@ -106,8 +106,8 @@ const BlogPost = (props) => {
 
   return (
     <>
-      <Card className="my-4 mx-auto" style={{ width: "75%" }}>
-        <Card.Header>{categories[category]}</Card.Header>
+      <Card className={`my-4 mx-auto ${styles.Card}`}>
+        <Card.Header className={styles.CardHeader}>{categories[category]}</Card.Header>
         <Media className="align-items-center justify-content-between">
           {author}
           <span>{posted_on}</span>
