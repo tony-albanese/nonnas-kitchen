@@ -112,7 +112,7 @@ const BlogPost = (props) => {
           <Card.Img variant="top" src={post_image} alt={title} />
         </Link>
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
+          <Card.Title className={styles.Title}>{title}</Card.Title>
           <Card.Text>{body}</Card.Text>
         </Card.Body>
         {is_owner && postPage && (

@@ -9,9 +9,11 @@ The styles for a Post component.
 .Card {
     width: 75%;
     border-radius: 5px;
+    -webkit-box-shadow: 5px 7px 18px -5px rgba(196,102,129,0.65); 
+    box-shadow: 5px 7px 18px -5px rgba(196,102,129,0.65);
 }
 
-.Card .CardHeader {
+.Card .CardHeader, .Title {
     background-color: #efe9f3;
     font-weight: 400;
     color: #622a0e;
@@ -35,4 +37,8 @@ The styles for a Post component.
     font-size: large;
     color: #c46681;
     font-weight: 800;
+}
+
+.Title {
+    background-color: #fcfbf9;
 }
