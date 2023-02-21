@@ -2,10 +2,6 @@
 The styles for a Post component.
 */
 
-.BlogPost {
-   
-}
-
 .Card {
     width: 75%;
     border-radius: 5px;
@@ -34,11 +30,16 @@ The styles for a Post component.
 }
 
 .Date {
-    font-size: large;
     color: #c46681;
     font-weight: 800;
+    margin-left: 1em;
+    font-size: large;
 }
 
 .Title {
     background-color: #fcfbf9;
+}
+
+.Body {
+    font-size: large;
 }

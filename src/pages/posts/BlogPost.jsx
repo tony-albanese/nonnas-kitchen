@@ -113,7 +113,7 @@ const BlogPost = (props) => {
         </Link>
         <Card.Body>
           <Card.Title className={styles.Title}>{title}</Card.Title>
-          <Card.Text>{body}</Card.Text>
+          <Card.Text className={styles.Body}>{body}</Card.Text>
         </Card.Body>
         {is_owner && postPage && (
           <CardEdit onDelete={showConfirmDeleteModal} onEdit={handleEdit} />
