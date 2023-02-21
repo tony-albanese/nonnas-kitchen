@@ -4,13 +4,13 @@ import {
     Row,
     Container,Form
   } from "react-bootstrap";
-import { useLocation } from 'react-router-dom';
-import { axiosRequest } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png";
 import BlogPost from './BlogPost';
 import Asset from "../../components/Asset";
 import FormSelections from "../../components/FormSelections";
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { useLocation } from 'react-router-dom';
+import { axiosRequest } from "../../api/axiosDefaults";
 import { fetchMoreData } from '../../utils/utils';
 
 
@@ -85,7 +85,7 @@ function PostsPage({message, filter=""}) {
           />
 
           <Form.Group controlId="category-filter">
-            <Form.Label>Example select</Form.Label>
+            <Form.Label>Filter by Category</Form.Label>
             <FormSelections
               controlName="category-filter"
               onChangeHandler={handleFilterCategoryChange}
