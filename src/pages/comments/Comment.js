@@ -53,14 +53,13 @@ function Comment({ id, author, created_on, body, setPost, setComments }) {
         <>
             <Card className={styles.Comment}>
                 <Media
-                    className={`align-items-center justify-content-between p-2`}>
+                    className={`align-items-center justify-content-between p-2 mt-3`}>
                     <Badge pill className={styles.Badge}>
                         {author}
                     </Badge>
                     <span className={styles.Date}>{created_on}</span>
                 </Media>
                 <Card.Body>
-                    {is_owner && (<CardEdit onDelete={showConfirmDeleteModal} onEdit={handleEdit} />)}
                     <Row>
                         {showCommentEditForm ?
                             (<CommentEditForm
@@ -68,7 +67,10 @@ function Comment({ id, author, created_on, body, setPost, setComments }) {
                                 body={body}
                                 setComments={setComments}
                                 setShowCommentEditForm={setShowCommentEditForm}
-                            />) : <p>{body}</p>}
+                            />) : <p className={styles.Body}>{body}</p>}
+                    </Row>
+                    <Row>
+                    {is_owner && (<CardEdit onDelete={showConfirmDeleteModal} onEdit={handleEdit} />)}
                     </Row>
                 </Card.Body>
             </Card>
