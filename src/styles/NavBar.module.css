@@ -1,12 +1,30 @@
 .NavBar {
     background-color: #cee4e9;
-    border: 1px solid #c46681;
+    border: 1px solid #c2aad1;
   }
 
   .NavLink {
     padding: 5px;
+    color: #c46681;
+  }
+
+  .NavTextItem {
+    padding: 5px;
+    color: #c46681;
   }
   
+  .NavLink:hover {
+    color: #622A0e;
+  }
+
   .Active i {
     color: #622A0e;
   }
+
+  .no-hover {
+    color: #c46681;
+  }
+
+  /*
+  TODO: Style text in links and logo.
+  */
