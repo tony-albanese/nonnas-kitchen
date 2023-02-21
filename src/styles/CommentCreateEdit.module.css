@@ -14,3 +14,24 @@ background-color: #7c449e;
 border-color: #7c449e;
 font-weight: 600;
 }
+
+.CommentEditForm {
+    width: 100%;
+}
+
+.SaveCommentButton {
+    border-radius: 20px;
+    background-color: #622a0e;
+    border-color: #622a0e;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.CancelButton {
+    border-radius: 20px;
+    background-color: #fcfbf9;
+    border-color: #622a0e;
+    color: #622a0e;
+    font-weight: 600;
+}
+
