@@ -19,3 +19,20 @@ The styles for a Post component.
     text-align: center;
 
 }
+
+.PostInfo {
+    background-color: #fcfbf9;
+    min-height: 65px;
+}
+
+.Badge {
+    background-color: #c46681;
+    font-size: large;
+    color: #efe9f3;
+}
+
+.Date {
+    font-size: large;
+    color: #c46681;
+    font-weight: 800;
+}
