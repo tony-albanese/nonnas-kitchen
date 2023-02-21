@@ -26,9 +26,14 @@ const NavBar = () => {
   };
 
   const addBlogPostNavItem = (
-    <NavLink className={styles.NavLink} to="/posts/create">
-      Add post
-    </NavLink>
+    <>
+      <NavLink className={styles.NavLink} to="/posts/create">
+        Add post
+      </NavLink>
+      <NavLink className={styles.NavLink} to="#">
+        Add Recipe
+      </NavLink>
+    </>
   );
 
   const loggedInNavItems = (
@@ -70,7 +75,6 @@ const NavBar = () => {
           </Navbar.Brand>
           <span>Nonna's Kitchen</span>
         </NavLink>
-        {currentUser && addBlogPostNavItem}
         <Navbar.Toggle
           ref={burgerIconRef}
           onClick={() => setExpanded(!expanded)}
@@ -78,6 +82,7 @@ const NavBar = () => {
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
+            {addBlogPostNavItem}
             <NavLink exact to="/" className={styles.NavLink}>
               Home
             </NavLink>
