@@ -141,14 +141,17 @@ function BlogPostCreateForm() {
         <Col md={6} lg={4} className="d-flex align-items-center">
           <Form.Group>
             {post_image ? (
+              <Form.Label htmlFor="image-upload-field">
               <figure>
-                <Image src={post_image} rounded fluid />
+                <Image src={post_image} fluid />
               </figure>
+              </Form.Label>
             ) : (
-              <Form.Label>
+              <Form.Label htmlFor="image-upload-field">
                 <div className="my-3">
                   <Image src={Upload} fluid />
                 </div>
+                <p>Click the granny to upload a photo.</p>
               </Form.Label>
             )}
             <Form.File

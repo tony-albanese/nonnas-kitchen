@@ -48,3 +48,10 @@ Button {
 
 }
 
+Label p {
+  font-size: large;
+}
+
+input[type="file"] {
+  display: none;
+}
