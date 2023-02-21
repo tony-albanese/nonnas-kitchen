@@ -28,10 +28,10 @@ const NavBar = () => {
   const addBlogPostNavItem = (
     <>
       <NavLink className={styles.NavLink} to="/posts/create">
-      <i className="fa-solid fa-plus"></i> Add post
+      <i className="fa-solid fa-plus"></i> Post
       </NavLink>
       <NavLink className={styles.NavLink} to="#">
-      <i className="fa-solid fa-plus"></i> Add Recipe
+      <i className="fa-solid fa-plus"></i> Recipe
       </NavLink>
     </>
   );
@@ -40,10 +40,10 @@ const NavBar = () => {
     <>
     {addBlogPostNavItem}
       <NavLink to="/liked" className={styles.NavLink}>
-      <i className="fa-solid fa-heart"></i> Liked
+      <i className="fa-solid fa-heart"></i>
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-      <i className="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
+      <i className="fa-solid fa-arrow-right-from-bracket"></i>
       </NavLink>
       <span to="#" className={styles.NavTextItem}>
       <i className="fa-regular fa-user"></i> {currentUser?.username}
@@ -84,7 +84,7 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
             <NavLink exact to="/" className={styles.NavLink}>
-            <i className="fa-solid fa-house"></i> Home
+            <i className="fa-solid fa-house"></i>
             </NavLink>
             {currentUser ? loggedInNavItems : loggedOutNavItems}
           </Nav>
