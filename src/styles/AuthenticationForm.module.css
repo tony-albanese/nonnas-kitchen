@@ -1,3 +1,37 @@
 /*
 This is the styling for the sign-in and sign-up forms
 */
+
+
+.Header {
+    font-size: xxx-large;
+    color: #561e03;
+
+}
+
+.SignInForm input {
+    border-radius: 20px;
+    background-color: #f9f3e5;
+}
+
+.SignInForm Button {
+    background-color: #8257b1;
+    border-radius: 20px;
+    border-color: #f086b6;
+    width: 100%;
+    font-weight: 600;
+    font-size: larger;
+    margin-bottom: 20px;
+}
+
+.Link {
+font-size: large;
+}
+
+.Link:hover{
+    color: #561e03;
+}
+.SignUp {
+    color: #561e03;
+    font-weight: 600;
+}

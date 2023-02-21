@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import axios from "axios";
-
 import {
   Form,
   Button,
@@ -9,13 +7,15 @@ import {
   Row,
   Container,
   Alert,
+  Image,
 } from "react-bootstrap";
-
-import {  useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import axios from "axios";
+import SignInImage from "../../assets/grandmother-child-cooking.jpg";
+import styles from "../../styles/AuthenticationForm.module.css";
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
-
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
@@ -30,7 +30,7 @@ function SignInForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const {data} = await axios.post("dj-rest-auth/login/", signInData);
+      const { data } = await axios.post("dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
       history.push("/");
     } catch (err) {
@@ -45,14 +45,15 @@ function SignInForm() {
     });
   };
 
-
-
   return (
-    <Row>
-      <Col md={6}>
-        <Container>
-          <h1>Sign In</h1>
-          <Form onSubmit={handleSubmit}>
+    <Row className="d-flex align-items-center mt-5">
+      <Col md={8}>
+        <Image src={SignInImage} fluid/>
+      </Col>
+      <Col md={4}>
+        
+          <h2 className={styles.Header}>Sign In</h2>
+          <Form className={styles.SignInForm} onSubmit={handleSubmit}>
             <Form.Group controlId="username">
               <Form.Label className="d-none">Username</Form.Label>
               <Form.Control
@@ -95,14 +96,11 @@ function SignInForm() {
               </Alert>
             ))}
           </Form>
-        </Container>
-      </Col>
-
-      <Container className={`mt-3`}>
-          <Link to="/signup">
-            Don't have an account?<span>Sign Up</span>
+          <Link className={styles.Link} to="/signup">
+            Don't have an account? <span className={styles.SignUp}>Sign Up</span>
           </Link>
-        </Container>
+       
+      </Col>
     </Row>
   );
 }
