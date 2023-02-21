@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import styles from "../../src/styles/PostFooterContent.module.css";
 
 export default function PostFooterContent({
   isOwner,
