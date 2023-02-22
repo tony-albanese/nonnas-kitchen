@@ -1,10 +1,11 @@
 import React from 'react'
+import styles from "../styles/ListDisplay.module.css"
 
-function ListDisplay({list, ordered}) {
+function ListDisplay({list, ordered, heading}) {
   return (
-    <>
-    <div>ListDisplay Component</div>
-    </>
+    
+    list.map((listItem, index) => <p className={styles.ListItem} key={index}>{Object.values(listItem)}</p>)
+    
   )
 }
 
