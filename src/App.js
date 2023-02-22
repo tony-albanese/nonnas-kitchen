@@ -37,7 +37,7 @@ function App() {
               <Route exact path="/posts/:id" render={()=><PostPage />}/>
               <Route exact path="/recipes/create" render={()=><RecipeCreateForm/>} />
               <Route exact path="/recipes/:id" render={()=><RecipePage/>} />
-              <Route exact path="/recipes" render={()=><RecipesPage/>}/>
+              <Route exact path="/recipes" render={()=><RecipesPage message="No results. Use different search terms or like a post."/>}/>
               
               <Route render={() => <p>Page not found!</p>} />
             </Switch>
