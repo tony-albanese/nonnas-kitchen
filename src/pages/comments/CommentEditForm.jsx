@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form , Button} from 'react-bootstrap'
 import { axiosResponse } from "../../api/axiosDefaults";
+import styles from "../../styles/CommentCreateEdit.module.css";
 
 function CommentEditForm({id, body, setComments, setShowCommentEditForm}) {
 
@@ -33,7 +34,9 @@ function CommentEditForm({id, body, setComments, setShowCommentEditForm}) {
     };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form 
+    className={styles.CommentEditForm}
+    onSubmit={handleSubmit}>
         <Form.Group>
             <Form.Control 
             as="textarea"
@@ -43,10 +46,12 @@ function CommentEditForm({id, body, setComments, setShowCommentEditForm}) {
             rows={3}
             />
         </Form.Group>
-        <Button variant="secondary" onClick={() => setShowCommentEditForm(false)}>cancel</Button>
-        <Button variant="primary" type="submit" disabled={!body.trim()}>
+        <div className="d-flex justify-content-center mb-2">
+        <Button className={styles.CancelButton} onClick={() => setShowCommentEditForm(false)}>cancel</Button>
+        <Button className={styles.SaveCommentButton} type="submit" disabled={!body.trim()}>
             save
         </Button>
+        </div>
     </Form>
   )
 }

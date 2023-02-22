@@ -4,14 +4,16 @@ import {
     Row,
     Container,Form
   } from "react-bootstrap";
-import { useLocation } from 'react-router-dom';
-import { axiosRequest } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png";
 import BlogPost from './BlogPost';
 import Asset from "../../components/Asset";
 import FormSelections from "../../components/FormSelections";
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { useLocation } from 'react-router-dom';
+import { axiosRequest } from "../../api/axiosDefaults";
 import { fetchMoreData } from '../../utils/utils';
+
+import styles from "../../styles/PostsPage.module.css";
 
 
 function PostsPage({message, filter=""}) {
@@ -73,9 +75,10 @@ function PostsPage({message, filter=""}) {
 
   return (
     <Row className="h100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <i className="fa-solid fa-magnifying-glass"></i>
-        <Form onSubmit={(event) => event.preventDefault()}>
+      <Col className="py-2 p-0 p-lg-2 mx-auto" lg={10}>
+        <div className={styles.SearchFilterForm}>
+        <i className={`fa-solid fa-magnifying-glass ${styles.SearchIcon}`}></i>
+        <Form className={styles.SearchBar} onSubmit={(event) => event.preventDefault()}>
           <Form.Control
             type="text"
             className="mr-sm-2"
@@ -84,8 +87,8 @@ function PostsPage({message, filter=""}) {
             onChange={handleSearchChange}
           />
 
-          <Form.Group controlId="category-filter">
-            <Form.Label>Example select</Form.Label>
+          <Form.Group className={styles.FormSelections} controlId="category-filter">
+            <Form.Label className={styles.Label}>Filter by Category</Form.Label>
             <FormSelections
               controlName="category-filter"
               onChangeHandler={handleFilterCategoryChange}
@@ -93,8 +96,11 @@ function PostsPage({message, filter=""}) {
             />
           </Form.Group>
         </Form>
+        </div>
         {dataLoaded ? (
           <>
+          <Row>
+            <Col className='mx-auto'>
             {posts.results.length ? (
               <InfiniteScroll 
               children={posts.results.map((post) => (
@@ -110,6 +116,8 @@ function PostsPage({message, filter=""}) {
                 <Asset src={NoResults} message={message} />
               </Container>
             )}
+            </Col>
+            </Row>
           </>
         ) : (
           <Container>

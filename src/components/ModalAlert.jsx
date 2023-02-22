@@ -1,19 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import styles from '../../src/styles/ModalAlert.module.css';
+import warningImage from '../../src/assets/old-woman.png';
+import { Image } from 'react-bootstrap';
 
 function ModalAlert({show,  handleClose, onConfirm, title, message}) {
   return (
-    <Modal show={show} onHide={handleClose} onClose={handleClose}>
+    <Modal className={styles.ModalAlert} show={show} onHide={handleClose} onClose={handleClose}>
     <Modal.Header closeButton>
       <Modal.Title>{title}</Modal.Title>
     </Modal.Header>
-    <Modal.Body>{message}</Modal.Body>
+    <Modal.Body>
+      <Image className={styles.ModalImage} src={warningImage} fluid />
+      {message}
+      </Modal.Body>
     <Modal.Footer>
-      <Button variant="secondary" onClick={handleClose}>
+      <Button className={styles.CancelButton} onClick={handleClose}>
         Close
       </Button>
-      <Button variant="primary" onClick={onConfirm}>
+      <Button  className={styles.Button} onClick={onConfirm}>
         Delete
       </Button>
     </Modal.Footer>

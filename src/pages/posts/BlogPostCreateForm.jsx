@@ -5,18 +5,15 @@ import {
   Image,
   Col,
   Row,
-  Container,
   Alert,
-  FormText,
   FormControl,
+  Container,
 } from "react-bootstrap";
-import Asset from "../../components/Asset";
-import Upload from "../../assets/upload.png";
-import styles from "../../styles/BlogPostCreateEditForm.module.css";
-import appStyles from "../../App.module.css";
+import Upload from "../../assets/old-woman.png";
 import FormSelections from "../../components/FormSelections";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosRequest } from "../../api/axiosDefaults";
+import styles from "../../styles/BlogPostCreateEditForm.module.css";
 
 function BlogPostCreateForm() {
   const [errors, setErrors] = useState();
@@ -100,6 +97,7 @@ function BlogPostCreateForm() {
         <FormControl
           as="textarea"
           name="body"
+          rows={5}
           value={body}
           onChange={handleChange}
         />
@@ -124,33 +122,40 @@ function BlogPostCreateForm() {
         </Alert>
       ))}
 
-      <Button variant="secondary" onClick={() => history.goBack()}>
-        Cancel
-      </Button>
-      <Button variant="primary" type="submit">
-        Sumbit
-      </Button>
+      <Row className="d-flex justify-content-end mt-5">
+        <Button
+          className={styles.CancelButton}
+          onClick={() => history.goBack()}
+        >
+          Cancel
+        </Button>
+        <Button className={styles.SubmitButton} type="submit">
+          Sumbit
+        </Button>
+      </Row>
     </div>
   );
 
   return (
-    <Form onSubmit={handelSubmit}>
-      <Row>
-        <Col>
-          <Container>
+    <Form className={styles.PostForm} onSubmit={handelSubmit}>
+      <Container>
+        <Row className="d-flex justify-content-center mt-5">
+          <Col md={6} className="d-flex align-items-center">
             <Form.Group>
               {post_image ? (
-                <>
+                <Form.Label htmlFor="image-upload-field">
                   <figure>
-                    <Image src={post_image} rounded />
+                    <Image src={post_image} fluid />
                   </figure>
-                </>
+                </Form.Label>
               ) : (
-                <Form.Label>
-                  <Asset message="Upload an image." src={Upload} />
+                <Form.Label htmlFor="image-upload-field">
+                  <div className="my-3">
+                    <Image src={Upload} fluid />
+                  </div>
+                  <p>Click the granny to upload a photo.</p>
                 </Form.Label>
               )}
-
               <Form.File
                 id="image-upload-field"
                 accept="image/*"
@@ -163,13 +168,11 @@ function BlogPostCreateForm() {
                 {message}
               </Alert>
             ))}
-            <div className="d-md-none">{formFields}</div>
-          </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container>{formFields}</Container>
-        </Col>
-      </Row>
+          </Col>
+
+          <Col md={6}>{formFields}</Col>
+        </Row>
+      </Container>
     </Form>
   );
 }

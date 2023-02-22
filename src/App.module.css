@@ -1,11 +1,13 @@
 .App {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f8f8f8;
+    background-color: #fcfbf9;
     min-height: 100vh;
   }
 
   .Main {
     padding-top: 81px;
+    padding-bottom: 50px;
+
   }
   
   * {
@@ -22,12 +24,12 @@
   }
   
   a:hover i {
-    color: #2142b2;
+    color: #622A0e;
     transition: color ease-in-out 0.3s;
   }
 
   i {
-    color: #cfced3;
+    color: #a30633;
     font-size: 1.6rem;
     padding: 7px;
     vertical-align: middle;
@@ -36,5 +38,5 @@
   i:hover {
     cursor: pointer;
     transition: color ease-in-out 0.3s;
-    color: #2142b2;
+    color: #622A0e;
   }

@@ -1,3 +1,24 @@
 /*
 Style declarations for the Comment component.
 */
+
+.Comment {
+    width: 100%;
+}
+
+.Body {
+    padding: 10px;
+}
+
+.Badge {
+    background-color: #7c449e;
+    color: #efe9f3;
+    font-weight: 800;
+    font-size: medium;
+}
+
+.Date {
+    color: #7c449e;
+    font-weight: 800;
+    margin-left: 1em;
+}

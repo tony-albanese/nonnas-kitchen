@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import {
     Card,
-    Row
+    Row, Media, Badge
 } from "react-bootstrap";
 import CardEdit from '../../components/CardEdit';
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import ModalAlert from "../../components/ModalAlert";
-import { axiosResponse } from '../../api/axiosDefaults';
 import CommentEditForm from './CommentEditForm';
+import { axiosResponse } from '../../api/axiosDefaults';
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import styles from "../../styles/Comment.module.css";
+
 
 function Comment({ id, author, created_on, body, setPost, setComments }) {
     const [show, setShow] = useState(false);
@@ -49,13 +51,15 @@ function Comment({ id, author, created_on, body, setPost, setComments }) {
 
     return (
         <>
-            <Card style={{ width: "20rem" }}>
+            <Card className={styles.Comment}>
+                <Media
+                    className={`align-items-center justify-content-between p-2 mt-3`}>
+                    <Badge pill className={styles.Badge}>
+                        {author}
+                    </Badge>
+                    <span className={styles.Date}>{created_on}</span>
+                </Media>
                 <Card.Body>
-                    {is_owner && (<CardEdit onDelete={showConfirmDeleteModal} onEdit={handleEdit} />)}
-                    <Row>
-                        <span>{author}</span>
-                        <span>{created_on}</span>
-                    </Row>
                     <Row>
                         {showCommentEditForm ?
                             (<CommentEditForm
@@ -63,11 +67,14 @@ function Comment({ id, author, created_on, body, setPost, setComments }) {
                                 body={body}
                                 setComments={setComments}
                                 setShowCommentEditForm={setShowCommentEditForm}
-                            />) : <p>{body}</p>}
+                            />) : <p className={styles.Body}>{body}</p>}
+                    </Row>
+                    <Row>
+                    {is_owner && (<CardEdit onDelete={showConfirmDeleteModal} onEdit={handleEdit} />)}
                     </Row>
                 </Card.Body>
             </Card>
-    
+
             <ModalAlert
                 show={show}
                 handleClose={() => setShow(false)}

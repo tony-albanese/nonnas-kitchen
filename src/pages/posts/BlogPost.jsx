@@ -1,16 +1,13 @@
-import React, {useState} from "react";
-import styles from "../../styles/BlogPost.module.css";
+import React, { useState } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import {
-  Card,
-  Media,
-} from "react-bootstrap";
+import { Badge, Card, Media } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PostFooterContent from "../../components/PostFooterContent";
-import { axiosResponse } from "../../api/axiosDefaults";
 import CardEdit from "../../components/CardEdit";
 import ModalAlert from "../../components/ModalAlert";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { axiosResponse } from "../../api/axiosDefaults";
+import styles from "../../styles/BlogPost.module.css";
 
 const BlogPost = (props) => {
   const {
@@ -26,7 +23,7 @@ const BlogPost = (props) => {
     likes_count,
     comments_count,
     setPosts,
-    like_id
+    like_id,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -45,8 +42,8 @@ const BlogPost = (props) => {
   const handleLike = async () => {
     try {
       console.log(`id: ${id}`);
-      const { data } = await axiosResponse.post("/likes/", { blog_post: id});
-    
+      await axiosResponse.post("/likes/", { blog_post: id });
+
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
@@ -55,8 +52,6 @@ const BlogPost = (props) => {
             : post;
         }),
       }));
-  
-  
     } catch (err) {
       console.log(err);
     }
@@ -64,9 +59,8 @@ const BlogPost = (props) => {
 
   const handleUnlike = async () => {
     try {
+      await axiosResponse.delete(`/likes/${like_id}`);
 
-      const { data } = await axiosResponse.delete(`/likes/${like_id}`);
-    
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
@@ -78,7 +72,6 @@ const BlogPost = (props) => {
     } catch (err) {
       console.log(err);
     }
-  
   };
 
   const showConfirmDeleteModal = (event) => {
@@ -88,35 +81,39 @@ const BlogPost = (props) => {
   const handleEdit = (event) => {
     history.push(`/posts/${id}/edit`);
   };
-  
+
   const handleDelete = async () => {
     try {
-      const { data } = await axiosResponse.delete(`/posts/${id}`);
+      await axiosResponse.delete(`/posts/${id}`);
       history.goBack();
-    }catch(err){
+    } catch (err) {
       console.log(err);
     }
     setShow(false);
-  }
-  
-  const [show, setShow] = useState(false);
+  };
 
-  
+  const [show, setShow] = useState(false);
 
   return (
     <>
-      <Card style={{ width: "20rem" }}>
-        <Card.Header>{categories[category]}</Card.Header>
-        <Media className="align-items-center justify-content-between">
-          {author}
-          <span>{posted_on}</span>
+      <Card className={`my-4 mx-auto ${styles.Card}`}>
+        <Card.Header className={styles.CardHeader}>
+          {categories[category]}
+        </Card.Header>
+        <Media
+          className={`align-items-center justify-content-between p-2 ${styles.PostInfo}`}
+        >
+          <Badge pill className={`${styles.Badge}`}>
+            {author}
+          </Badge>
+          <span className={styles.Date}>{posted_on}</span>
         </Media>
         <Link to={`/posts/${id}`}>
           <Card.Img variant="top" src={post_image} alt={title} />
         </Link>
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
-          <Card.Text>{body}</Card.Text>
+          <Card.Title className={styles.Title}>{title}</Card.Title>
+          <Card.Text className={styles.Body}>{body}</Card.Text>
         </Card.Body>
         {is_owner && postPage && (
           <CardEdit onDelete={showConfirmDeleteModal} onEdit={handleEdit} />

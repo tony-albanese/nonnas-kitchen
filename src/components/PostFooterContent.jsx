@@ -56,7 +56,7 @@ export default function PostFooterContent({
   );
 
   return (
-    <Card.Footer className="text-muted">
+    <Card.Footer className="text-muted text-center">
       <>
         {isOwner
           ? iconPostIsOwner

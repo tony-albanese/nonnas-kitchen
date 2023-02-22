@@ -4,7 +4,7 @@ import { Card, Row } from "react-bootstrap";
 function CardEdit({onDelete, onEdit}) {
   return (
     <Card.Body>
-      <Row>
+      <Row className="d-flex justify-content-end">
         <span onClick={onDelete}>
           <i className="fa-regular fa-trash-can"></i>
         </span>

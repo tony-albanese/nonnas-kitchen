@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form , Button} from 'react-bootstrap'
 import { axiosResponse } from "../../api/axiosDefaults";
+import styles from "../../styles/CommentCreateEdit.module.css";
 
 function CommentCreateForm({postId, setComments, setPost}) {
 
@@ -45,9 +46,11 @@ function CommentCreateForm({postId, setComments, setPost}) {
             rows={3}
             />
         </Form.Group>
-        <Button variant="primary" type="submit" disabled={!body.trim()}>
+        <div className="d-flex justify-content-end mb-2">
+        <Button className={styles.Button} type="submit" disabled={!body.trim()}>
             post
         </Button>
+        </div>
     </Form>
   )
 }

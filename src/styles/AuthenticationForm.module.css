@@ -1,3 +1,41 @@
 /*
 This is the styling for the sign-in and sign-up forms
 */
+
+
+.Header {
+    font-size: xxx-large;
+    color: #561e03;
+
+}
+
+.Authentication input {
+    border-radius: 20px;
+    background-color: #f9f3e5;
+}
+
+.Authentication Button {
+    background-color: #8257b1;
+    border-radius: 20px;
+    border-color: #f086b6;
+    width: 100%;
+    font-weight: 600;
+    font-size: larger;
+    margin-bottom: 20px;
+}
+.Authentication Button:hover {
+    background-color: #7d23dd;
+}
+
+.Link {
+color: black;
+font-size: large;
+}
+
+.Link:hover{
+    color: #561e03;
+}
+.LinkText {
+    color: #561e03;
+    font-weight: 600;
+}
