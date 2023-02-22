@@ -38,7 +38,15 @@ function RecipeCreateForm() {
     });
   };
 
-  const handleChangeImageChoice = (event) => {};
+  const handleChangeImageChoice = (event) => {
+    if (event.target.files.length) {
+      URL.revokeObjectURL(recipe_image);
+      setRecipeData({
+        ...recipeData,
+        recipe_image: URL.createObjectURL(event.target.files[0]),
+      });
+    }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -107,18 +115,26 @@ function RecipeCreateForm() {
 
   const imageUploadComponent = (
     <Form.Group>
-      <Form.Label htmlFor="image-upload-field">
-        <div className="my-3">
-          <Image src={Upload} fluid />
-        </div>
-        <p>Click the granny to upload a recipe photo.</p>
-      </Form.Label>
-      <Form.File
-        id="image-upload-field"
-        accept="image/*"
-        onChange={handleChangeImageChoice}
-        ref={imageInput}
-      />
+              {recipe_image ? (
+                <Form.Label htmlFor="image-upload-field">
+                  <figure>
+                    <Image src={recipe_image} fluid />
+                  </figure>
+                </Form.Label>
+              ) : (
+                <Form.Label htmlFor="image-upload-field">
+                  <div className="my-3">
+                    <Image src={Upload} fluid />
+                  </div>
+                  <p>Click the granny to upload a photo.</p>
+                </Form.Label>
+              )}
+              <Form.File
+                id="image-upload-field"
+                accept="image/*"
+                onChange={handleChangeImageChoice}
+                ref={imageInput}
+              />
     </Form.Group>
   );
 
