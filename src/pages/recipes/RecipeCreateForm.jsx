@@ -13,6 +13,7 @@ import FormSelections from "../../components/FormSelections";
 import Upload from "../../assets/old-woman.png";
 import ListEntry from "../../components/ListEntry";
 import styles from "../../styles/RecipeCreateEditForm.module.css";
+import { axiosRequest } from "../../api/axiosDefaults";
 
 function RecipeCreateForm() {
   const [errors, setErrors] = useState();
@@ -52,16 +53,31 @@ function RecipeCreateForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    const ingredientJsonString = JSON.stringify(ingredientFields);
+    const procedureJsonString = JSON.stringify(stepsFields)
     const formData = new FormData();
+    
     formData.append("title", title);
     formData.append("description", description);
     formData.append("recipe_image", recipe_image);
     formData.append("dish_type", dish_type);
     formData.append("difficulty", difficulty);
-    formData.append("ingredients_list", {ingredientFields});
-    formData.append("procedure", {stepsFields});
+    formData.append("ingredients_list", ingredientJsonString);
+    formData.append("procedure", procedureJsonString);
     formData.append("tags", "default");
     formData.append("recipe_image", imageInput.current.files[0]);
+
+
+    try {
+      const { data } = await axiosRequest.post("/recipes/", formData);
+      console.log(data);
+      history.push(`/recipes/${data.id}`);
+    } catch (err) {
+      console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
+    }
 
 
   };
