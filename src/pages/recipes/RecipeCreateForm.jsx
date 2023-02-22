@@ -1,8 +1,11 @@
 import React, { useState, useRef } from "react";
-import { Container, Form, FormControl, Row, Col, Image } from "react-bootstrap";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Container, Form, FormControl, Row, Col, Image, Button } from "react-bootstrap";
 import FormSelections from "../../components/FormSelections";
 import Upload from "../../assets/old-woman.png";
 import ListEntry from "../../components/ListEntry";
+
+
 function RecipeCreateForm() {
   const [errors, setErrors] = useState();
   const [recipeData, setRecipeData] = useState({
@@ -15,8 +18,11 @@ function RecipeCreateForm() {
   const { title, description, recipe_image, dish_type, difficulty } =
     recipeData;
 
-  const [stepsFields, setStepsFields] = useState([{ step: "" }]);
+  const [stepsFields, setStepsFields] = useState([{ item: "" }]);
+  const [ingredientFields, setIngredientFields] = useState([{item: ""}]);
+
   const imageInput = useRef(null);
+  const history = useHistory();
 
   const handleChange = (event) => {
     setRecipeData({
@@ -26,6 +32,14 @@ function RecipeCreateForm() {
   };
 
   const handleChangeImageChoice = (event) => {};
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(recipeData);
+    console.log("Instruction Data: ");
+    console.log(stepsFields);
+    console.log(ingredientFields);
+  };
 
   const difficultyOptions = [
     { easy: "Easy" },
@@ -102,7 +116,7 @@ function RecipeCreateForm() {
   );
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Container>
         <Row className="d-flex justify-content-center mt-5">
           <Col md={6} className="d-flex align-items-center my-auto">
@@ -122,10 +136,23 @@ function RecipeCreateForm() {
               setFields={setStepsFields}
             />
           </Col>
+
+          <Col md={6}>
+            <ListEntry
+              label="Ingredients"
+              fields={ingredientFields}
+              setFields={setIngredientFields}
+            />
+          </Col>
         </Row>
 
         <Row>
-          <p>Row for the submit button and cancel button.</p>
+          <button onClick={() => history.goBack()}>
+            Cancel
+          </button>
+          <button type="submit">
+            Submit
+          </button>
         </Row>
       </Container>
     </Form>
