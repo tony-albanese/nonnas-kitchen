@@ -7,6 +7,7 @@ import {
   Row,
   Col,
   Image,
+  Alert
 } from "react-bootstrap";
 import FormSelections from "../../components/FormSelections";
 import Upload from "../../assets/old-woman.png";
@@ -62,7 +63,6 @@ function RecipeCreateForm() {
     formData.append("tags", "default");
     formData.append("recipe_image", imageInput.current.files[0]);
 
-    
 
   };
 
@@ -91,6 +91,11 @@ function RecipeCreateForm() {
           onChange={handleChange}
         ></FormControl>
       </Form.Group>
+      {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group controlId="description">
         <Form.Label>Body</Form.Label>
@@ -102,6 +107,11 @@ function RecipeCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.description?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group controlId="dish_type">
         <Form.Label>Category</Form.Label>
@@ -111,19 +121,30 @@ function RecipeCreateForm() {
           options={dishTypeOptions}
         />
       </Form.Group>
+      {errors?.dish_type?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group controlId="difficulty">
-        <Form.Label>Category</Form.Label>
+        <Form.Label>Difficulty</Form.Label>
         <FormSelections
           controlName="difficulty"
           onChangeHandler={handleChange}
           options={difficultyOptions}
         />
       </Form.Group>
+      {errors?.difficulty?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
     </>
   );
 
   const imageUploadComponent = (
+    <>
     <Form.Group>
               {recipe_image ? (
                 <Form.Label htmlFor="image-upload-field">
@@ -146,6 +167,12 @@ function RecipeCreateForm() {
                 ref={imageInput}
               />
     </Form.Group>
+    {errors?.recipe_image?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+    </>
   );
 
   return (
