@@ -3,7 +3,7 @@ import { Container, Form, FormControl, Row, Col, Image, Button } from "react-boo
 
 function ListEntry({ fields, setFields, label}) {
   const addInputElement = (event) => {
-    let newField = { instruction: "" };
+    let newField = { item: "" };
     setFields([...fields, newField]);
   };
 
@@ -36,9 +36,9 @@ function ListEntry({ fields, setFields, label}) {
           <Row key={index}>
             <Form.Group className="input-group-append">
               <Form.Control
-                name="instruction"
+                name="item"
                 placeholder="add a step"
-                value={input.instruction}
+                value={input.item}
                 onChange={(event) => handleChange(index, event)}
               />
               <Button
