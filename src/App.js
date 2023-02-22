@@ -11,6 +11,7 @@ import PostsPage from "./pages/posts/PostsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import BlogPostEditForm from "./pages/posts/BlogPostEditForm";
 import RecipesPage from "./pages/recipes/RecipesPage";
+import RecipePage from "./pages/recipes/RecipePage";
 import RecipeCreateForm from "./pages/recipes/RecipeCreateForm";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
               <Route exact path="/posts/:id/edit" render={()=><BlogPostEditForm />} />
               <Route exact path="/posts/:id" render={()=><PostPage />}/>
               <Route exact path="/recipes/create" render={()=><RecipeCreateForm/>} />
+              <Route exact path="/recipes/:id" render={()=><RecipePage/>} />
               <Route exact path="/recipes" render={()=><RecipesPage/>}/>
               
               <Route render={() => <p>Page not found!</p>} />
