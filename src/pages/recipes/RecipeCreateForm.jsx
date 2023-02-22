@@ -48,12 +48,22 @@ function RecipeCreateForm() {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(recipeData);
-    console.log("Instruction Data: ");
-    console.log(stepsFields);
-    console.log(ingredientFields);
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("recipe_image", recipe_image);
+    formData.append("dish_type", dish_type);
+    formData.append("difficulty", difficulty);
+    formData.append("ingredients_list", {ingredientFields});
+    formData.append("procedure", {stepsFields});
+    formData.append("tags", "default");
+    formData.append("recipe_image", imageInput.current.files[0]);
+
+    
+
   };
 
   const difficultyOptions = [
