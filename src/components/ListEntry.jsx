@@ -1,7 +1,8 @@
 import React from "react";
-import { Container, Form, FormControl, Row, Col, Image, Button } from "react-bootstrap";
+import { Form, Row, Button } from "react-bootstrap";
+import styles from "../styles/ListEntry.module.css";
 
-function ListEntry({ fields, setFields, label}) {
+function ListEntry({ fields, setFields, label }) {
   const addInputElement = (event) => {
     let newField = { item: "" };
     setFields([...fields, newField]);
@@ -21,13 +22,11 @@ function ListEntry({ fields, setFields, label}) {
 
   return (
     <>
-      <h2>{label}</h2>
+      <h3 className={`text-center ${styles.Text}`}>{label}</h3>
       <Form.Group className="input-group-append">
         <Row>
-        <p>Add a Field</p>
-        <Button variant="primary" onClick={addInputElement}>
-          +
-        </Button>
+          <p className={`text-center ${styles.Text}`}>Add a Field</p>
+          <i onClick={addInputElement} className="fa-solid fa-circle-plus"></i>
         </Row>
       </Form.Group>
 
@@ -41,12 +40,11 @@ function ListEntry({ fields, setFields, label}) {
                 value={input.item}
                 onChange={(event) => handleChange(index, event)}
               />
-              <Button
-                variant="secondary"
+
+              <i
+                className="fa-regular fa-trash-can"
                 onClick={(event) => removeInputElement(index)}
-              >
-                -
-              </Button>
+              ></i>
             </Form.Group>
           </Row>
         );
