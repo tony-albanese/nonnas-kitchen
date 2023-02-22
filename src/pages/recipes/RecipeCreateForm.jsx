@@ -1,7 +1,55 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, Form, FormControl, Row } from "react-bootstrap";
 
 function RecipeCreateForm() {
+
+  const formFields = (
+    <>
+    
+    <Form.Group controlId="title">
+      <FormControl
+               type="text"
+               name="title"
+               value={title}
+               onChange={handleChange}>
+      </FormControl>
+    </Form.Group>
+    
+
+    <Form.Group controlId="description">
+        <Form.Label>Body</Form.Label>
+        <FormControl
+          as="textarea"
+          name="description"
+          rows={5}
+          value={body}
+          onChange={handleChange}
+        />
+      </Form.Group>
+
+
+      <Form.Group controlId="dish_type">
+        <Form.Label>Category</Form.Label>
+        <FormSelections
+          controlName="dish_type"
+          onChangeHandler={handleChange}
+          options={}
+        />
+      </Form.Group>
+
+      <Form.Group controlId="difficulty">
+        <Form.Label>Category</Form.Label>
+        <FormSelections
+          controlName="difficulty"
+          onChangeHandler={handleChange}
+          options={}
+        />
+      </Form.Group>
+    </>
+  );
+
+
+
   return (
     <>
       <h1>RecipeCreateForm</h1>
