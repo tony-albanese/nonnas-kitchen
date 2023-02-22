@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Row, Button } from "react-bootstrap";
+import { Form, Row} from "react-bootstrap";
 import styles from "../styles/ListEntry.module.css";
 
 function ListEntry({ fields, setFields, label }) {
