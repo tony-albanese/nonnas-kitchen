@@ -1,16 +1,24 @@
 .NavBar {
-    background-color: #cee4e9;
-    border: 1px solid #c2aad1;
+    background-color: #c9dbdf;
+    border: 1px solid #d7cbdf;
+    -webkit-box-shadow: 10px 10px 11px -11px rgba(0,0,0,0.62);
+-moz-box-shadow: 10px 10px 11px -11px rgba(0,0,0,0.62);
+box-shadow: 10px 10px 11px -11px rgba(0,0,0,0.62);
   }
 
   .NavLink {
     padding: 5px;
     color: #a30633;
+    font-family: 'Bad Script', cursive;
+    font-size: x-large;
+    
   }
 
   .NavTextItem {
     padding: 5px;
     color: #a30633;
+    font-family: 'Bad Script', cursive;
+    font-size: x-large;
   }
   
   .NavLink:hover {
@@ -27,4 +35,5 @@
 
 .BrandText {
   font-size: xx-large;
+  font-family: 'Bad Script', cursive;
 }
