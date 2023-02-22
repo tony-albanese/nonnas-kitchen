@@ -14,7 +14,6 @@ const Recipe = (props) => {
     author,
     title,
     description,
-    dish_type,
     dish_type_name,
     difficulty,
     ingredients_list,
@@ -55,11 +54,12 @@ const Recipe = (props) => {
   const details = recipePage ? (
     <Row>
       <Col md={6}>
-        <ListDisplay ordered={true} list={dummyList} />
+        {console.log(ingredients_list)}
+        <ListDisplay ordered={true} list={dummyList} heading="Ingredients" />
       </Col>
 
       <Col md={6}>
-        <ListDisplay list={dummyList} />
+        <ListDisplay list={dummyList} heading="Preparation"/>
       </Col>
     </Row>
   ) : (
