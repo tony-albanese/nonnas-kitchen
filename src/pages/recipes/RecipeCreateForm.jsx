@@ -1,11 +1,36 @@
-import React from "react";
+import Reac, { useState, useRef }from "react";
 import { Container, Form, FormControl, Row } from "react-bootstrap";
 
 function RecipeCreateForm() {
+  const [errors, setErrors] = useState();
+
+  const [recipeData, setRecipeData] = useState({
+    title: "",
+    description: "",
+    recipe_image: "",
+    dish_type: "app",
+    difficulty: "easy",
+  });
+
+  const {title, description, recipe_image, dish_type, difficulty} = recipeData;
+
+  const handleChange = (event) => {
+    setRecipeData({
+      ...recipeData, [event.target.name]: event.target.value;
+    });
+  }
+
+
+
+
+
+
+
+
+
 
   const formFields = (
     <>
-    
     <Form.Group controlId="title">
       <FormControl
                type="text"
