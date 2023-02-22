@@ -4,36 +4,66 @@ import { useParams } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-function RecipePage() {
-  const { id } = useParams();
+export default function RecipePage(props) {
+
 
   const currentUser = useCurrentUser();
-  const is_owner = currentUser?.username === author;
-  const history = useHistory();
+  const { id } = useParams();
+  const [post, setPost] = useState({ results: [] });
+  const [comments, setComments] = useState({ results: [] });
 
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const [{ data: post }, { data: comments }] = await Promise.all([
+          axiosRequest.get(`/posts/${id}`),
+          axiosRequest.get(`/comments/?blog_post=${id}`),
+        ]);
+        setPost({ results: [post] });
+        setComments(comments);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    handleMount();
+  }, [id]);
 
   return (
-    <Card>
-      <Card.Header className={styles.CardHeader}>
-        {categories[category]}
-      </Card.Header>
-      <Media
-        className={`align-items-center justify-content-between p-2 ${styles.PostInfo}`}
-      >
-        <Badge pill className={`${styles.Badge}`}>
-          {author}
-        </Badge>
-      </Media>
-      <Link to={`/posts/${id}`}>
-        <Card.Img variant="top" src={post_image} alt={title} />
-      </Link>
-
-      <Card.Body>
-        <Card.Title className={styles.Title}>{title}</Card.Title>
-        <Card.Text className={styles.Body}>{body}</Card.Text>
-      </Card.Body>
-    </Card>
+    <Row className="h-100">
+      <Col lg={8} className="mx-auto">
+        <BlogPost {...post.results[0]} setPosts={setPost} postPage />
+        <Container>
+          {currentUser ? (
+            <CommentCreateForm
+              postId={id}
+              setPost={setPost}
+              setComments={setComments}
+            />
+          ) : null}
+          {comments.results.length ? (
+            <InfiniteScroll 
+            children={comments.results.map((comment) => (
+              <Comment
+                key={comment.id}
+                {...comment}
+                setPost={setPost}
+                setComments={setComments}
+              />
+            ))}
+            dataLength={comments.results.length}
+            hasMore={!!comments.next}
+            loader={<Asset spinner />}
+            next={() => fetchMoreData(comments, setComments)}
+            />
+            
+          ) : (
+            <span>No comments to display.</span>
+          )}
+        </Container>
+      </Col>
+    </Row>
   );
 }
 
-export default RecipePage;
+
