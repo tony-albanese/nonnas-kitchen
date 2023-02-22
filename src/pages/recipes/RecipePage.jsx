@@ -1,66 +1,34 @@
-import React from "react";
-import { Badge, Card, Media } from "react-bootstrap";
+import React , { useEffect, useState }from "react";
+import Recipe from "../recipes/Recipe";
 import { useParams } from "react-router-dom";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-
-export default function RecipePage(props) {
+import { Col, Row} from "react-bootstrap";
+import { axiosRequest } from "../../api/axiosDefaults";
 
 
-  const currentUser = useCurrentUser();
+
+export default function RecipePage() {
+
   const { id } = useParams();
-  const [post, setPost] = useState({ results: [] });
-  const [comments, setComments] = useState({ results: [] });
+  const [recipe, setRecipe] = useState({ results: [] });
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: post }, { data: comments }] = await Promise.all([
-          axiosRequest.get(`/posts/${id}`),
-          axiosRequest.get(`/comments/?blog_post=${id}`),
+        const [{ data: recipe }] = await Promise.all([
+          axiosRequest.get(`/recipes/${id}`),
         ]);
-        setPost({ results: [post] });
-        setComments(comments);
+        setRecipe({ results: [recipe] });
       } catch (err) {
         console.log(err);
       }
     };
-
     handleMount();
   }, [id]);
 
   return (
     <Row className="h-100">
       <Col lg={8} className="mx-auto">
-        <BlogPost {...post.results[0]} setPosts={setPost} postPage />
-        <Container>
-          {currentUser ? (
-            <CommentCreateForm
-              postId={id}
-              setPost={setPost}
-              setComments={setComments}
-            />
-          ) : null}
-          {comments.results.length ? (
-            <InfiniteScroll 
-            children={comments.results.map((comment) => (
-              <Comment
-                key={comment.id}
-                {...comment}
-                setPost={setPost}
-                setComments={setComments}
-              />
-            ))}
-            dataLength={comments.results.length}
-            hasMore={!!comments.next}
-            loader={<Asset spinner />}
-            next={() => fetchMoreData(comments, setComments)}
-            />
-            
-          ) : (
-            <span>No comments to display.</span>
-          )}
-        </Container>
+        <Recipe {...recipe.results[0]} setRecipes={setRecipe} recipePage />
       </Col>
     </Row>
   );
