@@ -1,10 +1,18 @@
 import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { Container, Form, FormControl, Row, Col, Image, Button } from "react-bootstrap";
+import {
+  Container,
+  Form,
+  FormControl,
+  Row,
+  Col,
+  Image,
+  Button,
+  Card,
+} from "react-bootstrap";
 import FormSelections from "../../components/FormSelections";
 import Upload from "../../assets/old-woman.png";
 import ListEntry from "../../components/ListEntry";
-
 
 function RecipeCreateForm() {
   const [errors, setErrors] = useState();
@@ -19,7 +27,7 @@ function RecipeCreateForm() {
     recipeData;
 
   const [stepsFields, setStepsFields] = useState([{ item: "" }]);
-  const [ingredientFields, setIngredientFields] = useState([{item: ""}]);
+  const [ingredientFields, setIngredientFields] = useState([{ item: "" }]);
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -147,12 +155,8 @@ function RecipeCreateForm() {
         </Row>
 
         <Row>
-          <button onClick={() => history.goBack()}>
-            Cancel
-          </button>
-          <button type="submit">
-            Submit
-          </button>
+          <button onClick={() => history.goBack()}>Cancel</button>
+          <button type="submit">Submit</button>
         </Row>
       </Container>
     </Form>
