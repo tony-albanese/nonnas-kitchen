@@ -263,7 +263,13 @@ Time: Two Days
 + Recipe Component
 + Display Recipe
 + Recipe Form
-+ CRUD operations on Recipe
++ Create and Read operations on Recipe
++ Deploy to Heroku
+
+### Sprint 7 - Refactor components
+GOAL: Find repeated code and extract into reusable components.
+
+
 
 ## Use of GitHub
 Each larger scale task was given a GitHub issue. This included the user stories, and anything else that would require attention. Issues were assigned labels to help prioritize them in the work flow. As can be seen, some issues are marked as "Must Do" while others are marked as "Should Do". Some issues are enhancements, others are questions requiring research. Often, if I ran into a problem that was not critical to fix or if I thought of a feature that I would like to add, I created an issue and assigned it a label to help me keep track of how important it is. The key is that essential features and critical issues were fixed first.
