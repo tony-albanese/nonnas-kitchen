@@ -49,6 +49,7 @@ const dishTypeOptions = [
   const formFields = (
     <>
     <Form.Group controlId="title">
+    <Form.Label>Title</Form.Label>
       <FormControl
                type="text"
                name="title"
@@ -107,17 +108,13 @@ const imageUploadComponent = (
 );
 
   return (
-    <>
-      <h1>RecipeCreateForm</h1>
-      <p>This is where the user can create a recipe.</p>
+    
       <Form>
         <Container>
-          <Row>
-            <p>Add image. Title. Description. Difficulty. Type.</p>
+          <Row className="d-flex justify-content-center mt-5">
+            <Col md={6} className="d-flex align-items-center my-auto">{imageUploadComponent}</Col>
 
-            <Col md={6}>{imageUploadComponent}</Col>
-
-            <Col md={6}>{formFields}</Col>
+            <Col md={6} className="my-auto">{formFields} </Col>
           </Row>
 
           <Row>
@@ -129,7 +126,7 @@ const imageUploadComponent = (
           </Row>
         </Container>
       </Form>
-    </>
+  
   );
 }
 
