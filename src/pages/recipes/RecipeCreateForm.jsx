@@ -1,10 +1,10 @@
-import React, { useState, useRef }from "react";
+import React, { useState, useRef } from "react";
 import { Container, Form, FormControl, Row, Col, Image } from "react-bootstrap";
 import FormSelections from "../../components/FormSelections";
 import Upload from "../../assets/old-woman.png";
+import ListEntry from "../../components/ListEntry";
 function RecipeCreateForm() {
   const [errors, setErrors] = useState();
-
   const [recipeData, setRecipeData] = useState({
     title: "",
     description: "",
@@ -12,54 +12,48 @@ function RecipeCreateForm() {
     dish_type: "app",
     difficulty: "easy",
   });
+  const { title, description, recipe_image, dish_type, difficulty } =
+    recipeData;
 
+  const [stepsFields, setStepsFields] = useState([{ step: "" }]);
   const imageInput = useRef(null);
-  const {title, description, recipe_image, dish_type, difficulty} = recipeData;
 
   const handleChange = (event) => {
     setRecipeData({
-      ...recipeData, [event.target.name]: event.target.value
+      ...recipeData,
+      [event.target.name]: event.target.value,
     });
-  }
-
-  const handleChangeImageChoice = (event) =>{
-
   };
 
-const difficultyOptions = [
-  {easy: "Easy"},
-  {medium: "Medium"},
-  {hard: "Hard"},
-];
+  const handleChangeImageChoice = (event) => {};
 
+  const difficultyOptions = [
+    { easy: "Easy" },
+    { medium: "Medium" },
+    { hard: "Hard" },
+  ];
 
-const dishTypeOptions = [
-  {app: "Appetizer"},
-  {mains: "Mains"},
-  {pasta: "Pasta"},
-  {meat: "Meat"},
-  {dessert: "Dessert"}
-];
-
-
-
-
-
+  const dishTypeOptions = [
+    { app: "Appetizer" },
+    { mains: "Mains" },
+    { pasta: "Pasta" },
+    { meat: "Meat" },
+    { dessert: "Dessert" },
+  ];
 
   const formFields = (
     <>
-    <Form.Group controlId="title">
-    <Form.Label>Title</Form.Label>
-      <FormControl
-               type="text"
-               name="title"
-               value={title}
-               onChange={handleChange}>
-      </FormControl>
-    </Form.Group>
-    
+      <Form.Group controlId="title">
+        <Form.Label>Title</Form.Label>
+        <FormControl
+          type="text"
+          name="title"
+          value={title}
+          onChange={handleChange}
+        ></FormControl>
+      </Form.Group>
 
-    <Form.Group controlId="description">
+      <Form.Group controlId="description">
         <Form.Label>Body</Form.Label>
         <FormControl
           as="textarea"
@@ -69,7 +63,6 @@ const dishTypeOptions = [
           onChange={handleChange}
         />
       </Form.Group>
-
 
       <Form.Group controlId="dish_type">
         <Form.Label>Category</Form.Label>
@@ -91,42 +84,51 @@ const dishTypeOptions = [
     </>
   );
 
-const imageUploadComponent = (
-  <Form.Group>
- <Form.Label htmlFor="image-upload-field">
-                  <div className="my-3">
-                    <Image src={Upload} fluid />
-                  </div>
-                  <p>Click the granny to upload a recipe photo.</p>
-                </Form.Label>
-    <Form.File 
-             id="image-upload-field"
-             accept="image/*"
-             onChange={handleChangeImageChoice}
-             ref={imageInput}/>
-  </Form.Group>
-);
+  const imageUploadComponent = (
+    <Form.Group>
+      <Form.Label htmlFor="image-upload-field">
+        <div className="my-3">
+          <Image src={Upload} fluid />
+        </div>
+        <p>Click the granny to upload a recipe photo.</p>
+      </Form.Label>
+      <Form.File
+        id="image-upload-field"
+        accept="image/*"
+        onChange={handleChangeImageChoice}
+        ref={imageInput}
+      />
+    </Form.Group>
+  );
 
   return (
-    
-      <Form>
-        <Container>
-          <Row className="d-flex justify-content-center mt-5">
-            <Col md={6} className="d-flex align-items-center my-auto">{imageUploadComponent}</Col>
+    <Form>
+      <Container>
+        <Row className="d-flex justify-content-center mt-5">
+          <Col md={6} className="d-flex align-items-center my-auto">
+            {imageUploadComponent}
+          </Col>
 
-            <Col md={6} className="my-auto">{formFields} </Col>
-          </Row>
+          <Col md={6} className="my-auto">
+            {formFields}{" "}
+          </Col>
+        </Row>
 
-          <Row>
-            <p>This row contains the ingredients and steps components.</p>
-          </Row>
+        <Row>
+          <Col md={6}>
+            <ListEntry
+              label="Instructions"
+              fields={stepsFields}
+              setFields={setStepsFields}
+            />
+          </Col>
+        </Row>
 
-          <Row>
-            <p>Row for the submit button and cancel button.</p>
-          </Row>
-        </Container>
-      </Form>
-  
+        <Row>
+          <p>Row for the submit button and cancel button.</p>
+        </Row>
+      </Container>
+    </Form>
   );
 }
 
