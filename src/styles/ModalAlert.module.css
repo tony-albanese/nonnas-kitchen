@@ -1,0 +1,24 @@
+
+ .ModalImage {
+height: 125px;
+}
+
+Body {
+    font-size: x-large;
+}
+
+.Button, .Button:hover {
+    border-radius: 20px;
+    background-color: #7c449e;
+    border-color: #7c449e;
+    font-weight: 600;
+}
+
+.CancelButton, .CancelButton:hover {
+background-color: white;
+border-radius: 20px;
+border-color: #7c449e;
+color: #7c449e;
+}
+
+
