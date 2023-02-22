@@ -1,6 +1,7 @@
 import React, { useState, useRef }from "react";
-import { Container, Form, FormControl, Row, Col } from "react-bootstrap";
+import { Container, Form, FormControl, Row, Col, Image } from "react-bootstrap";
 import FormSelections from "../../components/FormSelections";
+import Upload from "../../assets/old-woman.png";
 function RecipeCreateForm() {
   const [errors, setErrors] = useState();
 
@@ -91,7 +92,12 @@ const dishTypeOptions = [
 
 const imageUploadComponent = (
   <Form.Group>
-
+ <Form.Label htmlFor="image-upload-field">
+                  <div className="my-3">
+                    <Image src={Upload} fluid />
+                  </div>
+                  <p>Click the granny to upload a recipe photo.</p>
+                </Form.Label>
     <Form.File 
              id="image-upload-field"
              accept="image/*"
@@ -109,20 +115,14 @@ const imageUploadComponent = (
           <Row>
             <p>Add image. Title. Description. Difficulty. Type.</p>
 
-            <Col md={6}>Image upload goes here.</Col>
+            <Col md={6}>{imageUploadComponent}</Col>
 
-            <Col md={6}>
-            {formFields}
-            </Col>
+            <Col md={6}>{formFields}</Col>
           </Row>
-
-
-
 
           <Row>
             <p>This row contains the ingredients and steps components.</p>
           </Row>
-
 
           <Row>
             <p>Row for the submit button and cancel button.</p>
