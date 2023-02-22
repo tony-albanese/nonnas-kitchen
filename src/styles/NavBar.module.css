@@ -1,39 +1,38 @@
 .NavBar {
-    background-color: #c9dbdf;
-    border: 1px solid #d7cbdf;
-    -webkit-box-shadow: 10px 10px 11px -11px rgba(0,0,0,0.62);
--moz-box-shadow: 10px 10px 11px -11px rgba(0,0,0,0.62);
-box-shadow: 10px 10px 11px -11px rgba(0,0,0,0.62);
-  }
+  background-color: #c9dbdf;
+  border: 1px solid #d7cbdf;
+  -webkit-box-shadow: 10px 10px 11px -11px rgba(0, 0, 0, 0.62);
+  -moz-box-shadow: 10px 10px 11px -11px rgba(0, 0, 0, 0.62);
+  box-shadow: 10px 10px 11px -11px rgba(0, 0, 0, 0.62);
+}
 
-  .NavLink {
-    padding: 5px;
-    color: #a30633;
-    font-family: 'Bad Script', cursive;
-    font-size: x-large;
-    
-  }
+.NavLink {
+  padding: 5px;
+  color: #a30633;
+  font-family: "Bad Script", cursive;
+  font-size: x-large;
+}
 
-  .NavTextItem {
-    padding: 5px;
-    color: #a30633;
-    font-family: 'Bad Script', cursive;
-    font-size: x-large;
-  }
-  
-  .NavLink:hover {
-    color: #622A0e;
-  }
+.NavTextItem {
+  padding: 5px;
+  color: #a30633;
+  font-family: "Bad Script", cursive;
+  font-size: x-large;
+}
 
-  .Active i {
-    color: #622A0e;
-  }
+.NavLink:hover {
+  color: #622a0e;
+}
 
-  .no-hover {
-    color: #c46681;
-  }
+.Active i {
+  color: #622a0e;
+}
+
+.no-hover {
+  color: #c46681;
+}
 
 .BrandText {
   font-size: xx-large;
-  font-family: 'Bad Script', cursive;
+  font-family: "Bad Script", cursive;
 }
