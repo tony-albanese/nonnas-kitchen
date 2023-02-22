@@ -332,3 +332,5 @@ The app is then deployed to Heroku by the following steps:
 
 + Grandmother with Grandchild - Image by <a href="https://www.freepik.com/free-vector/flat-grandparents-day-illustration-with-grandmother-grandchild_28148596.htm#query=grandmother%20kitchen&position=17&from_view=search&track=ais">Freepik</a>
 
+
+Credit for the floating actio button: [FAB](https://plainenglish.io/blog/how-to-create-a-floating-action-button-with-pure-css-positioning-e52ba498083f)
