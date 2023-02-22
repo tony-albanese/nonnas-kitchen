@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Badge, Card, Media } from "react-bootstrap";
+import { Badge, Card, Media, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CardEdit from "../../components/CardEdit";
 import ModalAlert from "../../components/ModalAlert";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import styles from "../../styles/Recipe.module.css";
-
+import ListDisplay from "../../components/ListDisplay";
 
 const Recipe = (props) => {
   const {
@@ -20,37 +20,27 @@ const Recipe = (props) => {
     ingredients_list,
     procedure,
     recipe_image,
-    recipePage
-
+    recipePage,
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === author;
   const history = useHistory();
 
+  const dummyList = ["One", "Two", "Three"];
 
   const difficultyOptions = {
-     easy: "Easy" ,
-     medium: "Medium" ,
-    hard: "Hard" ,
+    easy: "Easy",
+    medium: "Medium",
+    hard: "Hard",
   };
-
-  const dishTypeOptions = {
-    app: "Appetizer" ,
-    mains: "Mains",
-    pasta: "Pasta",
-    meat: "Meat" ,
-    dessert: "Dessert",
-  };
-
 
   const showConfirmDeleteModal = (event) => {
     setShow(true);
   };
 
-
   const handleDelete = async () => {
-    console.log("Handle delete post.")
+    console.log("Handle delete post.");
     try {
       // await axiosResponse.delete(`/recipes/${id}`);
       //history.goBack();
@@ -61,6 +51,20 @@ const Recipe = (props) => {
   };
 
   const [show, setShow] = useState(false);
+
+  const details = recipePage ? (
+    <Row>
+      <Col md={6}>
+        <ListDisplay ordered={true} list={dummyList} />
+      </Col>
+
+      <Col md={6}>
+        <ListDisplay list={dummyList} />
+      </Col>
+    </Row>
+  ) : (
+    <></>
+  );
 
   return (
     <>
@@ -75,6 +79,9 @@ const Recipe = (props) => {
             {author}
           </Badge>
 
+          <Badge pill className={`${styles.Badge}`}>
+              {difficultyOptions[difficulty]}
+            </Badge>
         </Media>
         <Link to={`/recipes/${id}`}>
           <Card.Img variant="top" src={recipe_image} alt={title} />
@@ -82,12 +89,13 @@ const Recipe = (props) => {
         <Card.Body>
           <Card.Title className={styles.Title}>{title}</Card.Title>
           <Card.Text className={styles.Body}>{description}</Card.Text>
+          {details}
         </Card.Body>
         {is_owner && recipePage && (
-          <CardEdit showEdit={false} onDelete={showConfirmDeleteModal}/>
+          <CardEdit showEdit={false} onDelete={showConfirmDeleteModal} />
         )}
-       
       </Card>
+
       <ModalAlert
         show={show}
         handleClose={() => setShow(false)}
