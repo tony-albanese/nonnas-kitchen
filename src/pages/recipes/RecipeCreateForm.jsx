@@ -1,6 +1,6 @@
-import Reac, { useState, useRef }from "react";
-import { Container, Form, FormControl, Row } from "react-bootstrap";
-
+import React, { useState, useRef }from "react";
+import { Container, Form, FormControl, Row, Col } from "react-bootstrap";
+import FormSelections from "../../components/FormSelections";
 function RecipeCreateForm() {
   const [errors, setErrors] = useState();
 
@@ -12,17 +12,33 @@ function RecipeCreateForm() {
     difficulty: "easy",
   });
 
+  const imageInput = useRef(null);
   const {title, description, recipe_image, dish_type, difficulty} = recipeData;
 
   const handleChange = (event) => {
     setRecipeData({
-      ...recipeData, [event.target.name]: event.target.value;
+      ...recipeData, [event.target.name]: event.target.value
     });
   }
 
+  const handleChangeImageChoice = (event) =>{
+
+  };
+
+const difficultyOptions = [
+  {easy: "Easy"},
+  {medium: "Medium"},
+  {hard: "Hard"},
+];
 
 
-
+const dishTypeOptions = [
+  {app: "Appetizer"},
+  {mains: "Mains"},
+  {pasta: "Pasta"},
+  {meat: "Meat"},
+  {dessert: "Dessert"}
+];
 
 
 
@@ -47,7 +63,7 @@ function RecipeCreateForm() {
           as="textarea"
           name="description"
           rows={5}
-          value={body}
+          value={description}
           onChange={handleChange}
         />
       </Form.Group>
@@ -58,7 +74,7 @@ function RecipeCreateForm() {
         <FormSelections
           controlName="dish_type"
           onChangeHandler={handleChange}
-          options={}
+          options={dishTypeOptions}
         />
       </Form.Group>
 
@@ -67,13 +83,22 @@ function RecipeCreateForm() {
         <FormSelections
           controlName="difficulty"
           onChangeHandler={handleChange}
-          options={}
+          options={difficultyOptions}
         />
       </Form.Group>
     </>
   );
 
+const imageUploadComponent = (
+  <Form.Group>
 
+    <Form.File 
+             id="image-upload-field"
+             accept="image/*"
+             onChange={handleChangeImageChoice}
+             ref={imageInput}/>
+  </Form.Group>
+);
 
   return (
     <>
@@ -87,7 +112,7 @@ function RecipeCreateForm() {
             <Col md={6}>Image upload goes here.</Col>
 
             <Col md={6}>
-            
+            {formFields}
             </Col>
           </Row>
 
