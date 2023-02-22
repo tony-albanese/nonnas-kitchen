@@ -116,7 +116,7 @@ const BlogPost = (props) => {
           <Card.Text className={styles.Body}>{body}</Card.Text>
         </Card.Body>
         {is_owner && postPage && (
-          <CardEdit onDelete={showConfirmDeleteModal} onEdit={handleEdit} />
+          <CardEdit onDelete={showConfirmDeleteModal} onEdit={handleEdit} showEdit={true}/>
         )}
         <PostFooterContent
           isOwner={is_owner}
