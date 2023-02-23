@@ -54,7 +54,7 @@ const Recipe = (props) => {
   const details = recipePage ? (
     <Row>
       <Col md={6}>
-        <ListDisplay ordered={true} list={ingredientsList} heading="Ingredients" />
+        <ListDisplay ordered={false} list={ingredientsList} heading="Ingredients" />
       </Col>
 
       <Col md={6}>
