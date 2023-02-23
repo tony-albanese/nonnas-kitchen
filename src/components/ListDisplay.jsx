@@ -1,12 +1,28 @@
-import React from 'react'
-import styles from "../styles/ListDisplay.module.css"
+import React from "react";
+import styles from "../styles/ListDisplay.module.css";
 
-function ListDisplay({list, ordered, heading}) {
+function ListDisplay({ list, ordered, heading }) {
   return (
-    
-    list.map((listItem, index) => <p className={styles.ListItem} key={index}>{Object.values(listItem)}</p>)
-    
-  )
+    <div>
+      <h4 className={styles.h4}>{heading}</h4>
+
+      {ordered ? (
+        <ol>
+          {list.map((listItem, index) => (
+            <li className={styles.ListItem} key={index}>
+              {Object.values(listItem)}
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <ul>{list.map((listItem, index) => (
+          <li className={styles.ListItem} key={index}>
+            {Object.values(listItem)}
+          </li>
+        ))}</ul>
+      )}
+    </div>
+  );
 }
 
-export default ListDisplay
+export default ListDisplay;
