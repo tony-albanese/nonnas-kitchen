@@ -1,7 +1,4 @@
 import React , { useState , useEffect} from 'react'
-import { NavLink } from "react-router-dom";
-import styles from '../../styles/RecipesPage.module.css';
-import {useCurrentUser} from "../../contexts/CurrentUserContext";
 import {
     Col,
     Row,
@@ -17,7 +14,6 @@ import { fetchMoreData } from '../../utils/utils';
 
 function RecipesPage({message}) {
 
-  const currentUser = useCurrentUser();
   const [recipes, setRecipes] = useState({results: []});
   const [dataLoaded, setDataLoaded] = useState(false);
   const pathname = useLocation();
