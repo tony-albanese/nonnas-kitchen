@@ -334,3 +334,8 @@ The app is then deployed to Heroku by the following steps:
 
 
 Credit for the floating actio button: [FAB](https://plainenglish.io/blog/how-to-create-a-floating-action-button-with-pure-css-positioning-e52ba498083f)
+
+
+Credit for the 404 page image: <a href="https://www.freepik.com/free-vector/internet-network-warning-404-error-page-file-found-web-page-internet-error-page-issue-found-network-404-error-present-by-man-sleep-display_21586054.htm#query=404%20page&position=3&from_view=search&track=sph">Image by jcomp</a> on Freepik
+
+Credit for empty refrigerator image: <a href="https://www.freepik.com/free-vector/refridgerator-with-opened-door_25538317.htm#query=empty%20refrigerator&position=33&from_view=search&track=ais">Image by brgfx</a> on Freepik
