@@ -9,6 +9,7 @@ import { useClickOutsideToggle } from "../hooks/useClickOutsideToggle";
 import nonna from "../assets/old-woman.png";
 import styles from "../styles/NavBar.module.css";
 import axios from "axios";
+import { removeTokenTimestamp } from "../utils/utils";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -20,6 +21,7 @@ const NavBar = () => {
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
+      removeTokenTimestamp();
     } catch (err) {
       console.log(err);
     }
