@@ -16,10 +16,10 @@ const Recipe = (props) => {
     description,
     dish_type_name,
     difficulty,
-    ingredients_list,
-    procedure,
     recipe_image,
     recipePage,
+    ingredientsList,
+    steps
   } = props;
 
   const currentUser = useCurrentUser();
@@ -54,13 +54,13 @@ const Recipe = (props) => {
   const details = recipePage ? (
     <Row>
       <Col md={6}>
-        {console.log(ingredients_list)}
-        <ListDisplay ordered={true} list={dummyList} heading="Ingredients" />
+        <ListDisplay ordered={true} list={ingredientsList} heading="Ingredients" />
       </Col>
 
       <Col md={6}>
-        <ListDisplay list={dummyList} heading="Preparation"/>
+        <ListDisplay ordered={true} list={steps} heading="Preparation" />
       </Col>
+
     </Row>
   ) : (
     <></>

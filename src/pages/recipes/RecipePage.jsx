@@ -10,6 +10,8 @@ export default function RecipePage() {
 
   const { id } = useParams();
   const [recipe, setRecipe] = useState({ results: [] });
+  const [ingredients, setIngredients] = useState([]);
+  const [recipeSteps, setRecipeSteps] = useState([]);
 
   useEffect(() => {
     const handleMount = async () => {
@@ -18,9 +20,18 @@ export default function RecipePage() {
           axiosRequest.get(`/recipes/${id}`),
         ]);
         setRecipe({ results: [recipe] });
+
+        const newIngredientsList = [...recipe?.ingredients_list];
+        setIngredients(newIngredientsList);
+
+        const newInstructionsList = [...recipe?.procedure];
+        setRecipeSteps(newInstructionsList);
+
       } catch (err) {
         console.log(err);
       }
+
+      
     };
     handleMount();
   }, [id]);
@@ -28,7 +39,7 @@ export default function RecipePage() {
   return (
     <Row className="h-100">
       <Col lg={8} className="mx-auto">
-        <Recipe {...recipe.results[0]} setRecipes={setRecipe} recipePage />
+        <Recipe {...recipe.results[0]} setRecipes={setRecipe} recipePage ingredientsList={ingredients} steps={recipeSteps}/>
       </Col>
     </Row>
   );
