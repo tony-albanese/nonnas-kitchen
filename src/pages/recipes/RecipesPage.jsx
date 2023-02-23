@@ -50,17 +50,6 @@ function RecipesPage({message}) {
 
   return (
     <>
-      {currentUser ? (
-        <NavLink to="/recipes/create">
-        <div className={styles.ButtonContainer}>
-          <div className={`${styles.Button} ${styles.IconButton}`}>
-            <i className="fa-solid fa-plus"></i>
-          </div>
-        </div>
-      </NavLink>
-
-      ) : (<></>)}
-
 <Row className="h100">
       <Col className="py-2 p-0 p-lg-2 mx-auto" lg={10}>
         {dataLoaded ? (

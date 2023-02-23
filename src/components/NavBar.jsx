@@ -30,6 +30,10 @@ const NavBar = () => {
       <NavLink className={styles.NavLink} to="/posts/create">
       Add Post
       </NavLink>
+
+      <NavLink className={styles.NavLink} to="/recipes/create">
+      Add Recipe
+      </NavLink>
     </>
   );
 
