@@ -4,9 +4,11 @@ import { Badge, Card, Media, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CardEdit from "../../components/CardEdit";
 import ModalAlert from "../../components/ModalAlert";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import styles from "../../styles/Recipe.module.css";
 import ListDisplay from "../../components/ListDisplay";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { axiosResponse } from "../../api/axiosDefaults";
+import styles from "../../styles/Recipe.module.css";
+
 
 const Recipe = (props) => {
   const {
@@ -38,10 +40,9 @@ const Recipe = (props) => {
   };
 
   const handleDelete = async () => {
-    console.log("Handle delete post.");
     try {
-      // await axiosResponse.delete(`/recipes/${id}`);
-      //history.goBack();
+      await axiosResponse.delete(`/recipes/${id}`);
+      history.goBack();
     } catch (err) {
       console.log(err);
     }
