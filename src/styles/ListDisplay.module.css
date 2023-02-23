@@ -1,3 +1,10 @@
+
 .ListItem {
-    font-size: small;
+    font-size: medium;
+    padding-left: 10px;
+    margin-bottom: 10px;
     }
+
+.h4 {
+    color: #b84c6a;
+} 
