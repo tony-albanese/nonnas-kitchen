@@ -26,7 +26,6 @@ const Recipe = (props) => {
   const is_owner = currentUser?.username === author;
   const history = useHistory();
 
-  const dummyList = ["One", "Two", "Three"];
 
   const difficultyOptions = {
     easy: "Easy",
