@@ -89,7 +89,7 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
             <NavLink exact to="/" className={styles.NavLink}>
-            <i className="fa-solid fa-house"></i>
+           Posts
             </NavLink>
             <NavLink exact to="/recipes" className={styles.NavLink}>
             Recipes
