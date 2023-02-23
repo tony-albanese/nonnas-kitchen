@@ -4,7 +4,7 @@ import {
     Row,
     Container,Form
   } from "react-bootstrap";
-import NoResults from "../../assets/no-results.png";
+import NoResults from "../../assets/empty-fridge.jpg";
 import BlogPost from './BlogPost';
 import Asset from "../../components/Asset";
 import FormSelections from "../../components/FormSelections";
