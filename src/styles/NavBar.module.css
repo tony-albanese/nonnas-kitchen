@@ -11,6 +11,7 @@
   color: #a30633;
   font-family: "Bad Script", cursive;
   font-size: x-large;
+  margin-left: 3px;
 }
 
 .NavTextItem {
@@ -33,6 +34,6 @@
 }
 
 .BrandText {
-  font-size: xx-large;
+  font-size: large;
   font-family: "Bad Script", cursive;
 }

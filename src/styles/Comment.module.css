@@ -10,6 +10,10 @@ Style declarations for the Comment component.
     padding: 10px;
 }
 
+.Body ,p {
+    font-size: medium;
+}
+
 .Badge {
     background-color: #7c449e;
     color: #efe9f3;

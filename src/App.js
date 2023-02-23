@@ -10,6 +10,10 @@ import PostPage from "./pages/posts/PostPage";
 import PostsPage from "./pages/posts/PostsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import BlogPostEditForm from "./pages/posts/BlogPostEditForm";
+import RecipesPage from "./pages/recipes/RecipesPage";
+import RecipePage from "./pages/recipes/RecipePage";
+import RecipeCreateForm from "./pages/recipes/RecipeCreateForm";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   const curentUser = useCurrentUser();
@@ -32,7 +36,11 @@ function App() {
               <Route exact path="/posts/create" render={() => <BlogPostCreateForm/>} />
               <Route exact path="/posts/:id/edit" render={()=><BlogPostEditForm />} />
               <Route exact path="/posts/:id" render={()=><PostPage />}/>
-              <Route render={() => <p>Page not found!</p>} />
+              <Route exact path="/recipes/create" render={()=><RecipeCreateForm/>} />
+              <Route exact path="/recipes/:id" render={()=><RecipePage/>} />
+              <Route exact path="/recipes" render={()=><RecipesPage message="No results. Use different search terms or like a post."/>}/>
+              
+              <Route render={() => <PageNotFound/>} />
             </Switch>
           </Container>
         </div>

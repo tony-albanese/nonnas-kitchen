@@ -28,10 +28,11 @@ const NavBar = () => {
   const addBlogPostNavItem = (
     <>
       <NavLink className={styles.NavLink} to="/posts/create">
-      <i className="fa-solid fa-plus"></i> Post
+      Add Post
       </NavLink>
-      <NavLink className={styles.NavLink} to="#">
-      <i className="fa-solid fa-plus"></i> Recipe
+
+      <NavLink className={styles.NavLink} to="/recipes/create">
+      Add Recipe
       </NavLink>
     </>
   );
@@ -40,24 +41,26 @@ const NavBar = () => {
     <>
     {addBlogPostNavItem}
       <NavLink to="/liked" className={styles.NavLink}>
-      <i className="fa-solid fa-heart"></i>
+      Likes
       </NavLink>
+
+      <span to="#" className={styles.NavTextItem}>
+      {currentUser?.username}
+      </span>
+
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
       <i className="fa-solid fa-arrow-right-from-bracket"></i>
       </NavLink>
-      <span to="#" className={styles.NavTextItem}>
-      <i className="fa-regular fa-user"></i> {currentUser?.username}
-      </span>
     </>
   );
 
   const loggedOutNavItems = (
     <>
       <NavLink to="/signin" className={styles.NavLink}>
-      <i className="fa-solid fa-arrow-right-to-bracket"></i> Sign In
+      Sign In
       </NavLink>
       <NavLink to="/signup" className={styles.NavLink}>
-      <i className="fa-solid fa-user-plus"></i> Sign up
+     Sign up
       </NavLink>
     </>
   );
@@ -85,6 +88,9 @@ const NavBar = () => {
           <Nav className="ml-auto text-left">
             <NavLink exact to="/" className={styles.NavLink}>
             <i className="fa-solid fa-house"></i>
+            </NavLink>
+            <NavLink exact to="/recipes" className={styles.NavLink}>
+            Recipes
             </NavLink>
             {currentUser ? loggedInNavItems : loggedOutNavItems}
           </Nav>

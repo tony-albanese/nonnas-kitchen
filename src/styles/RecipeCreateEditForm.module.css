@@ -1,0 +1,28 @@
+.SubmitButton {
+    background-color: #dd8a91;
+    color: black;
+    border-radius: 20px;
+    width: 150px;
+}
+
+.SubmitButton:hover {
+    background-color:#da4a54;
+}
+
+.CancelButton {
+    background-color: #cee4e9;
+    color: #622a0e;
+    border-radius: 20px;
+    width: 100px;
+}
+
+.CancelButton:hover {
+    background-color: #819ba1;
+
+}
+.Header {
+    text-align: center;
+    font-family: "Bad Script", cursive;
+    margin-top: 2em;
+    font-size: 48px;
+}
