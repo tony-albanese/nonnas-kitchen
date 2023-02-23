@@ -13,6 +13,7 @@ import BlogPostEditForm from "./pages/posts/BlogPostEditForm";
 import RecipesPage from "./pages/recipes/RecipesPage";
 import RecipePage from "./pages/recipes/RecipePage";
 import RecipeCreateForm from "./pages/recipes/RecipeCreateForm";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   const curentUser = useCurrentUser();
@@ -39,7 +40,7 @@ function App() {
               <Route exact path="/recipes/:id" render={()=><RecipePage/>} />
               <Route exact path="/recipes" render={()=><RecipesPage message="No results. Use different search terms or like a post."/>}/>
               
-              <Route render={() => <p>Page not found!</p>} />
+              <Route render={() => <PageNotFound/>} />
             </Switch>
           </Container>
         </div>
