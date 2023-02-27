@@ -404,7 +404,7 @@ What does minimally functioning mean in this context? As with any project, there
 * Aesthetics/Design - This is of course important in an advanced front end project, but the goal here is to have just minimal styling at first and then as time permits improve the visual design. The reasons are two-fold. 1) Having a beautiful design is meaningless if the code behind it does not function and 2) My particular focus in learning is getting the code behind the front end as clean as possible.
 
 ## Outline of Sprints
-The following is an outline of the sprints that were done during the completion of this project. Each sprint was designed to be from one to three days' work.
+The following is an outline of the sprints that were done during the completion of this project. Each sprint was designed to be from one to three full days' work.
 
 ### Sprint 1 - Project setup 
 Goal: Project environment, authentication functionality, bare minimum styling
@@ -467,11 +467,21 @@ Time: Two Days
 GOAL: Find repeated code and extract into reusable components.
 
 
-
 ## Use of GitHub
 Each larger scale task was given a GitHub issue. This included the user stories, and anything else that would require attention. Issues were assigned labels to help prioritize them in the work flow. As can be seen, some issues are marked as "Must Do" while others are marked as "Should Do". Some issues are enhancements, others are questions requiring research. Often, if I ran into a problem that was not critical to fix or if I thought of a feature that I would like to add, I created an issue and assigned it a label to help me keep track of how important it is. The key is that essential features and critical issues were fixed first.
+
+> Some of the issues in this project:
+![issues](screenshots/agile/agile_issues.png)
 ### Projects
 Issues often are related to each other - this includes user stories and additional features. For example, user stories around CRUD operations belong together as well as issues involved with search and styling. To help keep issues organized, those that are related to each other were organized into projects.
+
+> Here are some of the GitHub projects associated with this app. The project dedicated to the front end is "Nonna's Kitchen Front End"  
+![github projects](screenshots/agile/projects.png)
+
+In the "Nonna's Kitchen Front End" project, one can see all the issues that were completed during the course of the project.
+![agile_project](screenshots/agile/agile_project.png)
+
+
 # Testing
 
 # Technology Used
