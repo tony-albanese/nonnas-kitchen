@@ -179,7 +179,7 @@ The recipe steps and the ingredients must be entered in a similar way. Ideally, 
 
 ```
 function ListEntry({ fields, setFields, label }) {
-  
+
   const addInputElement = (event) => {
     let newField = { item: "" };
     setFields([...fields, newField]);
@@ -239,6 +239,7 @@ The project uses Code Institute's [Moments](https://github.com/Code-Institute-So
 + axios interceptors - Web token management would be a problem in any project requiring user state management. I have chosen to use the solution in the Moments project as it would be a standard way of solving this problem.
 + context objects for user state - Managing user state and passing it through the component tree would be a common problem in any React app requiring a logged in user. Code Institute's solution using custom context hooks for getting and updating the logged in user was used because it is simple and follows industry practice.
 + infinite scroll - The code for implementing the infinite scroll was taken from the walkthrough as well as its implementation is standard.
++ refresh token request - The code to prevent an unauthenticated user from requesting a refreshed access token is taken directly from the Moments walkthrough. This code includes setting the timestamp, checking if it is valid, and deleting it upon logout.
 
 ## NavBar
 The NavBar component displays the standard items a user expects to see. What is rendered depends on the user's authentication status. If they are logged out, they are presented with links to sign in and sign up. If they are authenticated, links to add a post, a recipe, and their custom content are presented as well as a logout link. The NavBar is responsive. On medium size screens the menu collapses into a menu with a hamburger icon.
