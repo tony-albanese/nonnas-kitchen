@@ -290,10 +290,20 @@ When the user clicks on the recipe image, they are taken to the detail page wher
 > This is the recipe detail on a small screen.
 ![recipe on small screen](screenshots/recipe/recipe_small_screen.png)
 
+> + As a user, I can see list of recipes on the site so that I have the chance to learn how to cook a new dish.
 
-## Recipe Edit Form
+If the user is logged in and they click on a post they own, a trash icon appears at the bottom of the post that allows them to delete it. A modal dialog appears asking them to confirm the delete. If they do, the post is deleted and they are returned to the previous page. If they cancel, the modal is dismissed.
 
+![recipe with delete](screenshots/recipe/recipe_with_delete.png)
+This is the confirm delete modal.
+![recipe delete modal](screenshots/recipe/confirm_delete_recipe_modal.png) 
+> + As a logged in user, I can delete a recipe I posted so that I can remove content I no longer wish others to see.
 
+## Recipe Create Form
+The recipe create form follows the same layout principles as the post create form. Half of the screen is an image of a granny which the users click on to upload an image. The other half consists of the form fields for the user to enter recipe details. On smallers screens, all of the elements collapse into a single column. For the ingredients and instructions lists, users can add as many fields as they like by clicking on the plus buttons. Users can also delete fields they no longer want by clicking on the trash icon next to each field. 
+![recipe edit form](screenshots/recipe/recipe_create_form_large.png)
+
+> + As a logged in user, I can create a recipe so that others users can learn how to make a dish that is important to me.
 
 ## Infinite Scroll
 The api returns results in groups of ten (BlogPost or Comments) in order to conserve bandwidth. For the user to continue accessing the data, they would have to see either a pagination widget at the bottom of the page or the next batch of results should be downloaded automatically. The latter is what today's users expect. The react-infinite-scroll-component library was used to simplify this process. When the user reaches the bottom of the page, the next batch of results are loaded automatically.
