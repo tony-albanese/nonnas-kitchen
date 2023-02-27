@@ -49,7 +49,7 @@ function SignInForm() {
   return (
     <Row className="d-flex align-items-center mt-5">
       <Col md={8}>
-        <Image src={SignInImage} fluid />
+        <Image src={SignInImage} fluid alt="a grandmother and child cooking together." />
       </Col>
       <Col md={4}>
         <h2 className={styles.Header}>Sign In</h2>

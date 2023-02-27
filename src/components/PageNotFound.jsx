@@ -7,7 +7,7 @@ import styles from "../styles/PageNotFound.module.css";
 function PageNotFound() {
   return (
     <Container className="text-center">
-      <Image src={Error} fluid />
+      <Image src={Error} fluid alt="Page not found error."/>
       <NavLink className={styles.NavLink} to="/">
         <p>Take me home!</p>
       </NavLink>

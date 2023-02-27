@@ -151,7 +151,7 @@ function BlogPostCreateForm() {
               ) : (
                 <Form.Label htmlFor="image-upload-field">
                   <div className="my-3">
-                    <Image src={Upload} fluid />
+                    <Image src={Upload} fluid alt="A cartoon of a grandmother."/>
                   </div>
                   <p>Click the granny to upload a photo.</p>
                 </Form.Label>

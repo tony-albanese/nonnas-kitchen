@@ -41,7 +41,7 @@ const SignUpForm = () => {
   return (
     <Row>
       <Col md={8}>
-      <Image src={SignUpImage} fluid />
+      <Image src={SignUpImage} fluid alt="a grandmother and child cooking together."/>
       </Col>
       <Col className="my-auto py-2 p-md-2" md={4}>
           <h2 className={styles.Header}>Sign Up</h2>
