@@ -70,7 +70,7 @@ function Comment({ id, author, created_on, body, setPost, setComments }) {
                             />) : <p className={styles.Body}>{body}</p>}
                     </Row>
                     <Row>
-                    {is_owner && (<CardEdit onDelete={showConfirmDeleteModal} onEdit={handleEdit} />)}
+                    {is_owner && (<CardEdit onDelete={showConfirmDeleteModal} onEdit={handleEdit}  showEdit={true}/>)}
                     </Row>
                 </Card.Body>
             </Card>

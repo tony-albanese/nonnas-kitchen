@@ -12,6 +12,7 @@ import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import axios from "axios";
 import SignInImage from "../../assets/grandmother-child-cooking.jpg";
 import styles from "../../styles/AuthenticationForm.module.css";
+import { setTokenTimestamp } from "../../utils/utils";
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
@@ -31,6 +32,7 @@ function SignInForm() {
     try {
       const { data } = await axios.post("dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
+      setTokenTimestamp(data);
       history.push("/");
     } catch (err) {
       setErrors(err.response?.data);
@@ -47,7 +49,7 @@ function SignInForm() {
   return (
     <Row className="d-flex align-items-center mt-5">
       <Col md={8}>
-        <Image src={SignInImage} fluid />
+        <Image src={SignInImage} fluid alt="a grandmother and child cooking together." />
       </Col>
       <Col md={4}>
         <h2 className={styles.Header}>Sign In</h2>

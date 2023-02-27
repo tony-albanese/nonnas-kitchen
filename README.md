@@ -32,7 +32,12 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
 + As a logged in user, I can comment on a post so that I can share my opinions on a post I find interesting.
 + As a logged in user, I can edit a comment I have created so that I can correct mistakes I have made.
 + As a logged in user, I can see a list of comments for a post so that I can see what other users think of a particular post.
-+ As a logged in user, I can delete a comment I have made so that I can remove content I no longer wish to share with the community,
++ As a logged in user, I can delete a comment I have made so that I can remove content I no longer wish to share with the community.
+
+## Recipes
++ As a user, I can see list of recipes on the site so that I have the chance to learn how to cook a new dish.
++ As a logged in user, I can create a recipe so that others users can learn how to make a dish that is important to me.
++ As a logged in user, I can delete a recipe I posted so that I can remove content I no longer wish others to see.
 
 ## Infinite Scroll
 + As a user, I can see a list of posts in a long list so I do not have to navigate through pagination links.
@@ -152,30 +157,94 @@ The project uses Code Institute's [Moments](https://github.com/Code-Institute-So
 
 ## NavBar
 The NavBar component displays the standard items a user expects to see. What is rendered depends on the user's authentication status. If they are logged out, they are presented with links to sign in and sign up. If they are authenticated, links to add a post, a recipe, and their custom content are presented as well as a logout link. The NavBar is responsive. On medium size screens the menu collapses into a menu with a hamburger icon.
+
+I tried several different designs for organizing the content on the navbar. 
+![navbar wireframe](screenshots/navbar/navbar_wireframes.png)  
+Sketch 1 was the original idea - it had a logo and text with each of the actions represented by an icon - quite similar to the moments walkthrough. In principal this would have worked, but I decided against it since I have two kinds of content - Posts and Recipes. I could not find an icon that accurately represented recipes. Including text next to the icons also made the navbar very confusing and busy. I ultimately decided on the design in sketch 3 where each action in the navbar is text. It is much easier to read. I decided to have the navbar collapse on a large screen and smaller because the text became overlapped (sketch 2).
+
+This is what the final implementation looks like:
+> Navbar for a logged out user on a very large screen:  
+![full navbar logged out](screenshots/navbar/navbar_full_loggedout.png)  
+> Navbar for a logged in user on a very large screen:  
+![full navbar logged out](screenshots/navbar/navbar_full_logged_in.png)  
+> Collapsed navbar:  
+![full navbar logged out](screenshots/navbar/navbar_collapse.png)  
+
+
 > + As a user I can view a navbar from every page so that I can navigate easily between pages
 > + Logged in Status: As a user I can tell if I am logged in or not so that I can log in if I need to
 > + Conditional rendering - As a logged out user I can see sign in and sign up options so that I can sign in/sign up
 
 ## SignUp/SignIn Form
-There is a Sign Up form that allows the user to create an account if they do not already have one. In addition, there is a Sign In form as well that allows the user to log in to access additional content.
+There is a Sign Up form that allows the user to create an account if they do not already have one. In addition, there is a Sign In form as well that allows the user to log in to access additional content. I wanted a simple SignIn/Sign up form with a an image taking up half the screen and the from fields on the other half. On smaller screens, these would rearrange into a single column with the image on the top and the form fields below.
+
+> Designs for SignIn/SignUp Form
+![sign in wireframe](screenshots/signin-up/sign-in-wireframe.jpg)
+
+The final implementation is relatively close to the intended design:
+> The sign in screen on a large and small screen respectively.
+![sign in large](screenshots/signin-up/sign_in_large.png)  
+![sign in small](screenshots/signin-up/sign_in_small.png)
+> The sign up screen on a large and small screen respectively.  
+![sign up large](screenshots/signin-up/signup_large.png)  
+![sign up small](screenshots/signin-up/signup_small.png)
 > + As a user I can create a new account so that I can access all the features for signed up users
 > + As a user I can sign in to the app so that I can access functionality for logged in users
 
 
 ## Create BlogPost Form
 The form to create a BlogPost has all the necessesary fields for ther user to create an entry. There is an option to select an image as well as a dropdown form for users to select the category. Upon successful submission, the user is taken to the post detail page for the newly created post. If they cancel the submission, they are redirected to the home page.
+
+I wanted simple design for this form. The sketch would have the form in two main sections. One section has an image of a granny which the user clicks on to select the image. The other half contains the form fields and submit/cancel buttons. On smaller screens, the image shifts to the top and the fields to the bottom in one column.
+> Sketches for the BlogPost create form for a large screen.
+![wireframe large screen](screenshots/blogpost/wireframe_form_large.png)
+![wireframe small screen](screenshots/blogpost/wireframe_form_small.png)
+
+
+The final implementation of the designs are:
+> Create BlogPost form on a large screen.  
+![blog post form large](screenshots/blogpost/create_post_large.png)
+> Create a BlogPost form on a small screen.
+![blog post form small](screenshots/blogpost/create_post_small.png)
 + As a logged in user, I can create a BlogPost so that I can share my food related content with other users on the platform.
 
+# Post Component
+The Post component contains the details for a blog post. These components are arranged in a Bootstrap Card component. I wanted the category to be in a prominent place since that is more general in the hierarchy than the other elements - the users can select what type of post they want to read. The image element is also prominent so that the user can be attracted to a post by the image.
+
+> Wireframe sketch for the blog post 
+![wireframe blog post](screenshots/blogpost/blogpost_wireframe.png)
+
+This the actual implementation.
+> Blog Post
+![blog post card](screenshots/blogpost/blogpost.png)
+
+
 ## Post Detail Component
-When the user clicks on a post, they are redirected to the PostDetail page where additional details about the post are displayed.
-> + As a user, I can view the details of a single post so that I can enjoy additional content about that post.
+When the user clicks on a post, they are redirected to the PostDetail page where the comments that belong to the post are also displayed in an infinite scrolling list below the post.
+> + As a user, I can view the details of a single post so that I can enjoy additional content about that post.  
+
+![post with comments](screenshots/blogpost/post_with_comments.png)
 
 If the user has written the post, a menu is shown with two icons. The trash icon is for deleting a post. When the user clicks on this icon, a modal popup appears asking the user to confirm their wish to delete the post. If they click on the edit icon, they are taken to a page with a form pre-populated with the post data. The user can change one or several of the fields. When they hit Save, the database is updated through the api and the user is redireced back to the post detail page. If they hit cancel, they are also taken back to the post detail page.
+
+> Post edit/delete icons
+![edit delete icons](screenshots/blogpost/edit_delete_icons.png)
+
+> Confirm delete modal
+![confirm delete modal](screenshots/blogpost/delete_modal.png)
 > + As a logged in user, I can delete a post I have made so that I can remove content I no longer wish to share.  
 > + As a logged in user, I can edit a post I have created so that I can update content or correct mistakes I have made.
 
 ## Post Page
 The Post Page displays a list of all the posts. The posts are sorted by date so the most recent posts are displayed first. On the top of the page is a search bar in which the user can enter search terms. When the user has finished typing the site makes an api call and the data is refreshed. In addition, there is a dropdown menu that the user can use to filter the results by post category.
+
+I decided on a simple layout for the posts page. Under the navbar is the search bar followed by a dropdown where users can filter posts by category. The posts follow in a single infintitely scrolling column.
+
+> Wireframe sketch for the page.  
+![posts page wireframe](screenshots/blogpost/blogpost_wireframe.png)
+> This is the actual implementation
+![posts page](screenshots/blogpost/posts_page.png) 
+
 > + As a user, I can view all the blog posts sorted by date created so that I can enjoy the most recently created content.
 > + As a user, I can search posts so that I can quickly find content that is interesting to me.
 > + As a user, I can filter the post by category so that I can quickly find content that I am most interested in.
@@ -187,12 +256,54 @@ Each BlogPost component has a footer in which the total likes are displayed next
 
 ## Post Comments
 If a user is logged in, they can comment on a post. The form to enter a comment is displayed on the Post page if the user is logged in. They can also comment by clicking on the comments icon with each post - this takes them to the post detail page as well. Upon submitting their comment, the comments list is updated is the comment count for the post.
-> +As a logged in user, I can comment on a post so that I can share my opinions on a post I find interesting.  
+> + As a logged in user, I can comment on a post so that I can share my opinions on a post I find interesting.  
+
+> Comment field on the details page.
+![comment field](screenshots/comments/comment%20form.png)  
 
 If the user is logged in and goes to a post, a list of all the comments for that post is displayed. If the user is the author of a comment, two icons (edit and trash can) appear in the header of that icon that allow them to edit or delete the comment. If the user clicks on the trash can, a modal dialog appears asking them to confirm the delete. If they agree, the comment is deleted and removed from the list. If they cancel, the modal is dismissed. If the user clicks on the edit icon, a form is rendered right underneath the comment populated with the comment body data. The user can update the text as they see fit. Upon save, the database is updated through an api call and the comment list is updated as well. If they click on cancel, the form is dismissed.
+
+> This is the comment showing the edit icons
+![comment icons](screenshots/comments/comment_with_icons.png)  
+![comment edit](screenshots/comments/comment_edit.png)
 > + As a logged in user, I can see a list of comments for a post so that I can see what other users think of a particular post.
 > + As a logged in user, I can edit a comment I have created so that I can correct mistakes I have made.
 > + As a logged in user, I can delete a comment I have made so that I can remove content I no longer wish to share with the community.
+
+## Recipe
+The Recipes page displays a list of recipes that are shared by the other users. On the page, the recipes are displayed in an infinitely scrolling list simialar to the posts page except there is no search and filtering capability. Each recipe card shows the type, an image, a title, and a description.
+
+A recipe card has a similar design to a Post. A recipe has a diffiuculty associated with it and an ingredients list and steps for completing it.
+> This is the design for the recipe as displayed on the recipes page:
+![recipe wireframe](screenshots/recipe/recipe_wireframe.jpg) 
+> This is the acutal implementation of the recipe card.
+![recipe](screenshots/recipe/recipe.png)
+
+When the user clicks on the recipe image, they are taken to the detail page where the recipe along with the ingredients and insructions are displayed. On large screens, the instructions and ingredients are side-by-side. On smaller screens they collapse into a single column.
+
+> Recipe detail design
+![recipe detail wireframe](screenshots/recipe/recipe_detail_wireframe.jpg)
+
+> This is the implementation. 
+![recipe detail](screenshots/recipe/recipe_detail.png)
+
+> This is the recipe detail on a small screen.
+![recipe on small screen](screenshots/recipe/recipe_small_screen.png)
+
+> + As a user, I can see list of recipes on the site so that I have the chance to learn how to cook a new dish.
+
+If the user is logged in and they click on a post they own, a trash icon appears at the bottom of the post that allows them to delete it. A modal dialog appears asking them to confirm the delete. If they do, the post is deleted and they are returned to the previous page. If they cancel, the modal is dismissed.
+
+![recipe with delete](screenshots/recipe/recipe_with_delete.png)
+This is the confirm delete modal.
+![recipe delete modal](screenshots/recipe/confirm_delete_recipe_modal.png) 
+> + As a logged in user, I can delete a recipe I posted so that I can remove content I no longer wish others to see.
+
+## Recipe Create Form
+The recipe create form follows the same layout principles as the post create form. Half of the screen is an image of a granny which the users click on to upload an image. The other half consists of the form fields for the user to enter recipe details. On smallers screens, all of the elements collapse into a single column. For the ingredients and instructions lists, users can add as many fields as they like by clicking on the plus buttons. Users can also delete fields they no longer want by clicking on the trash icon next to each field. 
+![recipe edit form](screenshots/recipe/recipe_create_form_large.png)
+
+> + As a logged in user, I can create a recipe so that others users can learn how to make a dish that is important to me.
 
 ## Infinite Scroll
 The api returns results in groups of ten (BlogPost or Comments) in order to conserve bandwidth. For the user to continue accessing the data, they would have to see either a pagination widget at the bottom of the page or the next batch of results should be downloaded automatically. The latter is what today's users expect. The react-infinite-scroll-component library was used to simplify this process. When the user reaches the bottom of the page, the next batch of results are loaded automatically.

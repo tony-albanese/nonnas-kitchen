@@ -9,6 +9,7 @@ import { useClickOutsideToggle } from "../hooks/useClickOutsideToggle";
 import nonna from "../assets/old-woman.png";
 import styles from "../styles/NavBar.module.css";
 import axios from "axios";
+import { removeTokenTimestamp } from "../utils/utils";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -20,6 +21,7 @@ const NavBar = () => {
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
+      removeTokenTimestamp();
     } catch (err) {
       console.log(err);
     }
@@ -87,7 +89,7 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
             <NavLink exact to="/" className={styles.NavLink}>
-            <i className="fa-solid fa-house"></i>
+           Posts
             </NavLink>
             <NavLink exact to="/recipes" className={styles.NavLink}>
             Recipes
