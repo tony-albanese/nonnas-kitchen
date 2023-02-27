@@ -479,6 +479,7 @@ Issues often are related to each other - this includes user stories and addition
 + [axios](https://www.npmjs.com/package/axios) - A lightweight but very powerful library for making network calls in JavaScript. It includes utilities for managing and refreshing web tokens.
 + [react-router-dom](https://reactrouter.com/en/main) - A simple to use React library to simplify routing and navigation without the need to refresh the page.
 + [react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component) - A library that simplifies the implementation of an infinite scroll for long lists of data.
++ [jwt-decode](https://www.npmjs.com/package/jwt-decode) - A library to help decode jason web tokens. This was used in the moments walkthrough to prevent the user from making network requests to refresh tokens if they are not logged in.
 
 
 # Project Creation
