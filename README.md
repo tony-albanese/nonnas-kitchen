@@ -145,6 +145,91 @@ function ModalAlert({show,  handleClose, onConfirm, title, message}) {
 }
 ```
 
++ List Display Component
+Both the steps and the ingredients in a recipe must be displayed as lists. This functionality is a perfect candidate to be extracted into its own component. I therefore designed a list displayer that accepts a list, a heading, and boolean as props. The component maps over the list and renders a list item element for each element in the list. The index is used for the key - this is not ideal but is acceptable in this case as there is no guarantee that the list item values will be different. The list unordered or ordered depending on the value set by the boolean called **ordered**. Since the list being passed in from the parent is a list of JSON objects, the Objects.value() method is used to extract the value. 
+
+```
+function ListDisplay({ list, ordered, heading }) {
+  return (
+    <div>
+      <h4 className={styles.h4}>{heading}</h4>
+
+      {ordered ? (
+        <ol>
+          {list.map((listItem, index) => (
+            <li className={styles.ListItem} key={index}>
+              {Object.values(listItem)}
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <ul>{list.map((listItem, index) => (
+          <li className={styles.ListItem} key={index}>
+            {Object.values(listItem)}
+          </li>
+        ))}</ul>
+      )}
+    </div>
+  );
+}
+```
+
++ List Entry Component
+The recipe steps and the ingredients must be entered in a similar way. Ideally, the user should have the ability to enter as many items as they like and delete the ones they do not. I therefore created a ListEntry component the accepts an initial set of fields, a setFields callback from the parent, and a label to display at the top of the form.
+
+```
+function ListEntry({ fields, setFields, label }) {
+  
+  const addInputElement = (event) => {
+    let newField = { item: "" };
+    setFields([...fields, newField]);
+  };
+
+  const removeInputElement = (index) => {
+    let data = [...fields];
+    data.splice(index, 1);
+    setFields(data);
+  };
+
+  const handleChange = (index, event) => {
+...
+  };
+
+  return (
+    <>
+      <h3 className={`text-center ${styles.Text}`}>{label}</h3>
+      <Form.Group className="input-group-append">
+        <Row>
+          <p className={`text-center ${styles.Text}`}>Add a Field</p>
+          <i onClick={addInputElement} className="fa-solid fa-circle-plus"></i>
+        </Row>
+      </Form.Group>
+
+      {fields.map((input, index) => {
+        return (
+          <Row key={index}>
+            <Form.Group className="input-group-append">
+              <Form.Control
+                name="item"
+                placeholder="add a step"
+                value={input.item}
+                onChange={(event) => handleChange(index, event)}
+              />
+
+              <i
+                className="fa-regular fa-trash-can"
+                onClick={(event) => removeInputElement(index)}
+              ></i>
+            </Form.Group>
+          </Row>
+        );
+      })}
+    </>
+  );
+}
+```
+
+
 # UI Design
 The project uses Code Institute's [Moments](https://github.com/Code-Institute-Solutions/moments) project as a starting framework as both sites involve creating, filtering, and searching posts. Therefore, there are is a certain level of code overlap. The following parts of Nonna's Kitchen are taken from the Moments project:
 + project structure - this is an industry standard way to organize a React Project
