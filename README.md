@@ -245,7 +245,14 @@ Each BlogPost component has a footer in which the total likes are displayed next
 If a user is logged in, they can comment on a post. The form to enter a comment is displayed on the Post page if the user is logged in. They can also comment by clicking on the comments icon with each post - this takes them to the post detail page as well. Upon submitting their comment, the comments list is updated is the comment count for the post.
 > + As a logged in user, I can comment on a post so that I can share my opinions on a post I find interesting.  
 
+> Comment field on the details page.
+![comment field](screenshots/comments/comment%20form.png)  
+
 If the user is logged in and goes to a post, a list of all the comments for that post is displayed. If the user is the author of a comment, two icons (edit and trash can) appear in the header of that icon that allow them to edit or delete the comment. If the user clicks on the trash can, a modal dialog appears asking them to confirm the delete. If they agree, the comment is deleted and removed from the list. If they cancel, the modal is dismissed. If the user clicks on the edit icon, a form is rendered right underneath the comment populated with the comment body data. The user can update the text as they see fit. Upon save, the database is updated through an api call and the comment list is updated as well. If they click on cancel, the form is dismissed.
+
+> This is the comment showing the edit icons
+![comment icons](screenshots/comments/comment_with_icons.png)  
+![comment edit](screenshots/comments/comment_edit.png)
 > + As a logged in user, I can see a list of comments for a post so that I can see what other users think of a particular post.
 > + As a logged in user, I can edit a comment I have created so that I can correct mistakes I have made.
 > + As a logged in user, I can delete a comment I have made so that I can remove content I no longer wish to share with the community.
