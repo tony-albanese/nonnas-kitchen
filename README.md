@@ -152,6 +152,20 @@ The project uses Code Institute's [Moments](https://github.com/Code-Institute-So
 
 ## NavBar
 The NavBar component displays the standard items a user expects to see. What is rendered depends on the user's authentication status. If they are logged out, they are presented with links to sign in and sign up. If they are authenticated, links to add a post, a recipe, and their custom content are presented as well as a logout link. The NavBar is responsive. On medium size screens the menu collapses into a menu with a hamburger icon.
+
+I tried several different designs for organizing the content on the navbar. 
+![navbar wireframe](screenshots/navbar/navbar_wireframes.png)  
+Sketch 1 was the original idea - it had a logo and text with each of the actions represented by an icon - quite similar to the moments walkthrough. In principal this would have worked, but I decided against it since I have two kinds of content - Posts and Recipes. I could not find an icon that accurately represented recipes. Including text next to the icons also made the navbar very confusing and busy. I ultimately decided on the design in sketch 3 where each action in the navbar is text. It is much easier to read. I decided to have the navbar collapse on a large screen and smaller because the text became overlapped (sketch 2).
+
+This is what the final implementation looks like:
+> Navbar for a logged out user on a very large screen:  
+![full navbar logged out](screenshots/navbar/navbar_full_loggedout.png)  
+> Navbar for a logged in user on a very large screen:  
+![full navbar logged out](screenshots/navbar/navbar_full_logged_in.png)  
+> Collapsed navbar:  
+![full navbar logged out](screenshots/navbar/navbar_collapse.png)  
+  
+
 > + As a user I can view a navbar from every page so that I can navigate easily between pages
 > + Logged in Status: As a user I can tell if I am logged in or not so that I can log in if I need to
 > + Conditional rendering - As a logged out user I can see sign in and sign up options so that I can sign in/sign up
