@@ -32,7 +32,12 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
 + As a logged in user, I can comment on a post so that I can share my opinions on a post I find interesting.
 + As a logged in user, I can edit a comment I have created so that I can correct mistakes I have made.
 + As a logged in user, I can see a list of comments for a post so that I can see what other users think of a particular post.
-+ As a logged in user, I can delete a comment I have made so that I can remove content I no longer wish to share with the community,
++ As a logged in user, I can delete a comment I have made so that I can remove content I no longer wish to share with the community.
+
+## Recipes
++ As a user, I can see list of recipes on the site so that I have the chance to learn how to cook a new dish.
++ As a logged in user, I can create a recipe so that others users can learn how to make a dish that is important to me.
++ As a logged in user, I can delete a recipe I posted so that I can remove content I no longer wish others to see.
 
 ## Infinite Scroll
 + As a user, I can see a list of posts in a long list so I do not have to navigate through pagination links.
@@ -264,6 +269,31 @@ If the user is logged in and goes to a post, a list of all the comments for that
 > + As a logged in user, I can see a list of comments for a post so that I can see what other users think of a particular post.
 > + As a logged in user, I can edit a comment I have created so that I can correct mistakes I have made.
 > + As a logged in user, I can delete a comment I have made so that I can remove content I no longer wish to share with the community.
+
+## Recipe
+The Recipes page displays a list of recipes that are shared by the other users. On the page, the recipes are displayed in an infinitely scrolling list simialar to the posts page except there is no search and filtering capability. Each recipe card shows the type, an image, a title, and a description.
+
+A recipe card has a similar design to a Post. A recipe has a diffiuculty associated with it and an ingredients list and steps for completing it.
+> This is the design for the recipe as displayed on the recipes page:
+![recipe wireframe](screenshots/recipe/recipe_wireframe.jpg) 
+> This is the acutal implementation of the recipe card.
+![recipe](screenshots/recipe/recipe.png)
+
+When the user clicks on the recipe image, they are taken to the detail page where the recipe along with the ingredients and insructions are displayed. On large screens, the instructions and ingredients are side-by-side. On smaller screens they collapse into a single column.
+
+> Recipe detail design
+![recipe detail wireframe](screenshots/recipe/recipe_detail_wireframe.jpg)
+
+> This is the implementation. 
+![recipe detail](screenshots/recipe/recipe_detail.png)
+
+> This is the recipe detail on a small screen.
+![recipe on small screen](screenshots/recipe/recipe_small_screen.png)
+
+
+## Recipe Edit Form
+
+
 
 ## Infinite Scroll
 The api returns results in groups of ten (BlogPost or Comments) in order to conserve bandwidth. For the user to continue accessing the data, they would have to see either a pagination widget at the bottom of the page or the next batch of results should be downloaded automatically. The latter is what today's users expect. The react-infinite-scroll-component library was used to simplify this process. When the user reaches the bottom of the page, the next batch of results are loaded automatically.
