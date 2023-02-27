@@ -189,6 +189,18 @@ The final implementation is relatively close to the intended design:
 
 ## Create BlogPost Form
 The form to create a BlogPost has all the necessesary fields for ther user to create an entry. There is an option to select an image as well as a dropdown form for users to select the category. Upon successful submission, the user is taken to the post detail page for the newly created post. If they cancel the submission, they are redirected to the home page.
+
+I wanted simple design for this form. The sketch would have the form in two main sections. One section has an image of a granny which the user clicks on to select the image. The other half contains the form fields and submit/cancel buttons. On smaller screens, the image shifts to the top and the fields to the bottom in one column.
+> Sketches for the BlogPost create form for a large screen.
+![wireframe large screen](screenshots/blogpost/wireframe_form_large.png)
+![wireframe small screen](screenshots/blogpost/wireframe_form_small.png)
+
+
+The final implementation of the designs are:
+> Create BlogPost form on a large screen.  
+![blog post form large](screenshots/blogpost/create_post_large.png)
+> Create a BlogPost form on a small screen.
+![blog post form small](screenshots/blogpost/create_post_small.png)
 + As a logged in user, I can create a BlogPost so that I can share my food related content with other users on the platform.
 
 ## Post Detail Component
