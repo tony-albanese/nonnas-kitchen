@@ -203,6 +203,17 @@ The final implementation of the designs are:
 ![blog post form small](screenshots/blogpost/create_post_small.png)
 + As a logged in user, I can create a BlogPost so that I can share my food related content with other users on the platform.
 
+# Post Component
+The Post component contains the details for a blog post. These components are arranged in a Bootstrap Card component. I wanted the category to be in a prominent place since that is more general in the hierarchy than the other elements - the users can select what type of post they want to read. The image element is also prominent so that the user can be attracted to a post by the image.
+
+> Wireframe sketch for the blog post 
+![wireframe blog post](screenshots/blogpost/blogpost_wireframe.png)
+
+This the actual implementation.
+> Blog Post
+![blog post card](screenshots/blogpost/blogpost.png)
+
+
 ## Post Detail Component
 When the user clicks on a post, they are redirected to the PostDetail page where additional details about the post are displayed.
 > + As a user, I can view the details of a single post so that I can enjoy additional content about that post.
@@ -224,7 +235,7 @@ Each BlogPost component has a footer in which the total likes are displayed next
 
 ## Post Comments
 If a user is logged in, they can comment on a post. The form to enter a comment is displayed on the Post page if the user is logged in. They can also comment by clicking on the comments icon with each post - this takes them to the post detail page as well. Upon submitting their comment, the comments list is updated is the comment count for the post.
-> +As a logged in user, I can comment on a post so that I can share my opinions on a post I find interesting.  
+> + As a logged in user, I can comment on a post so that I can share my opinions on a post I find interesting.  
 
 If the user is logged in and goes to a post, a list of all the comments for that post is displayed. If the user is the author of a comment, two icons (edit and trash can) appear in the header of that icon that allow them to edit or delete the comment. If the user clicks on the trash can, a modal dialog appears asking them to confirm the delete. If they agree, the comment is deleted and removed from the list. If they cancel, the modal is dismissed. If the user clicks on the edit icon, a form is rendered right underneath the comment populated with the comment body data. The user can update the text as they see fit. Upon save, the database is updated through an api call and the comment list is updated as well. If they click on cancel, the form is dismissed.
 > + As a logged in user, I can see a list of comments for a post so that I can see what other users think of a particular post.
