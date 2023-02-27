@@ -215,10 +215,18 @@ This the actual implementation.
 
 
 ## Post Detail Component
-When the user clicks on a post, they are redirected to the PostDetail page where additional details about the post are displayed.
-> + As a user, I can view the details of a single post so that I can enjoy additional content about that post.
+When the user clicks on a post, they are redirected to the PostDetail page where the comments that belong to the post are also displayed in an infinite scrolling list below the post.
+> + As a user, I can view the details of a single post so that I can enjoy additional content about that post.  
+
+![post with comments](screenshots/blogpost/post_with_comments.png)
 
 If the user has written the post, a menu is shown with two icons. The trash icon is for deleting a post. When the user clicks on this icon, a modal popup appears asking the user to confirm their wish to delete the post. If they click on the edit icon, they are taken to a page with a form pre-populated with the post data. The user can change one or several of the fields. When they hit Save, the database is updated through the api and the user is redireced back to the post detail page. If they hit cancel, they are also taken back to the post detail page.
+
+> Post edit/delete icons
+![edit delete icons](screenshots/blogpost/edit_delete_icons.png)
+
+> Confirm delete modal
+![confirm delete modal](screenshots/blogpost/delete_modal.png)
 > + As a logged in user, I can delete a post I have made so that I can remove content I no longer wish to share.  
 > + As a logged in user, I can edit a post I have created so that I can update content or correct mistakes I have made.
 
