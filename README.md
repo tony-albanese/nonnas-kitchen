@@ -232,6 +232,14 @@ If the user has written the post, a menu is shown with two icons. The trash icon
 
 ## Post Page
 The Post Page displays a list of all the posts. The posts are sorted by date so the most recent posts are displayed first. On the top of the page is a search bar in which the user can enter search terms. When the user has finished typing the site makes an api call and the data is refreshed. In addition, there is a dropdown menu that the user can use to filter the results by post category.
+
+I decided on a simple layout for the posts page. Under the navbar is the search bar followed by a dropdown where users can filter posts by category. The posts follow in a single infintitely scrolling column.
+
+> Wireframe sketch for the page.  
+![posts page wireframe](screenshots/blogpost/blogpost_wireframe.png)
+> This is the actual implementation
+![posts page](screenshots/blogpost/posts_page.png) 
+
 > + As a user, I can view all the blog posts sorted by date created so that I can enjoy the most recently created content.
 > + As a user, I can search posts so that I can quickly find content that is interesting to me.
 > + As a user, I can filter the post by category so that I can quickly find content that I am most interested in.
