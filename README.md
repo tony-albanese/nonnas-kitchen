@@ -164,14 +164,25 @@ This is what the final implementation looks like:
 ![full navbar logged out](screenshots/navbar/navbar_full_logged_in.png)  
 > Collapsed navbar:  
 ![full navbar logged out](screenshots/navbar/navbar_collapse.png)  
-  
+
 
 > + As a user I can view a navbar from every page so that I can navigate easily between pages
 > + Logged in Status: As a user I can tell if I am logged in or not so that I can log in if I need to
 > + Conditional rendering - As a logged out user I can see sign in and sign up options so that I can sign in/sign up
 
 ## SignUp/SignIn Form
-There is a Sign Up form that allows the user to create an account if they do not already have one. In addition, there is a Sign In form as well that allows the user to log in to access additional content.
+There is a Sign Up form that allows the user to create an account if they do not already have one. In addition, there is a Sign In form as well that allows the user to log in to access additional content. I wanted a simple SignIn/Sign up form with a an image taking up half the screen and the from fields on the other half. On smaller screens, these would rearrange into a single column with the image on the top and the form fields below.
+
+> Designs for SignIn/SignUp Form
+![sign in wireframe](screenshots/signin-up/sign-in-wireframe.jpg)
+
+The final implementation is relatively close to the intended design:
+> The sign in screen on a large and small screen respectively.
+![sign in large](screenshots/signin-up/sign_in_large.png)  
+![sign in small](screenshots/signin-up/sign_in_small.png)
+> The sign up screen on a large and small screen respectively.  
+![sign up large](screenshots/signin-up/signup_large.png)  
+![sign up small](screenshots/signin-up/signup_small.png)
 > + As a user I can create a new account so that I can access all the features for signed up users
 > + As a user I can sign in to the app so that I can access functionality for logged in users
 
