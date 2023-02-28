@@ -1,19 +1,19 @@
 # Navigation Test Cases
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
-|Posts Link||PASS|
-|Recipes Link||PASS|
-|Sign In link Navbar||PASS|
-|Sign in link on sign up form||PASS|
-|Sign Up Link Navbar||PASS|
-|Sign up link on sign in form||PASS|
-|Post detail link||PASS|
-|Recipe Detail link||PASS|
-|Add Post link||PASS|
-|Add Recipe Link ||PASS|
-|Likes navbar link||PASS|
-|Page not found||PASS|
-|Take me home link||PASS|
+|Posts Link|As a user <br> when I click on the Posts link in the navbar <br> I am taken to the Posts page.|PASS|
+|Recipes Link|As a user <br> when I click on the Recipes link in the navbar <br> I am taken to the Recipes page.|PASS|
+|Sign In link Navbar|As a user <br> when I click on the SignIn link in the navbar <br> I am taken to the SignIn page.|PASS|
+|Sign in link on sign up form|As a user <br> when I click on the SignIn link on the Sign Up <br> I am taken to the SignIn page.|PASS|
+|Sign Up Link Navbar|As a user <br> when I click on the Sign Up link in the navbar <br> I am taken to the Sign Up page.|PASS|
+|Sign up link on sign in form|As a user <br> when I click on the Sign Up link on the Sign In page <br> I am taken to the Sign Up page.|PASS|
+|Post detail link|As a user <br> When I click on a Post <br> I am taken to the Post detail page. |PASS|
+|Recipe Detail link|As a user <br> When I click on a Recipe <br> I am taken to the Recipe detail page.|PASS|
+|Add Post link|As a logged in user <br> when I click on the Add Post link in the navbar <br> I am taken to the add post page. |PASS|
+|Add Recipe Link |As a logged in user <br> when I click on the Add Recipe link in the navbar <br> I am taken to the Add Recipe page. |PASS|
+|Likes navbar link|As a logged in user <br> when I click on the Likes link in the navbar <br> I am taken to the Likes page. |PASS|
+|Page not found|As a user <br> when a page is not found <br> the page not found image is displayed. |PASS|
+|Take me home link|As a user <br> when I click on the "take me home" button on the page not found <br> I am taken to the Posts page.|PASS|
 
 # Sign In Test Cases
 | Test Description              | Test | Result |
