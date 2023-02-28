@@ -48,14 +48,14 @@
 # CRUD for Comments test cases
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
-|Comments for a post are displayed||PASS|
-|Infinite scroll for comments||PASS|
-|Create a comment||PASS|
-|Edit a comment||PASS|
-|Delete a comment||PASS|
-|Comment if logged in||PASS|
-|Edit/Delete icons for comment||PASS|
-|Edit/Delete icons for comment||PASS|
+|Comments for a post are displayed|As a user <br> when I am on the posts detail page <br> all of the comments associated with the post are displayed.|PASS|
+|Infinite scroll for comments|As a user <br> when I am on the posts detail page <br> when I scroll to the end of the comments <br> new comments are loaded.|PASS|
+|Create a comment|As a logged in user <br> when I am on the post detail page <br> a comment field appears <br>  and enter a comment into the comment form <br> and click on post <br> the comment is saved and added to the comment list. |PASS|
+|Edit a comment|As a logged in user <br> and I click on the edit icon for a comment. <br> a field is shown with the comment text loaded. |PASS|
+|Delete a comment|As a logged in user <br> when I click on save after updating the comment text <br> the new comment text is reflected in the comment list.|PASS|
+|Comment if logged in|As an unauthenticated user <br> there is no comment form on the post detail page. |PASS|
+|Edit/Delete icons for comment|As a logged in user <br> I can see edit and delete icons only for comments I have written.|PASS|
+|Edit/Delete icons for comment|As a user <br> There are no edit or delete icons on the comments.|PASS|
 
 # Like for a Post test cases
 | Test Description              | Test | Result |
