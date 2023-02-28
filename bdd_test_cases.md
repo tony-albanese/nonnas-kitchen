@@ -18,14 +18,14 @@
 # Sign In Test Cases
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
-|Sign in function||PASS|
-|Icons in navbar after sign in||PASS|
-|Sign out function||PASS|
+|Sign in function|As a user <br> When I enter valid credentials and click on Sign In <br> I am authenticated <br>the navbar reveals the Add Post and Add Likes links <br> the sign in and sign up links are hidden <br> the sign out icon appears in the navbar<br> and my user name appears in the navbar.|PASS|
+|Sign out function|As an authenticated user <br> When I click on the logout icon <br> I am logged out <br> the sign in and sign up links appear in the navbar <br> The Add Post and Add Recipe links are hidden <br> and my user name is no longer visible.|PASS|
 
 # Sign Up Test Cases
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
-|Create a new account||PASS|
+|Create a new account|As a user <br> when I enter a username <br> and a password <br> and a matching password <br> I am taken back to the sign in page. |PASS|
+|Mismatched password error |As a user <br> when I enter a username <br> and a password <br> and a non-matching password <br> a message indicating the passowrds do not match is displayed. |PASS|
 
 # CRUD for Post test cases
 | Test Description              | Test | Result |
