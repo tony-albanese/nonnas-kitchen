@@ -66,15 +66,16 @@
 |Like count increment|As a logged in user <br> when I like a post <br> the like count is incremented by 1|PASS|
 |Like count decrement|As a logged in user <br> when I unlike a post <br> the like count is decremented by 1|PASS|
 |List of liked posts|As a logged in user <br> when I click on the Likes link <br> a list of all the posts I have liked is displayed.|PASS|
-|Unlike post|As a logged in user <br> when I click on a the like icon for a post I have liked <br> |Partial pass - add remark|
+|Unlike post|As a logged in user <br> when I click on a the like icon for a post I have liked <br> |Partial pass - add remark. The heart icon is unreponsive to clicks after the like - the user cannot unlike. Upon page reload, the icon responds to clicks and the user can unlike.|
 
 # Recipe test cases
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
-|List of recipes||PASS|
-|Recipe Detail||PASS|
-|Recipe delete icon||PASS|
-|Recipe delete||PASS|
+|List of recipes|As a user <br> When I navigate to the Recipes a page <br> A list of recipes is displayed.|PASS|
+|Recipe Detail|As a user <br> when I click on a recipe <br> I am taken to a recipe detail page <br> and the ingredients and instruction list are displayed.|PASS|
+|Recipe delete icon|As a logged in user <br> when I click on a recipe that I have written <br> a delete icon is displayed. |PASS|
+|Recipe delete dialog|As a logged in user <br> when I click on the delete icon <br> a dialog appears asking me to confirm the delete.|PASS|
+|Recipe delete|As a logged in user <br> when I click on the delete icon <br> and I confirm the delete from the dialog <br> the recipe is delted <br> and I am taken back to the Recipes page.|PASS|
 
 # Responsiveness Test Cases
 | Test Description              | Test | Result |
