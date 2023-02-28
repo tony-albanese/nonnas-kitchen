@@ -60,14 +60,13 @@
 # Like for a Post test cases
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
-|Must be logged in to like||PASS|
-|Cannot like own post||PASS|
-|Like icon state||PASS - add remark|
-|Like count increment||PASS|
-|Like count decrement||PASS|
-|List of liked posts||PASS|
-|Like post||PASS|
-|Unlike post||Partial pass - add remark|
+|Must be logged in to like|As a user <br> if I hover over the like icon <br> a tooltip appears asking me to login to like|PASS|
+|Cannot like own post|As a logged in user <br> if I hover over the like icon for a post I have written <br> a tooltip appears telling me I cannot like my own post.|PASS|
+|Like icon state|As a logged in user <br> If I have liked a post the icon is solid othwerwise it is outlined. |PASS - add remark|
+|Like count increment|As a logged in user <br> when I like a post <br> the like count is incremented by 1|PASS|
+|Like count decrement|As a logged in user <br> when I unlike a post <br> the like count is decremented by 1|PASS|
+|List of liked posts|As a logged in user <br> when I click on the Likes link <br> a list of all the posts I have liked is displayed.|PASS|
+|Unlike post|As a logged in user <br> when I click on a the like icon for a post I have liked <br> |Partial pass - add remark|
 
 # Recipe test cases
 | Test Description              | Test | Result |
