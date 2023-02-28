@@ -30,18 +30,20 @@
 # CRUD for Post test cases
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
-|A list of posts is displayed on the home page.||PASS|
-|Infinite scroll for posts.||PASS|
-|Post detail page||PASS|
-|Create Post||PASS|
-|Edit Post||PASS|
-|Change post image||PASS|
-|Field validation||PASS|
-|Image validation||PASS|
-|Filter Post by category||PASS|
-|Search Posts||PASS|
-|Complex search||PASS|
-|No results||PASS|
+|A list of posts is displayed on the home page.|As a user <br> when I am on the home page <br> a list of posts is displayed. |PASS|
+|Infinite scroll for posts.|As a user <br> when I scroll down to the bottom of the page <br> more posts are loaded and displayed.|PASS|
+|Post detail page|As a user <br> when I click on a post <br> I am taken to the post detail page <br> the comments associated with the post are displayed. |PASS|
+|Create Post|As a logged in user <br> When I click on the Add Post link <br> and enter valid data for the post <br> I am taken to the post detail page <br> with the new post loaded. |PASS|
+|Edit Post Form pre loaded |As a logged in user <br> When I click on the edit icon for a post <br> a form pre-populated with the post data is shown. |PASS|
+|Update Post|As a logged in user <br> When I click on the edit icon for a post <br> and I change the values in the form <br> and then I click on save <br> The form is saved. <br> I am taken back to the post detail page <br> The post dispalys the updated data. |PASS|
+|Change post image|As a logged in user <br> When I am editing the data on a post in the post edit page <br> and I select a new image <br> When I click on save <br> I am taken to the post detail page and the new image is shown.|PASS|
+|Form edit cancel button|As a logged in user<br> when i am on the edit post page <br> and I press the cancel button <br> I am returned to the post detail page.|PASS|
+|Field validation|As a logged in user <br> if I leave the title blank and click on submit<br> a warning is displayed. |PASS|
+|Image validation|As a logged in user <br> if I try to use an image larger than 2MB in size <br> When I submit the form a warning is displayed. |PASS|
+|Filter Post by category|As a user <br> when i select a category from the dropdown menu on the posts page <br> all the posts of that type are displayed.|PASS|
+|Search Posts|As a user <br> when I enter search terms in the search bar <br> posts with those terms in the title are displayed.|PASS|
+|Complex search|As a user <br> when I enter search terms in the search bar <br> and select a category from the dropdown menu <br> all the posts of that category and with the terms in the title are displayed. |PASS|
+|No results|As a user <br> if no results from a search are found <br> the no search page is shown (empty refrigerator image).|PASS|
 
 # CRUD for Comments test cases
 | Test Description              | Test | Result |
