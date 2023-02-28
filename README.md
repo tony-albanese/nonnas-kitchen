@@ -122,6 +122,29 @@ const FormSelections = ({ controlName, onChangeHandler, options }) => {
 ```
 To generate the list, the map function is called which iterates over the objects in the list and constructions an **option** element and sets its value and text from the passed in objects list. Since the values are unique, they can be used as the key.
 
++ CardEdit Component  
+This stateless component returns a Bootstrap CardBody with two icons - one for delete and one for edit. The component accepts two callbacks, onEdit and onDelete to handle the clicks for these icons. There is a also a boolean showEdit to condtionally render the edit icon.
+
+```
+function CardEdit({onDelete, onEdit, showEdit}) {
+  return (
+    <Card.Body>
+      <Row className="d-flex justify-content-end">
+        <span onClick={onDelete}>
+          <i className="fa-regular fa-trash-can"></i>
+        </span>
+
+        {showEdit ? (
+        <span onClick={onEdit}>
+          <i className="fa-regular fa-pen-to-square"></i>
+        </span> 
+        ) : (<></>)}
+      </Row>
+    </Card.Body>
+  );
+}
+```
+
 + Reusable Modal
 This modal component can be called from multiple components to either display warnings to the user or ask for confirmation before an action takes place. The message, title, and handlers to handle click events on the button are passed in as props.
 ```
