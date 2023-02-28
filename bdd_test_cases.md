@@ -80,11 +80,11 @@
 # Responsiveness Test Cases
 | Test Description              | Test | Result |
 |-------------------------------|------------------------------------------|--------|
-|Navbar responsiveness|||
-|Sign in page respinsiveness|||
-|Sign up page responsiveness|||
-|Post Create Form|||
-|Post Edit Form|||
-|Recipe Create Form|||
-|Post detail page|||
-|Recipe detail page|||
+|Navbar responsiveness|As a user <br> the navbar items collapse into a toggle menu <br> on large screens and smaller|PASS|
+|Sign in page respinsiveness|As a user <br> and I navigate to the sign in page <br> the image and form fields appear in a single column on smaller screens.  |PASS|
+|Sign up page responsiveness|As a user <br> and I navigate to the sign up page <br> the image and form fields appear in a single column on smaller screens. |PASS |
+|Post Create Form|As a logged in user <br> and I navigate to the Add Post page <br> the image and form fields appear in a single column on smaller screens.|PASS|
+|Post Edit Form|As a logged in user <br> and I navigate to the edit post page <br> the image and form fields appear in a single column on smaller screens.|PASS|
+|Recipe Create Form|As a logged in user <br> and I navigate to the Add Recipe page <br> the image and form fields appear in a single column on smaller screens.|PASS|
+|Post detail page|As a logged in user <br> and I navigate to the Post detail <br> and I decrease the screen size <br> no elelements or text overlap <br> the image scales to fit the screen.|PASS|
+|Recipe detail page|As a logged in user <br> and I navigate to the Recipe detail <br> and I decrease the screen size <br> no elelements or text overlap <br> the ingredients and the instructions appear in a single column <br> the image scales to fit the screen.|PASS|
