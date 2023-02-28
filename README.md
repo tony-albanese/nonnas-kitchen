@@ -235,7 +235,7 @@ The project uses Code Institute's [Moments](https://github.com/Code-Institute-So
 + project structure - this is an industry standard way to organize a React Project
 + the NavBar - the implementation of the NavBar is also standard and code similarity is to be expected. The NavItems in the NavBar are unique
 + hamburger menu toggle - fixing the behavior of the hamburger menu toggle in the NavBar would be required in any project. I have chosen to use Code Institute's solution.
-+ the form elements for login and sign up - The styling is unique, but the form fields and methods used to login/register/logout are taken from the project. This process would be similar in any project. The styling and layout of these components is unique.
++ the form elements for login and sign up - the form fields and methods used to login/register/logout are taken from the project. This process would be similar in any project. The styling and layout of these components is unique.
 + axios interceptors - Web token management would be a problem in any project requiring user state management. I have chosen to use the solution in the Moments project as it would be a standard way of solving this problem.
 + context objects for user state - Managing user state and passing it through the component tree would be a common problem in any React app requiring a logged in user. Code Institute's solution using custom context hooks for getting and updating the logged in user was used because it is simple and follows industry practice.
 + infinite scroll - The code for implementing the infinite scroll was taken from the walkthrough as well as its implementation is standard.
@@ -487,6 +487,7 @@ Git was employed in this project and the project code hosted on GitHub. I used b
 ![github branches](screenshots/agile/branches.png)
 
 # Testing
+The testing done here is BDD - each test is described as a story in which a description of the software requirements, the user actions, and the expected outcome are given along with a result of PASS or FAIL. To reduce the length of the readme, here is a link to the [testing tables](bdd_test_cases.md) describing the various test cases.
 
 # Technology Used
 + [React Bootstrap](https://react-bootstrap-v4.netlify.app/) - This package contains ready to use React components that are compatible with the React library. This makes creating a responsive React app much simpler.
