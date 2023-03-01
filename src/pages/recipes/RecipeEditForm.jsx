@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import React, { useState, useRef, useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import {
   Container,
   Form,
@@ -33,6 +33,31 @@ function RecipeEditForm() {
 
   const imageInput = useRef(null);
   const history = useHistory();
+  const {id} = useParams();
+
+
+  useEffect(()=> {
+    const handleMount = async () =>{
+        try {
+          const {data} = await axiosRequest.get(`/recipes/${id}/`);
+          const {title,description, recipe_image, dish_type, is_author, difficulty, ingredients_list, procedure} = data;
+          if (is_author){
+            setRecipeData({title, description, recipe_image, dish_type, difficulty});
+            setStepsFields(procedure);
+            setIngredientFields(ingredients_list);
+          } else {
+            history.push("/");
+          }
+          //is_author ? setRecipeData({title, description, recipe_image, dish_type, difficulty}): history.push("/")
+        }catch (err){
+            console.log(err);
+        }
+    };
+    handleMount()
+  }, [id, history]);
+
+
+
 
   const handleChange = (event) => {
     setRecipeData({
@@ -70,9 +95,9 @@ function RecipeEditForm() {
 
 
     try {
-      const { data } = await axiosRequest.post("/recipes/", formData);
-      console.log(data);
-      history.push(`/recipes/${data.id}`);
+      //const { data } = await axiosRequest.post("/recipes/", formData);
+      //console.log(data);
+      //history.push(`/recipes/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
