@@ -520,6 +520,7 @@ The testing done here is BDD - each test is described as a story in which a desc
 
 # Unfixed bugs
 + Some of the elements that are rendered conditionally appear for a split second while the page is loading or refreshing. Upon final load, the state is correct. For example, while the recipe detail is loading, the icon for the delete is visible for a split second while, even though it should not be. The same goes for the comments on a post - while the comments are loading, the "No comments to display" text is visible. When the comments are loaded, the text is gone as it should be. This is a cosmetic issue that does not interefere with the overall experience of the site. However, it should be addressed in a future realease.
++ The unlike functionality does not work entirely as expected. The use can like a post - the icon and like count behave as expected. However, they cannot unlike a post immediately after liking it - the heart icon does not respond to clicks. If the user refreshes the page, they can unlike the post. This is a relatively small bug that does not severly impact the user experience but it should be addressed in a future release.
 
 # Features Left to Implement
 + The user should be allowed to comment and like a recipe as well as the backend has that functionality.
