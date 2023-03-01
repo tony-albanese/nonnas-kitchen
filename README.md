@@ -521,6 +521,13 @@ The testing done here is BDD - each test is described as a story in which a desc
 # Unfixed bugs
 + Some of the elements that are rendered conditionally appear for a split second while the page is loading or refreshing. Upon final load, the state is correct. For example, while the recipe detail is loading, the icon for the delete is visible for a split second while, even though it should not be. The same goes for the comments on a post - while the comments are loading, the "No comments to display" text is visible. When the comments are loaded, the text is gone as it should be. This is a cosmetic issue that does not interefere with the overall experience of the site. However, it should be addressed in a future realease.
 
+# Features Left to Implement
++ The user should be allowed to comment and like a recipe as well as the backend has that functionality.
++ The backend also allows for a rating to be attached to a recipe. A ratings bar and an average rating would be a nice feature to add as well.
++ Editing a Recipe would be also a good feature.
++ The site is supposed to be centered on food and feelings. Ideally, there should also be a feature to flag content that is inappropriate or hurtful and/or irrelevant to the site.
++ Allowing people to log in with a social media account would also be a good feature as that is expected in modern web applications requiring authentication.
+
 # Technology Used
 + [React Bootstrap](https://react-bootstrap-v4.netlify.app/) - This package contains ready to use React components that are compatible with the React library. This makes creating a responsive React app much simpler.
 + [axios](https://www.npmjs.com/package/axios) - A lightweight but very powerful library for making network calls in JavaScript. It includes utilities for managing and refreshing web tokens.
