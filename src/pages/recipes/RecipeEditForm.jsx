@@ -85,19 +85,19 @@ function RecipeEditForm() {
     
     formData.append("title", title);
     formData.append("description", description);
-    formData.append("recipe_image", recipe_image);
     formData.append("dish_type", dish_type);
     formData.append("difficulty", difficulty);
     formData.append("ingredients_list", ingredientJsonString);
     formData.append("procedure", procedureJsonString);
     formData.append("tags", "default");
-    formData.append("recipe_image", imageInput.current.files[0]);
 
+    if (imageInput?.current?.files[0]){
+      formData.append("recipe_image", imageInput.current.files[0]);
+    } 
 
     try {
-      //const { data } = await axiosRequest.post("/recipes/", formData);
-      //console.log(data);
-      //history.push(`/recipes/${data.id}`);
+      const { data } = await axiosRequest.put(`/recipes/${id}/`, formData);
+      history.push(`/recipes/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
