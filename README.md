@@ -4,6 +4,55 @@ Nonna's kitchen is an online space for people who love food to share their exper
 The main type content on the site is a blog post in which users can share an image of a particular food and provide a short (1-2 paragraph) description of their connection to that dish. For example, a user can share an image of a plate of *spaghetti al pomodorro*, (the classic spaghetti with tomato sauce) and then write how they are emotionally connected to that dish - that connection could be one of several types (Anecdote, History, Reminiscence, Tip). The idea here is for site users to be more specific in the type of information they are sharing and consuming. 
 
 There are many sites for sharing recipes and Twitter/Instagram/Facebook are full of food posts. However, this site is intended to focus on the *emotional* connection people have with food. That is how this site adds value to for its users.
+
+- [Nonna's Kitchen Frontend](#nonna-s-kitchen-frontend)
+- [User Stories](#user-stories)
+  * [Navigation and Authentication](#navigation-and-authentication)
+  * [BlogPost](#blogpost)
+  * [Likes](#likes)
+  * [Comments](#comments)
+  * [Recipes](#recipes)
+  * [Infinite Scroll](#infinite-scroll)
+- [React Features](#react-features)
+  * [Routing](#routing)
+  * [Web Token Refresh](#web-token-refresh)
+  * [Reusable Components](#reusable-components)
+- [UI Design](#ui-design)
+- [Color Scheme](#color-scheme)
+  * [NavBar](#navbar)
+  * [SignUp/SignIn Form](#signup-signin-form)
+  * [Create BlogPost Form](#create-blogpost-form)
+- [Post Component](#post-component)
+  * [Post Detail Component](#post-detail-component)
+  * [Post Page](#post-page)
+  * [Post Likes](#post-likes)
+  * [Post Comments](#post-comments)
+  * [Recipe](#recipe)
+  * [Recipe Create Form](#recipe-create-form)
+  * [Infinite Scroll](#infinite-scroll-1)
+- [Agile Development](#agile-development)
+  * [Outline of Sprints](#outline-of-sprints)
+    + [Sprint 1 - Project setup](#sprint-1---project-setup)
+    + [Sprint 2 - Making a Post](#sprint-2---making-a-post)
+    + [Sprint 3 - Likes, Comments](#sprint-3---likes--comments)
+    + [Sprint 4 - Style](#sprint-4---style)
+    + [Sprint 5 - Test Deploy](#sprint-5---test-deploy)
+    + [Sprint 6 - Recipes](#sprint-6---recipes)
+    + [Sprint 7 - Refactor components](#sprint-7---refactor-components)
+  * [Use of GitHub](#use-of-github)
+    + [Projects](#projects)
+- [Version Control](#version-control)
+- [Testing](#testing)
+- [Unfixed bugs](#unfixed-bugs)
+- [Features Left to Implement](#features-left-to-implement)
+- [Technology Used](#technology-used)
+- [Project Creation](#project-creation)
+  * [Deployment](#deployment)
+- [Credits](#credits)
+  * [Image Credits](#image-credits)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 # User Stories
 ## Navigation and Authentication
 + As a user I can view a navbar from every page so that I can navigate easily between pages
@@ -122,6 +171,29 @@ const FormSelections = ({ controlName, onChangeHandler, options }) => {
 ```
 To generate the list, the map function is called which iterates over the objects in the list and constructions an **option** element and sets its value and text from the passed in objects list. Since the values are unique, they can be used as the key.
 
++ CardEdit Component  
+This stateless component returns a Bootstrap CardBody with two icons - one for delete and one for edit. The component accepts two callbacks, onEdit and onDelete to handle the clicks for these icons. There is a also a boolean showEdit to condtionally render the edit icon.
+
+```
+function CardEdit({onDelete, onEdit, showEdit}) {
+  return (
+    <Card.Body>
+      <Row className="d-flex justify-content-end">
+        <span onClick={onDelete}>
+          <i className="fa-regular fa-trash-can"></i>
+        </span>
+
+        {showEdit ? (
+        <span onClick={onEdit}>
+          <i className="fa-regular fa-pen-to-square"></i>
+        </span> 
+        ) : (<></>)}
+      </Row>
+    </Card.Body>
+  );
+}
+```
+
 + Reusable Modal
 This modal component can be called from multiple components to either display warnings to the user or ask for confirmation before an action takes place. The message, title, and handlers to handle click events on the button are passed in as props.
 ```
@@ -145,15 +217,107 @@ function ModalAlert({show,  handleClose, onConfirm, title, message}) {
 }
 ```
 
++ List Display Component
+Both the steps and the ingredients in a recipe must be displayed as lists. This functionality is a perfect candidate to be extracted into its own component. I therefore designed a list displayer that accepts a list, a heading, and boolean as props. The component maps over the list and renders a list item element for each element in the list. The index is used for the key - this is not ideal but is acceptable in this case as there is no guarantee that the list item values will be different. The list unordered or ordered depending on the value set by the boolean called **ordered**. Since the list being passed in from the parent is a list of JSON objects, the Objects.value() method is used to extract the value. 
+
+```
+function ListDisplay({ list, ordered, heading }) {
+  return (
+    <div>
+      <h4 className={styles.h4}>{heading}</h4>
+
+      {ordered ? (
+        <ol>
+          {list.map((listItem, index) => (
+            <li className={styles.ListItem} key={index}>
+              {Object.values(listItem)}
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <ul>{list.map((listItem, index) => (
+          <li className={styles.ListItem} key={index}>
+            {Object.values(listItem)}
+          </li>
+        ))}</ul>
+      )}
+    </div>
+  );
+}
+```
+
++ List Entry Component
+The recipe steps and the ingredients must be entered in a similar way. Ideally, the user should have the ability to enter as many items as they like and delete the ones they do not. I therefore created a ListEntry component the accepts an initial set of fields, a setFields callback from the parent, and a label to display at the top of the form.
+
+```
+function ListEntry({ fields, setFields, label }) {
+
+  const addInputElement = (event) => {
+    let newField = { item: "" };
+    setFields([...fields, newField]);
+  };
+
+  const removeInputElement = (index) => {
+    let data = [...fields];
+    data.splice(index, 1);
+    setFields(data);
+  };
+
+  const handleChange = (index, event) => {
+...
+  };
+
+  return (
+    <>
+      <h3 className={`text-center ${styles.Text}`}>{label}</h3>
+      <Form.Group className="input-group-append">
+        <Row>
+          <p className={`text-center ${styles.Text}`}>Add a Field</p>
+          <i onClick={addInputElement} className="fa-solid fa-circle-plus"></i>
+        </Row>
+      </Form.Group>
+
+      {fields.map((input, index) => {
+        return (
+          <Row key={index}>
+            <Form.Group className="input-group-append">
+              <Form.Control
+                name="item"
+                placeholder="add a step"
+                value={input.item}
+                onChange={(event) => handleChange(index, event)}
+              />
+
+              <i
+                className="fa-regular fa-trash-can"
+                onClick={(event) => removeInputElement(index)}
+              ></i>
+            </Form.Group>
+          </Row>
+        );
+      })}
+    </>
+  );
+}
+```
+
+
 # UI Design
 The project uses Code Institute's [Moments](https://github.com/Code-Institute-Solutions/moments) project as a starting framework as both sites involve creating, filtering, and searching posts. Therefore, there are is a certain level of code overlap. The following parts of Nonna's Kitchen are taken from the Moments project:
 + project structure - this is an industry standard way to organize a React Project
 + the NavBar - the implementation of the NavBar is also standard and code similarity is to be expected. The NavItems in the NavBar are unique
 + hamburger menu toggle - fixing the behavior of the hamburger menu toggle in the NavBar would be required in any project. I have chosen to use Code Institute's solution.
-+ the form elements for login and sign up - The styling is unique, but the form fields and methods used to login/register/logout are taken from the project. This process would be similar in any project. The styling and layout of these components is unique.
++ the form elements for login and sign up - the form fields and methods used to login/register/logout are taken from the project. This process would be similar in any project. The styling and layout of these components is unique.
 + axios interceptors - Web token management would be a problem in any project requiring user state management. I have chosen to use the solution in the Moments project as it would be a standard way of solving this problem.
 + context objects for user state - Managing user state and passing it through the component tree would be a common problem in any React app requiring a logged in user. Code Institute's solution using custom context hooks for getting and updating the logged in user was used because it is simple and follows industry practice.
 + infinite scroll - The code for implementing the infinite scroll was taken from the walkthrough as well as its implementation is standard.
++ refresh token request - The code to prevent an unauthenticated user from requesting a refreshed access token is taken directly from the Moments walkthrough. This code includes setting the timestamp, checking if it is valid, and deleting it upon logout.
+
+# Color Scheme
+The base color scheme for the site was generated with [coolers](https://coolors.co/) using the grandmother image as a starting point.  
+![color scheme](screenshots/pallete.png)
+
+Throughout the site, images were also chosen which had colors simialar to those in the pallate so the site is unified. Where needed, the shades were adjusted for contrast. In addition, on the sign-in and sign-up forms the colors for the buttons were taken using a color picker from the images on those pages for a blend of consistency and contrast.
 
 ## NavBar
 The NavBar component displays the standard items a user expects to see. What is rendered depends on the user's authentication status. If they are logged out, they are presented with links to sign in and sign up. If they are authenticated, links to add a post, a recipe, and their custom content are presented as well as a logout link. The NavBar is responsive. On medium size screens the menu collapses into a menu with a hamburger icon.
@@ -318,7 +482,7 @@ What does minimally functioning mean in this context? As with any project, there
 * Aesthetics/Design - This is of course important in an advanced front end project, but the goal here is to have just minimal styling at first and then as time permits improve the visual design. The reasons are two-fold. 1) Having a beautiful design is meaningless if the code behind it does not function and 2) My particular focus in learning is getting the code behind the front end as clean as possible.
 
 ## Outline of Sprints
-The following is an outline of the sprints that were done during the completion of this project. Each sprint was designed to be from one to three days' work.
+The following is an outline of the sprints that were done during the completion of this project. Each sprint was designed to be from one to three full days' work.
 
 ### Sprint 1 - Project setup 
 Goal: Project environment, authentication functionality, bare minimum styling
@@ -381,18 +545,45 @@ Time: Two Days
 GOAL: Find repeated code and extract into reusable components.
 
 
-
 ## Use of GitHub
 Each larger scale task was given a GitHub issue. This included the user stories, and anything else that would require attention. Issues were assigned labels to help prioritize them in the work flow. As can be seen, some issues are marked as "Must Do" while others are marked as "Should Do". Some issues are enhancements, others are questions requiring research. Often, if I ran into a problem that was not critical to fix or if I thought of a feature that I would like to add, I created an issue and assigned it a label to help me keep track of how important it is. The key is that essential features and critical issues were fixed first.
+
+> Some of the issues in this project:
+![issues](screenshots/agile/agile_issues.png)
 ### Projects
 Issues often are related to each other - this includes user stories and additional features. For example, user stories around CRUD operations belong together as well as issues involved with search and styling. To help keep issues organized, those that are related to each other were organized into projects.
+
+> Here are some of the GitHub projects associated with this app. The project dedicated to the front end is "Nonna's Kitchen Front End"  
+![github projects](screenshots/agile/projects.png)
+
+In the "Nonna's Kitchen Front End" project, one can see all the issues that were completed during the course of the project.
+![agile_project](screenshots/agile/agile_project.png)
+
+# Version Control
+Git was employed in this project and the project code hosted on GitHub. I used branches in order to keep the main branch as "pure" as possible. The strategy was to have each branch dedicated to one feature or fix. Once I was satisfied at a particular stage of a branch, I would navigate to GitHub, click on my repository, select the branch, and create a pull request. GitHub would then check if there are no conflicts and indicate if the branch could be merged into main. (One can choose which branch to merge into.) Once the pull request is created, I navigated down, wrote a comment, and clicked on the green Merge button and the commits would be merged into the main branch. I tried to keep commits as atomic as possible - focusing only on one element or feature at a time. This was not always the case, but most of the commits are relatively small changes. In addition, I tried not to mix features in a branch. Small tweaks to other features were allowed, but the majority of the work on each branch was dedicated to that one feature. This is in line with the agile method of tackling a project - the team (in this case me) should only work on one feature at a time.
+
+![github branches](screenshots/agile/branches.png)
+
 # Testing
+The testing done here is BDD - each test is described as a story in which a description of the software requirements, the user actions, and the expected outcome are given along with a result of PASS or FAIL. To reduce the length of the readme, here is a link to the [testing tables](bdd_test_cases.md) describing the various test cases.
+
+# Unfixed bugs
++ Some of the elements that are rendered conditionally appear for a split second while the page is loading or refreshing. Upon final load, the state is correct. For example, while the recipe detail is loading, the icon for the delete is visible for a split second while, even though it should not be. The same goes for the comments on a post - while the comments are loading, the "No comments to display" text is visible. When the comments are loaded, the text is gone as it should be. This is a cosmetic issue that does not interefere with the overall experience of the site. However, it should be addressed in a future realease.
++ The unlike functionality does not work entirely as expected. The use can like a post - the icon and like count behave as expected. However, they cannot unlike a post immediately after liking it - the heart icon does not respond to clicks. If the user refreshes the page, they can unlike the post. This is a relatively small bug that does not severly impact the user experience but it should be addressed in a future release.
+
+# Features Left to Implement
++ The user should be allowed to comment and like a recipe as well as the backend has that functionality.
++ The backend also allows for a rating to be attached to a recipe. A ratings bar and an average rating would be a nice feature to add as well.
++ Editing a Recipe would be also a good feature.
++ The site is supposed to be centered on food and feelings. Ideally, there should also be a feature to flag content that is inappropriate or hurtful and/or irrelevant to the site.
++ Allowing people to log in with a social media account would also be a good feature as that is expected in modern web applications requiring authentication.
 
 # Technology Used
 + [React Bootstrap](https://react-bootstrap-v4.netlify.app/) - This package contains ready to use React components that are compatible with the React library. This makes creating a responsive React app much simpler.
 + [axios](https://www.npmjs.com/package/axios) - A lightweight but very powerful library for making network calls in JavaScript. It includes utilities for managing and refreshing web tokens.
 + [react-router-dom](https://reactrouter.com/en/main) - A simple to use React library to simplify routing and navigation without the need to refresh the page.
 + [react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component) - A library that simplifies the implementation of an infinite scroll for long lists of data.
++ [jwt-decode](https://www.npmjs.com/package/jwt-decode) - A library to help decode jason web tokens. This was used in the moments walkthrough to prevent the user from making network requests to refresh tokens if they are not logged in.
 
 
 # Project Creation
@@ -432,21 +623,17 @@ The app is then deployed to Heroku by the following steps:
 
 # Credits
 + The initial template for this app was from Code Institute's [Moments project template](https://github.com/Code-Institute-Org/cra-template-moments.git). 
+
++ The idea for building the dynamic form fields in the ListEntry component was taken from this excellent article on freeCodeCamp: [How to Build Dynamic Forms in React](https://www.freecodecamp.org/news/build-dynamic-forms-in-react/).
+## Image Credits
 + The upload image was taken from Code Institute.
 
 + The grandmother icon is from <a href="https://www.flaticon.com/free-icons/grandmother" title="grandmother icons">Grandmother icons created by Freepik - Flaticon</a>
 + The sign in photo is from Photo by [Andrea Piacquadio](https://www.pexels.com/photo/crop-cook-preparing-noodles-in-kitchen-3771814/).
-+ Image of family cooking is from <a href="https://www.freepik.com/free-vector/mother-father-with-kids-cooking-dishes-kitchen_9650120.htm#query=recipes&position=8&from_view=search&track=sph">pch.vector</a> on Freepik
-+ Young women presenting food is from <a href="https://www.freepik.com/free-vector/young-women-presenting-high-fat-foods_7732680.htm#query=recipes&position=9&from_view=search&track=sph">Image by pch.vector</a> on Freepik
-+ Image of healthy food is from <a href="https://www.freepik.com/free-vector/people-keeping-healthy-diet_8610283.htm#query=recipes&position=2&from_view=search&track=sph">Image by pch.vector</a> on Freepik
 + Grandmother and granddaughter cooking<a href="https://www.freepik.com/free-vector/happy-grandma-granddaughter-cooking-together-kitchen-interior-with-utensils-table-grandmother-grandchild-kneading-dough-baking-pie-with-berries-family-relationship_28849871.htm#query=grandmother%20kitchen&position=3&from_view=search&track=ais">Image by studio4rt</a> on Freepik
 
 + Grandmother with Grandchild - Image by <a href="https://www.freepik.com/free-vector/flat-grandparents-day-illustration-with-grandmother-grandchild_28148596.htm#query=grandmother%20kitchen&position=17&from_view=search&track=ais">Freepik</a>
 
++ Credit for the 404 page image: <a href="https://www.freepik.com/free-vector/internet-network-warning-404-error-page-file-found-web-page-internet-error-page-issue-found-network-404-error-present-by-man-sleep-display_21586054.htm#query=404%20page&position=3&from_view=search&track=sph">Image by jcomp</a> on Freepik
 
-Credit for the floating actio button: [FAB](https://plainenglish.io/blog/how-to-create-a-floating-action-button-with-pure-css-positioning-e52ba498083f)
-
-
-Credit for the 404 page image: <a href="https://www.freepik.com/free-vector/internet-network-warning-404-error-page-file-found-web-page-internet-error-page-issue-found-network-404-error-present-by-man-sleep-display_21586054.htm#query=404%20page&position=3&from_view=search&track=sph">Image by jcomp</a> on Freepik
-
-Credit for empty refrigerator image: <a href="https://www.freepik.com/free-vector/refridgerator-with-opened-door_25538317.htm#query=empty%20refrigerator&position=33&from_view=search&track=ais">Image by brgfx</a> on Freepik
++ Credit for empty refrigerator image: <a href="https://www.freepik.com/free-vector/refridgerator-with-opened-door_25538317.htm#query=empty%20refrigerator&position=33&from_view=search&track=ais">Image by brgfx</a> on Freepik
