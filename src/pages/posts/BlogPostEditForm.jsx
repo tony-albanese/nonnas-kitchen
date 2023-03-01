@@ -66,7 +66,6 @@ function BlogPostEditForm() {
 
     try {
       const { data } = await axiosRequest.put(`/posts/${id}/`, formData);
-      console.log(data);
       history.push(`/posts/${id}`);
     } catch (err) {
       console.log(err);
