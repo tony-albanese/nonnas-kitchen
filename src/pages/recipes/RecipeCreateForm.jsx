@@ -12,8 +12,10 @@ import {
 import FormSelections from "../../components/FormSelections";
 import Upload from "../../assets/old-woman.png";
 import ListEntry from "../../components/ListEntry";
+import Warning from "../../components/Warning";
 import styles from "../../styles/RecipeCreateEditForm.module.css";
 import { axiosRequest } from "../../api/axiosDefaults";
+
 
 function RecipeCreateForm() {
   const [errors, setErrors] = useState();
@@ -29,6 +31,8 @@ function RecipeCreateForm() {
 
   const [stepsFields, setStepsFields] = useState([{ item: "" }]);
   const [ingredientFields, setIngredientFields] = useState([{ item: "" }]);
+
+  const [show, setShow] = useState(false);
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -67,19 +71,40 @@ function RecipeCreateForm() {
     formData.append("tags", "default");
     formData.append("recipe_image", imageInput.current.files[0]);
 
+    if (checkListFieldsEmpty()){
+      setShow(true);
+    } else {
 
-    try {
-      const { data } = await axiosRequest.post("/recipes/", formData);
-      history.push(`/recipes/${data.id}`);
-    } catch (err) {
-      console.log(err);
-      if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
+      try {
+        const { data } = await axiosRequest.post("/recipes/", formData);
+        history.push(`/recipes/${data.id}`);
+      } catch (err) {
+        console.log(err);
+        if (err.response?.status !== 401) {
+          setErrors(err.response?.data);
+        }
+      }
+    }
+  };
+
+  const checkListFieldsEmpty = () =>{
+    const ingredients = Object.values(ingredientFields);
+    const steps = Object.values(stepsFields);
+
+    for ( let i of ingredients){
+      if (i.item === ""){
+        return true;
       }
     }
 
+    for ( let i of steps){
+      if (i.item === ""){
+        return true;
+      }
+    }
 
-  };
+    return false;
+  }
 
   const difficultyOptions = [
     { easy: "Easy" },
@@ -229,6 +254,12 @@ function RecipeCreateForm() {
         </Row>
       </Container>
     </Form>
+    <Warning
+        show={show}
+        handleClose={() => setShow(false)}
+        title="Nonna Says..."
+        message={"No blank instructions or ingredients."}
+      />
     </>
   );
 }
