@@ -264,6 +264,12 @@ The project uses Code Institute's [Moments](https://github.com/Code-Institute-So
 + infinite scroll - The code for implementing the infinite scroll was taken from the walkthrough as well as its implementation is standard.
 + refresh token request - The code to prevent an unauthenticated user from requesting a refreshed access token is taken directly from the Moments walkthrough. This code includes setting the timestamp, checking if it is valid, and deleting it upon logout.
 
+# Color Scheme
+The base color scheme for the site was generated with [coolers](https://coolors.co/) using the grandmother image as a starting point.  
+![color scheme](screenshots/pallete.png)
+
+Throughout the site, images were also chosen which had colors simialar to those in the pallate so the site is unified. Where needed, the shades were adjusted for contrast. In addition, on the sign-in and sign-up forms the colors for the buttons were taken using a color picker from the images on those pages for a blend of consistency and contrast.
+
 ## NavBar
 The NavBar component displays the standard items a user expects to see. What is rendered depends on the user's authentication status. If they are logged out, they are presented with links to sign in and sign up. If they are authenticated, links to add a post, a recipe, and their custom content are presented as well as a logout link. The NavBar is responsive. On medium size screens the menu collapses into a menu with a hamburger icon.
 
