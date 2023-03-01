@@ -14,6 +14,7 @@ import RecipesPage from "./pages/recipes/RecipesPage";
 import RecipePage from "./pages/recipes/RecipePage";
 import RecipeCreateForm from "./pages/recipes/RecipeCreateForm";
 import PageNotFound from "./components/PageNotFound";
+import RecipeEditForm from "./pages/recipes/RecipeEditForm";
 
 function App() {
   const curentUser = useCurrentUser();
@@ -37,6 +38,7 @@ function App() {
               <Route exact path="/posts/:id/edit" render={()=><BlogPostEditForm />} />
               <Route exact path="/posts/:id" render={()=><PostPage />}/>
               <Route exact path="/recipes/create" render={()=><RecipeCreateForm/>} />
+              <Route exact path="/recipes/:id/edit" render={()=><RecipeEditForm />} />
               <Route exact path="/recipes/:id" render={()=><RecipePage/>} />
               <Route exact path="/recipes" render={()=><RecipesPage message="No results. Use different search terms or like a post."/>}/>
               
