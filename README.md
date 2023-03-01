@@ -87,6 +87,7 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
 + As a user, I can see list of recipes on the site so that I have the chance to learn how to cook a new dish.
 + As a logged in user, I can create a recipe so that others users can learn how to make a dish that is important to me.
 + As a logged in user, I can delete a recipe I posted so that I can remove content I no longer wish others to see.
++ As a logged in user I can edit a recipe so that I can correct any mistakes I have made.
 
 ## Infinite Scroll
 + As a user, I can see a list of posts in a long list so I do not have to navigate through pagination links.
@@ -456,18 +457,25 @@ When the user clicks on the recipe image, they are taken to the detail page wher
 
 > + As a user, I can see list of recipes on the site so that I have the chance to learn how to cook a new dish.
 
-If the user is logged in and they click on a post they own, a trash icon appears at the bottom of the post that allows them to delete it. A modal dialog appears asking them to confirm the delete. If they do, the post is deleted and they are returned to the previous page. If they cancel, the modal is dismissed.
+If the user is logged in and they click on a post they own, a trash icon appears at the bottom of the post that allows them to delete it. A modal dialog appears asking them to confirm the delete. If they do, the post is deleted and they are returned to the previous page. If they cancel, the modal is dismissed. There is also an icon to allow them to edit a recipe. Upon clicking the edit icon, they are taken to the RecipeEditForm and the data is loaded for them to edit.
 
-![recipe with delete](screenshots/recipe/recipe_with_delete.png)
+![recipe with delete](screenshots/recipe/recipe_edit_delete_icons.png)
 This is the confirm delete modal.
 ![recipe delete modal](screenshots/recipe/confirm_delete_recipe_modal.png) 
 > + As a logged in user, I can delete a recipe I posted so that I can remove content I no longer wish others to see.
 
 ## Recipe Create Form
-The recipe create form follows the same layout principles as the post create form. Half of the screen is an image of a granny which the users click on to upload an image. The other half consists of the form fields for the user to enter recipe details. On smallers screens, all of the elements collapse into a single column. For the ingredients and instructions lists, users can add as many fields as they like by clicking on the plus buttons. Users can also delete fields they no longer want by clicking on the trash icon next to each field. 
-![recipe edit form](screenshots/recipe/recipe_create_form_large.png)
+The recipe create form follows the same layout principles as the post create form. Half of the screen is an image of a granny which the users click on to upload an image. The other half consists of the form fields for the user to enter recipe details. On smallers screens, all of the elements collapse into a single column. For the ingredients and instructions lists, users can add as many fields as they like by clicking on the plus buttons. Users can also delete fields they no longer want by clicking on the trash icon next to each field. They are not allowed to delete all the fields. There is a check to make sure there is at least one input field before it is allowed to be removed from the form. 
+![recipe edit form](screenshots/recipe/recipe_create_form_large.png)  
+
+In addtion, if there are any blank fields in either the recipe or the ingredients list, then a dialog appears telling them that blank entries are not allowed. They cannot submit with blank entries.  
+![blank list warning](screenshots/recipe/blank_list_warning.png)  
 
 > + As a logged in user, I can create a recipe so that others users can learn how to make a dish that is important to me.
+
+## Recipe Edit
+When the user clicks on the edit icon for a post they own, the PostEditForm component is loaded and the fields are pre-populated with the form data. The user can edit the data as needed and submit upon which they are taken back to the Post page and the updated data. As with the recipe create form, the user is warned that they are not allowed to have blank entries in the recipe or instructions list.
+> + As a logged in user I can edit a recipe so that I can correct any mistakes I have made.
 
 ## Infinite Scroll
 The api returns results in groups of ten (BlogPost or Comments) in order to conserve bandwidth. For the user to continue accessing the data, they would have to see either a pagination widget at the bottom of the page or the next batch of results should be downloaded automatically. The latter is what today's users expect. The react-infinite-scroll-component library was used to simplify this process. When the user reaches the bottom of the page, the next batch of results are loaded automatically.
@@ -574,7 +582,6 @@ The testing done here is BDD - each test is described as a story in which a desc
 # Features Left to Implement
 + The user should be allowed to comment and like a recipe as well as the backend has that functionality.
 + The backend also allows for a rating to be attached to a recipe. A ratings bar and an average rating would be a nice feature to add as well.
-+ Editing a Recipe would be also a good feature.
 + The site is supposed to be centered on food and feelings. Ideally, there should also be a feature to flag content that is inappropriate or hurtful and/or irrelevant to the site.
 + Allowing people to log in with a social media account would also be a good feature as that is expected in modern web applications requiring authentication.
 
