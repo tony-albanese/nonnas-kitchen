@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import FormSelections from "../../components/FormSelections";
 import Upload from "../../assets/old-woman.png";
+import Warning from "../../components/Warning";
 import ListEntry from "../../components/ListEntry";
 import styles from "../../styles/RecipeCreateEditForm.module.css";
 import { axiosRequest } from "../../api/axiosDefaults";
@@ -30,6 +31,7 @@ function RecipeEditForm() {
 
   const [stepsFields, setStepsFields] = useState([{ item: "" }]);
   const [ingredientFields, setIngredientFields] = useState([{ item: "" }]);
+  const [show, setShow] = useState(false);
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -48,7 +50,6 @@ function RecipeEditForm() {
           } else {
             history.push("/");
           }
-          //is_author ? setRecipeData({title, description, recipe_image, dish_type, difficulty}): history.push("/")
         }catch (err){
             console.log(err);
         }
@@ -95,18 +96,40 @@ function RecipeEditForm() {
       formData.append("recipe_image", imageInput.current.files[0]);
     } 
 
-    try {
-      const { data } = await axiosRequest.put(`/recipes/${id}/`, formData);
-      history.push(`/recipes/${data.id}`);
-    } catch (err) {
-      console.log(err);
-      if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
+    if(checkListFieldsEmpty()){
+      setShow(true);
+    }else{
+      try {
+        const { data } = await axiosRequest.put(`/recipes/${id}/`, formData);
+        history.push(`/recipes/${data.id}`);
+      } catch (err) {
+        console.log(err);
+        if (err.response?.status !== 401) {
+          setErrors(err.response?.data);
+        }
+      }
+    }
+    
+  };
+
+  const checkListFieldsEmpty = () =>{
+    const ingredients = Object.values(ingredientFields);
+    const steps = Object.values(stepsFields);
+
+    for ( let i of ingredients){
+      if (i.item === ""){
+        return true;
       }
     }
 
+    for ( let i of steps){
+      if (i.item === ""){
+        return true;
+      }
+    }
 
-  };
+    return false;
+  }
 
   const difficultyOptions = [
     { easy: "Easy" },
@@ -256,6 +279,12 @@ function RecipeEditForm() {
         </Row>
       </Container>
     </Form>
+    <Warning
+        show={show}
+        handleClose={() => setShow(false)}
+        title="Nonna Says..."
+        message={"No blank instructions or ingredients."}
+      />
     </>
   );
 
