@@ -4,6 +4,55 @@ Nonna's kitchen is an online space for people who love food to share their exper
 The main type content on the site is a blog post in which users can share an image of a particular food and provide a short (1-2 paragraph) description of their connection to that dish. For example, a user can share an image of a plate of *spaghetti al pomodorro*, (the classic spaghetti with tomato sauce) and then write how they are emotionally connected to that dish - that connection could be one of several types (Anecdote, History, Reminiscence, Tip). The idea here is for site users to be more specific in the type of information they are sharing and consuming. 
 
 There are many sites for sharing recipes and Twitter/Instagram/Facebook are full of food posts. However, this site is intended to focus on the *emotional* connection people have with food. That is how this site adds value to for its users.
+
+- [Nonna's Kitchen Frontend](#nonna-s-kitchen-frontend)
+- [User Stories](#user-stories)
+  * [Navigation and Authentication](#navigation-and-authentication)
+  * [BlogPost](#blogpost)
+  * [Likes](#likes)
+  * [Comments](#comments)
+  * [Recipes](#recipes)
+  * [Infinite Scroll](#infinite-scroll)
+- [React Features](#react-features)
+  * [Routing](#routing)
+  * [Web Token Refresh](#web-token-refresh)
+  * [Reusable Components](#reusable-components)
+- [UI Design](#ui-design)
+- [Color Scheme](#color-scheme)
+  * [NavBar](#navbar)
+  * [SignUp/SignIn Form](#signup-signin-form)
+  * [Create BlogPost Form](#create-blogpost-form)
+- [Post Component](#post-component)
+  * [Post Detail Component](#post-detail-component)
+  * [Post Page](#post-page)
+  * [Post Likes](#post-likes)
+  * [Post Comments](#post-comments)
+  * [Recipe](#recipe)
+  * [Recipe Create Form](#recipe-create-form)
+  * [Infinite Scroll](#infinite-scroll-1)
+- [Agile Development](#agile-development)
+  * [Outline of Sprints](#outline-of-sprints)
+    + [Sprint 1 - Project setup](#sprint-1---project-setup)
+    + [Sprint 2 - Making a Post](#sprint-2---making-a-post)
+    + [Sprint 3 - Likes, Comments](#sprint-3---likes--comments)
+    + [Sprint 4 - Style](#sprint-4---style)
+    + [Sprint 5 - Test Deploy](#sprint-5---test-deploy)
+    + [Sprint 6 - Recipes](#sprint-6---recipes)
+    + [Sprint 7 - Refactor components](#sprint-7---refactor-components)
+  * [Use of GitHub](#use-of-github)
+    + [Projects](#projects)
+- [Version Control](#version-control)
+- [Testing](#testing)
+- [Unfixed bugs](#unfixed-bugs)
+- [Features Left to Implement](#features-left-to-implement)
+- [Technology Used](#technology-used)
+- [Project Creation](#project-creation)
+  * [Deployment](#deployment)
+- [Credits](#credits)
+  * [Image Credits](#image-credits)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 # User Stories
 ## Navigation and Authentication
 + As a user I can view a navbar from every page so that I can navigate easily between pages
