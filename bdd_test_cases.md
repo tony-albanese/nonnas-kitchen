@@ -66,7 +66,7 @@
 |Like count increment|As a logged in user <br> when I like a post <br> the like count is incremented by 1|PASS|
 |Like count decrement|As a logged in user <br> when I unlike a post <br> the like count is decremented by 1|PASS|
 |List of liked posts|As a logged in user <br> when I click on the Likes link <br> a list of all the posts I have liked is displayed.|PASS|
-|Unlike post|As a logged in user <br> when I click on a the like icon for a post I have liked <br> |Partial pass - add remark. The heart icon is unreponsive to clicks after the like - the user cannot unlike. Upon page reload, the icon responds to clicks and the user can unlike.|
+|Unlike post|As a logged in user <br> when I click on a the like icon for a post I have liked <br> |Partial pass - The heart icon is unreponsive to clicks after the like - the user cannot unlike. Upon page reload, the icon responds to clicks and the user can unlike.|
 
 # Recipe test cases
 | Test Description              | Test | Result |
