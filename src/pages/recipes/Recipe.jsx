@@ -39,6 +39,10 @@ const Recipe = (props) => {
     setShow(true);
   };
 
+  const handleEdit = (event) => {
+    history.push(`/recipes/${id}/edit`);
+  };
+
   const handleDelete = async () => {
     try {
       await axiosResponse.delete(`/recipes/${id}`);
@@ -92,7 +96,7 @@ const Recipe = (props) => {
           {details}
         </Card.Body>
         {is_owner && recipePage && (
-          <CardEdit showEdit={false} onDelete={showConfirmDeleteModal} />
+          <CardEdit showEdit={true} onDelete={showConfirmDeleteModal} onEdit={handleEdit} />
         )}
       </Card>
 
