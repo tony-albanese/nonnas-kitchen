@@ -9,9 +9,11 @@ function ListEntry({ fields, setFields, label }) {
   };
 
   const removeInputElement = (index) => {
-    let data = [...fields];
+    if(fields.length > 1){
+        let data = [...fields];
     data.splice(index, 1);
     setFields(data);
+    }
   };
 
   const handleChange = (index, event) => {

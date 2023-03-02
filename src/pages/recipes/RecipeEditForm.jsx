@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import React, { useState, useRef, useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import {
   Container,
   Form,
@@ -11,13 +11,13 @@ import {
 } from "react-bootstrap";
 import FormSelections from "../../components/FormSelections";
 import Upload from "../../assets/old-woman.png";
-import ListEntry from "../../components/ListEntry";
 import Warning from "../../components/Warning";
+import ListEntry from "../../components/ListEntry";
 import styles from "../../styles/RecipeCreateEditForm.module.css";
 import { axiosRequest } from "../../api/axiosDefaults";
 
-
-function RecipeCreateForm() {
+function RecipeEditForm() {
+  
   const [errors, setErrors] = useState();
   const [recipeData, setRecipeData] = useState({
     title: "",
@@ -31,11 +31,34 @@ function RecipeCreateForm() {
 
   const [stepsFields, setStepsFields] = useState([{ item: "" }]);
   const [ingredientFields, setIngredientFields] = useState([{ item: "" }]);
-
   const [show, setShow] = useState(false);
 
   const imageInput = useRef(null);
   const history = useHistory();
+  const {id} = useParams();
+
+
+  useEffect(()=> {
+    const handleMount = async () =>{
+        try {
+          const {data} = await axiosRequest.get(`/recipes/${id}/`);
+          const {title,description, recipe_image, dish_type, is_author, difficulty, ingredients_list, procedure} = data;
+          if (is_author){
+            setRecipeData({title, description, recipe_image, dish_type, difficulty});
+            setStepsFields(procedure);
+            setIngredientFields(ingredients_list);
+          } else {
+            history.push("/");
+          }
+        }catch (err){
+            console.log(err);
+        }
+    };
+    handleMount()
+  }, [id, history]);
+
+
+
 
   const handleChange = (event) => {
     setRecipeData({
@@ -63,20 +86,21 @@ function RecipeCreateForm() {
     
     formData.append("title", title);
     formData.append("description", description);
-    formData.append("recipe_image", recipe_image);
     formData.append("dish_type", dish_type);
     formData.append("difficulty", difficulty);
     formData.append("ingredients_list", ingredientJsonString);
     formData.append("procedure", procedureJsonString);
     formData.append("tags", "default");
-    formData.append("recipe_image", imageInput.current.files[0]);
 
-    if (checkListFieldsEmpty()){
+    if (imageInput?.current?.files[0]){
+      formData.append("recipe_image", imageInput.current.files[0]);
+    } 
+
+    if(checkListFieldsEmpty()){
       setShow(true);
-    } else {
-
+    }else{
       try {
-        const { data } = await axiosRequest.post("/recipes/", formData);
+        const { data } = await axiosRequest.put(`/recipes/${id}/`, formData);
         history.push(`/recipes/${data.id}`);
       } catch (err) {
         console.log(err);
@@ -85,6 +109,7 @@ function RecipeCreateForm() {
         }
       }
     }
+    
   };
 
   const checkListFieldsEmpty = () =>{
@@ -262,6 +287,9 @@ function RecipeCreateForm() {
       />
     </>
   );
+
+
+
 }
 
-export default RecipeCreateForm;
+export default RecipeEditForm

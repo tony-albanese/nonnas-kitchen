@@ -13,7 +13,6 @@ function CommentCreateForm({postId, setComments, setPost}) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(`Comment submitted for post with id: ${postId}`);
         const { data } = await axiosResponse.post("/comments/", {
             body: body,
             blog_post: postId,

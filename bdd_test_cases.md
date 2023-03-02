@@ -66,7 +66,7 @@
 |Like count increment|As a logged in user <br> when I like a post <br> the like count is incremented by 1|PASS|
 |Like count decrement|As a logged in user <br> when I unlike a post <br> the like count is decremented by 1|PASS|
 |List of liked posts|As a logged in user <br> when I click on the Likes link <br> a list of all the posts I have liked is displayed.|PASS|
-|Unlike post|As a logged in user <br> when I click on a the like icon for a post I have liked <br> |Partial pass - add remark. The heart icon is unreponsive to clicks after the like - the user cannot unlike. Upon page reload, the icon responds to clicks and the user can unlike.|
+|Unlike post|As a logged in user <br> when I click on a the like icon for a post I have liked <br> |Partial pass - The heart icon is unreponsive to clicks after the like - the user cannot unlike. Upon page reload, the icon responds to clicks and the user can unlike.|
 
 # Recipe test cases
 | Test Description              | Test | Result |
@@ -76,6 +76,13 @@
 |Recipe delete icon|As a logged in user <br> when I click on a recipe that I have written <br> a delete icon is displayed. |PASS|
 |Recipe delete dialog|As a logged in user <br> when I click on the delete icon <br> a dialog appears asking me to confirm the delete.|PASS|
 |Recipe delete|As a logged in user <br> when I click on the delete icon <br> and I confirm the delete from the dialog <br> the recipe is delted <br> and I am taken back to the Recipes page.|PASS|
+|Recipe Create|As a logged in user <br> When I click on the Add Recipe Link <br> and fill in the form and press submit <br> my recipe is saved and appears in the list. <br> After submitting I am taken to the Recipe page with the details of my recipe displayed. |PASS|
+|Recipe Edit|As a logged in user <br> When I click on the edit recipe icon from the Recipe detail page <br> and fill in the form and press submit <br> After submitting I am taken to the Recipe page with the details of my recipe displayed with updated data. |PASS|
+|Add ingredient field|As a logged in user <br> When I click on the add ingredient field icon <br> a new input field appears.|PASS|
+|Remove ingredient field|As a logged in user <br> When I click on the trash icon next to the ingredient field <br> the field is removed from the list|PASS|
+|Add instruction field|As a logged in user <br> When I click on the add instruction field icon <br> a new input field appears.|PASS|
+|Remove instruction field|As a logged in user <br> When I click on the trash icon next to the instruction field <br> the field is removed from the list|PASS|
+|Empty Item Warning|As a logged in user <br> When I click on the submit button on the Recipe form <br> and if there are blank fields in the recipe OR the instruction list <br> a warning dialog appears telling me that blank fields are not allowed.<br> The form cannot be submitted with blank fields in the instructions or ingredients.|PASS|
 
 # Responsiveness Test Cases
 | Test Description              | Test | Result |

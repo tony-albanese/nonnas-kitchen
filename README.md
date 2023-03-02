@@ -66,7 +66,7 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
 
 ## BlogPost
 + As a logged in user, I can create a BlogPost so that I can share my food related content with other users on the platform.
-+ As a user, I can view the details of a signle post so that I can enjoy additional content about that post.
++ As a user, I can view the details of a single post so that I can enjoy additional content about that post.
 + As a user, I can view all the blog posts sorted by date created so that I can enjoy the most recently created content.
 + As a user, I can search posts so that I can quickly find content that is interesting to me.
 + As a user, I can filter the post by category so that I can quickly find content that I am most interested in.
@@ -87,6 +87,7 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
 + As a user, I can see list of recipes on the site so that I have the chance to learn how to cook a new dish.
 + As a logged in user, I can create a recipe so that others users can learn how to make a dish that is important to me.
 + As a logged in user, I can delete a recipe I posted so that I can remove content I no longer wish others to see.
++ As a logged in user I can edit a recipe so that I can correct any mistakes I have made.
 
 ## Infinite Scroll
 + As a user, I can see a list of posts in a long list so I do not have to navigate through pagination links.
@@ -94,11 +95,11 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
 
 # React Features
 ## Routing
-The react-router-dom libary was used to manage page navigation. This libary manages the rendering components so that the page is not continuosly refreshed when the user navigates through the site.
+The react-router-dom library was used to manage page navigation. This library manages the rendering components so that the page is not continuously refreshed when the user navigates through the site.
 > + As a user I can navigate through pages quickly so that I can view content seamlessly without page refresh
 
 ## Web Token Refresh
-Normally, web tokens expire after a short time and thus the user would be continously logged out the site. These tokens must be refreshed so that the user maintains logged in satus for an extended period of time. The axios library has utiltity objects called interceptors to help manage and refresh the tokens automatically. The code to manage the interceptors was taken from the Moments walkthrough project from Code Institute.
+Normally, web tokens expire after a short time and thus the user would be continuously logged out the site. These tokens must be refreshed so that the user maintains logged in status for an extended period of time. The axios library has utility objects called interceptors to help manage and refresh the tokens automatically. The code to manage the interceptors was taken from the Moments walkthrough project from Code Institute.
 > + Refreshing access tokens: As a user I can maintain my logged-in status until I choose to log out so that my user experience is not compromised
 
 ## Reusable Components
@@ -124,7 +125,7 @@ export default function PostFooterContent({ isOwner, isLiked, loggedInUser, onLi
   );
 }
 ```
-I deciced to user the logic from the Moments walkthrough to deterine how the like icon behaves. However, the code in the walkthrough had a lot of nested components which made the code very hard to read, understand, and expand. I therefore extracted the icons into their own variables. For example, these two icons are for when the post is liked and unliked. They execute the onLike/onUnlike callbacks passed in from the parent.
+I decided to user the logic from the Moments walkthrough to determine how the like icon behaves. However, the code in the walkthrough had a lot of nested components which made the code very hard to read, understand, and expand. I therefore extracted the icons into their own variables. For example, these two icons are for when the post is liked and unliked. They execute the onLike/onUnlike callbacks passed in from the parent.
 ```
   const iconPostIsLiked = (
     <span onClick={onUnlike}>
@@ -172,7 +173,7 @@ const FormSelections = ({ controlName, onChangeHandler, options }) => {
 To generate the list, the map function is called which iterates over the objects in the list and constructions an **option** element and sets its value and text from the passed in objects list. Since the values are unique, they can be used as the key.
 
 + CardEdit Component  
-This stateless component returns a Bootstrap CardBody with two icons - one for delete and one for edit. The component accepts two callbacks, onEdit and onDelete to handle the clicks for these icons. There is a also a boolean showEdit to condtionally render the edit icon.
+This stateless component returns a Bootstrap CardBody with two icons - one for delete and one for edit. The component accepts two callbacks, onEdit and onDelete to handle the clicks for these icons. There is a also a boolean showEdit to conditionally render the edit icon.
 
 ```
 function CardEdit({onDelete, onEdit, showEdit}) {
@@ -218,7 +219,7 @@ function ModalAlert({show,  handleClose, onConfirm, title, message}) {
 ```
 
 + List Display Component
-Both the steps and the ingredients in a recipe must be displayed as lists. This functionality is a perfect candidate to be extracted into its own component. I therefore designed a list displayer that accepts a list, a heading, and boolean as props. The component maps over the list and renders a list item element for each element in the list. The index is used for the key - this is not ideal but is acceptable in this case as there is no guarantee that the list item values will be different. The list unordered or ordered depending on the value set by the boolean called **ordered**. Since the list being passed in from the parent is a list of JSON objects, the Objects.value() method is used to extract the value. 
+Both the steps and the ingredients in a recipe must be displayed as lists. This functionality is a perfect candidate to be extracted into its own component. I therefore designed a list display component that accepts a list, a heading, and boolean as props. The component maps over the list and renders a list item element for each element in the list. The index is used for the key - this is not ideal but is acceptable in this case as there is no guarantee that the list item values will be different. The list unordered or ordered depending on the value set by the boolean called **ordered**. Since the list being passed in from the parent is a list of JSON objects, the Objects.value() method is used to extract the value. 
 
 ```
 function ListDisplay({ list, ordered, heading }) {
@@ -317,7 +318,7 @@ The project uses Code Institute's [Moments](https://github.com/Code-Institute-So
 The base color scheme for the site was generated with [coolers](https://coolors.co/) using the grandmother image as a starting point.  
 ![color scheme](screenshots/pallete.png)
 
-Throughout the site, images were also chosen which had colors simialar to those in the pallate so the site is unified. Where needed, the shades were adjusted for contrast. In addition, on the sign-in and sign-up forms the colors for the buttons were taken using a color picker from the images on those pages for a blend of consistency and contrast.
+Throughout the site, images were also chosen which had colors similar to those in the palette so the site is unified. Where needed, the shades were adjusted for contrast. In addition, on the sign-in and sign-up forms the colors for the buttons were taken using a color picker from the images on those pages for a blend of consistency and contrast.
 
 ## NavBar
 The NavBar component displays the standard items a user expects to see. What is rendered depends on the user's authentication status. If they are logged out, they are presented with links to sign in and sign up. If they are authenticated, links to add a post, a recipe, and their custom content are presented as well as a logout link. The NavBar is responsive. On medium size screens the menu collapses into a menu with a hamburger icon.
@@ -357,7 +358,7 @@ The final implementation is relatively close to the intended design:
 
 
 ## Create BlogPost Form
-The form to create a BlogPost has all the necessesary fields for ther user to create an entry. There is an option to select an image as well as a dropdown form for users to select the category. Upon successful submission, the user is taken to the post detail page for the newly created post. If they cancel the submission, they are redirected to the home page.
+The form to create a BlogPost has all the necessary fields for the user to create an entry. There is an option to select an image as well as a dropdown form for users to select the category. Upon successful submission, the user is taken to the post detail page for the newly created post. If they cancel the submission, they are redirected to the home page.
 
 I wanted simple design for this form. The sketch would have the form in two main sections. One section has an image of a granny which the user clicks on to select the image. The other half contains the form fields and submit/cancel buttons. On smaller screens, the image shifts to the top and the fields to the bottom in one column.
 > Sketches for the BlogPost create form for a large screen.
@@ -389,7 +390,7 @@ When the user clicks on a post, they are redirected to the PostDetail page where
 
 ![post with comments](screenshots/blogpost/post_with_comments.png)
 
-If the user has written the post, a menu is shown with two icons. The trash icon is for deleting a post. When the user clicks on this icon, a modal popup appears asking the user to confirm their wish to delete the post. If they click on the edit icon, they are taken to a page with a form pre-populated with the post data. The user can change one or several of the fields. When they hit Save, the database is updated through the api and the user is redireced back to the post detail page. If they hit cancel, they are also taken back to the post detail page.
+If the user has written the post, a menu is shown with two icons. The trash icon is for deleting a post. When the user clicks on this icon, a modal popup appears asking the user to confirm their wish to delete the post. If they click on the edit icon, they are taken to a page with a form pre-populated with the post data. The user can change one or several of the fields. When they hit Save, the database is updated through the api and the user is redirected back to the post detail page. If they hit cancel, they are also taken back to the post detail page.
 
 > Post edit/delete icons
 ![edit delete icons](screenshots/blogpost/edit_delete_icons.png)
@@ -402,7 +403,7 @@ If the user has written the post, a menu is shown with two icons. The trash icon
 ## Post Page
 The Post Page displays a list of all the posts. The posts are sorted by date so the most recent posts are displayed first. On the top of the page is a search bar in which the user can enter search terms. When the user has finished typing the site makes an api call and the data is refreshed. In addition, there is a dropdown menu that the user can use to filter the results by post category.
 
-I decided on a simple layout for the posts page. Under the navbar is the search bar followed by a dropdown where users can filter posts by category. The posts follow in a single infintitely scrolling column.
+I decided on a simple layout for the posts page. Under the navbar is the search bar followed by a dropdown where users can filter posts by category. The posts follow in a single infinitely scrolling column.
 
 > Wireframe sketch for the page.  
 ![posts page wireframe](screenshots/blogpost/blogpost_wireframe.png)
@@ -435,15 +436,15 @@ If the user is logged in and goes to a post, a list of all the comments for that
 > + As a logged in user, I can delete a comment I have made so that I can remove content I no longer wish to share with the community.
 
 ## Recipe
-The Recipes page displays a list of recipes that are shared by the other users. On the page, the recipes are displayed in an infinitely scrolling list simialar to the posts page except there is no search and filtering capability. Each recipe card shows the type, an image, a title, and a description.
+The Recipes page displays a list of recipes that are shared by the other users. On the page, the recipes are displayed in an infinitely scrolling list similar to the posts page except there is no search and filtering capability. Each recipe card shows the type, an image, a title, and a description.
 
-A recipe card has a similar design to a Post. A recipe has a diffiuculty associated with it and an ingredients list and steps for completing it.
+A recipe card has a similar design to a Post. A recipe has a difficulty associated with it and an ingredients list and steps for completing it.
 > This is the design for the recipe as displayed on the recipes page:
 ![recipe wireframe](screenshots/recipe/recipe_wireframe.jpg) 
-> This is the acutal implementation of the recipe card.
+> This is the actual implementation of the recipe card.
 ![recipe](screenshots/recipe/recipe.png)
 
-When the user clicks on the recipe image, they are taken to the detail page where the recipe along with the ingredients and insructions are displayed. On large screens, the instructions and ingredients are side-by-side. On smaller screens they collapse into a single column.
+When the user clicks on the recipe image, they are taken to the detail page where the recipe along with the ingredients and instructions are displayed. On large screens, the instructions and ingredients are side-by-side. On smaller screens they collapse into a single column.
 
 > Recipe detail design
 ![recipe detail wireframe](screenshots/recipe/recipe_detail_wireframe.jpg)
@@ -456,18 +457,25 @@ When the user clicks on the recipe image, they are taken to the detail page wher
 
 > + As a user, I can see list of recipes on the site so that I have the chance to learn how to cook a new dish.
 
-If the user is logged in and they click on a post they own, a trash icon appears at the bottom of the post that allows them to delete it. A modal dialog appears asking them to confirm the delete. If they do, the post is deleted and they are returned to the previous page. If they cancel, the modal is dismissed.
+If the user is logged in and they click on a post they own, a trash icon appears at the bottom of the post that allows them to delete it. A modal dialog appears asking them to confirm the delete. If they do, the post is deleted and they are returned to the previous page. If they cancel, the modal is dismissed. There is also an icon to allow them to edit a recipe. Upon clicking the edit icon, they are taken to the RecipeEditForm and the data is loaded for them to edit.
 
-![recipe with delete](screenshots/recipe/recipe_with_delete.png)
+![recipe with delete](screenshots/recipe/recipe_edit_delete_icons.png)
 This is the confirm delete modal.
 ![recipe delete modal](screenshots/recipe/confirm_delete_recipe_modal.png) 
 > + As a logged in user, I can delete a recipe I posted so that I can remove content I no longer wish others to see.
 
 ## Recipe Create Form
-The recipe create form follows the same layout principles as the post create form. Half of the screen is an image of a granny which the users click on to upload an image. The other half consists of the form fields for the user to enter recipe details. On smallers screens, all of the elements collapse into a single column. For the ingredients and instructions lists, users can add as many fields as they like by clicking on the plus buttons. Users can also delete fields they no longer want by clicking on the trash icon next to each field. 
-![recipe edit form](screenshots/recipe/recipe_create_form_large.png)
+The recipe create form follows the same layout principles as the post create form. Half of the screen is an image of a granny which the users click on to upload an image. The other half consists of the form fields for the user to enter recipe details. On smaller screens, all of the elements collapse into a single column. For the ingredients and instructions lists, users can add as many fields as they like by clicking on the plus buttons. Users can also delete fields they no longer want by clicking on the trash icon next to each field. They are not allowed to delete all the fields. There is a check to make sure there is at least one input field before it is allowed to be removed from the form. 
+![recipe edit form](screenshots/recipe/recipe_create_form_large.png)  
+
+In addition, if there are any blank fields in either the recipe or the ingredients list, then a dialog appears telling them that blank entries are not allowed. They cannot submit with blank entries.  
+![blank list warning](screenshots/recipe/blank_list_warning.png)  
 
 > + As a logged in user, I can create a recipe so that others users can learn how to make a dish that is important to me.
+
+## Recipe Edit
+When the user clicks on the edit icon for a post they own, the PostEditForm component is loaded and the fields are pre-populated with the form data. The user can edit the data as needed and submit upon which they are taken back to the Post page and the updated data. As with the recipe create form, the user is warned that they are not allowed to have blank entries in the recipe or instructions list.
+> + As a logged in user I can edit a recipe so that I can correct any mistakes I have made.
 
 ## Infinite Scroll
 The api returns results in groups of ten (BlogPost or Comments) in order to conserve bandwidth. For the user to continue accessing the data, they would have to see either a pagination widget at the bottom of the page or the next batch of results should be downloaded automatically. The latter is what today's users expect. The react-infinite-scroll-component library was used to simplify this process. When the user reaches the bottom of the page, the next batch of results are loaded automatically.
@@ -514,7 +522,7 @@ Time: Three Days
 + Add filter by like 
 + Add filter by category
 + Add edit and delete function for BlogPost.
-+ Design add commment form
++ Design add comment form
 + Add, delete, update, and display comments.
 
 ### Sprint 4 - Style
@@ -568,13 +576,13 @@ Git was employed in this project and the project code hosted on GitHub. I used b
 The testing done here is BDD - each test is described as a story in which a description of the software requirements, the user actions, and the expected outcome are given along with a result of PASS or FAIL. To reduce the length of the readme, here is a link to the [testing tables](bdd_test_cases.md) describing the various test cases.
 
 # Unfixed bugs
-+ Some of the elements that are rendered conditionally appear for a split second while the page is loading or refreshing. Upon final load, the state is correct. For example, while the recipe detail is loading, the icon for the delete is visible for a split second while, even though it should not be. The same goes for the comments on a post - while the comments are loading, the "No comments to display" text is visible. When the comments are loaded, the text is gone as it should be. This is a cosmetic issue that does not interefere with the overall experience of the site. However, it should be addressed in a future realease.
-+ The unlike functionality does not work entirely as expected. The use can like a post - the icon and like count behave as expected. However, they cannot unlike a post immediately after liking it - the heart icon does not respond to clicks. If the user refreshes the page, they can unlike the post. This is a relatively small bug that does not severly impact the user experience but it should be addressed in a future release.
++ Some of the elements that are rendered conditionally appear for a split second while the page is loading or refreshing. Upon final load, the state is correct. For example, while the recipe detail is loading, the icon for the delete is visible for a split second while, even though it should not be. The same goes for the comments on a post - while the comments are loading, the "No comments to display" text is visible. When the comments are loaded, the text is gone as it should be. This is a cosmetic issue that does not interfere with the overall experience of the site. However, it should be addressed in a future release.
++ The unlike functionality does not work entirely as expected. The use can like a post - the icon and like count behave as expected. However, they cannot unlike a post immediately after liking it - the heart icon does not respond to clicks. If the user refreshes the page, they can unlike the post. This is a relatively small bug that does not severely impact the user experience but it should be addressed in a future release.
++ Another small issue that should be addressed is when the user tries to edit the Recipe or BlogPost. Currently the form data is preloaded. the text fields, images, and recipe/ingredients list values are loaded into the form. The values that are for the dropdown menus (the dish type, the difficulty, and the category) are not. These dropdown lists are reset to the initial value. So if the user must reset these each time they edit a Recipe or a Post. Although not a breaking issue, it does decrease the quality of the user's experience with the site and should be addressed in a future release.
 
 # Features Left to Implement
 + The user should be allowed to comment and like a recipe as well as the backend has that functionality.
 + The backend also allows for a rating to be attached to a recipe. A ratings bar and an average rating would be a nice feature to add as well.
-+ Editing a Recipe would be also a good feature.
 + The site is supposed to be centered on food and feelings. Ideally, there should also be a feature to flag content that is inappropriate or hurtful and/or irrelevant to the site.
 + Allowing people to log in with a social media account would also be a good feature as that is expected in modern web applications requiring authentication.
 
@@ -592,12 +600,12 @@ The front end for this project will use the Moments walkthrough as a model. Sinc
 The following steps were taken to initialize the project:
 + Create a new GitHub repository: [nonnas-kitchen](https://github.com/tony-albanese/nonnas-kitchen)
 + Create GitPod workspace from that by clicking on the **GitPod** button.
-+ Once in the workspace, open a terminal and enter the following command which will create an empty React app with all of the libaries used in the walkthrough already installed
++ Once in the workspace, open a terminal and enter the following command which will create an empty React app with all of the libraries used in the walkthrough already installed
 ```
 npx create-react-app . --template git+https://github.com/Code-Institute-Org/cra-template-moments.git --use-npm
 ```
 
-Some of the artifacts from using this template are visible in the settings files. For example, in packag.json the name of the app is "moments". However, this is not really an issue.
+Some of the artifacts from using this template are visible in the settings files. For example, in package.json the name of the app is "moments". However, this is not really an issue.
 ```
 {
   "name": "moments",
