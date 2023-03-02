@@ -11,6 +11,7 @@ function PageNotFound() {
       <NavLink className={styles.NavLink} to="/">
         <p>Take me home!</p>
       </NavLink>
+      <cite><a target="_blank" rel="noreferrer" href="https://www.freepik.com/free-vector/internet-network-warning-404-error-page-file-found-web-page-internet-error-page-issue-found-network-404-error-present-by-man-sleep-display_21586054.htm#query=404%20page&position=3&from_view=search&track=sph">Image by jcomp</a> on Freepik</cite>
     </Container>
   );
 }

@@ -49,7 +49,21 @@ function SignInForm() {
   return (
     <Row className="d-flex align-items-center mt-5">
       <Col md={8}>
-        <Image src={SignInImage} fluid alt="a grandmother and child cooking together." />
+        <Image
+          src={SignInImage}
+          fluid
+          alt="a grandmother and child cooking together."
+        />
+        <cite>
+          Image by{" "}
+          <a
+          rel="noreferrer"
+            target="_blank"
+            href="https://www.freepik.com/free-vector/flat-grandparents-day-illustration-with-grandmother-grandchild_28148596.htm#query=grandmother%20kitchen&position=17&from_view=search&track=ais"
+          >
+            Freepik
+          </a>
+        </cite>
       </Col>
       <Col md={4}>
         <h2 className={styles.Header}>Sign In</h2>

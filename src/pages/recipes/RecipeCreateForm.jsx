@@ -196,6 +196,7 @@ function RecipeCreateForm() {
                 <Form.Label htmlFor="image-upload-field">
                   <div className="my-3">
                     <Image src={Upload} fluid alt="A cartoon of a grandmother."/>
+                    <cite><a target="_blank" rel="noreferrer" href="https://www.flaticon.com/free-icons/grandmother" title="grandmother icons">Grandmother icons created by Freepik - Flaticon</a></cite>
                   </div>
                   <p>Click the granny to upload a photo.</p>
                 </Form.Label>
