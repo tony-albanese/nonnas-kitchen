@@ -1,5 +1,9 @@
 import React from "react";
 import styles from "../styles/ListDisplay.module.css";
+/*
+This component is to display the elements in a list (either ordered or unordered).
+In the app, the list is a list of JSON objects so the Object class is used to extract its value.
+*/
 
 function ListDisplay({ list, ordered, heading }) {
   return (

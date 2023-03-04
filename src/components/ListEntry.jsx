@@ -2,6 +2,10 @@ import React from "react";
 import { Form, Row} from "react-bootstrap";
 import styles from "../styles/ListEntry.module.css";
 
+/*
+This component is to enter in a list as part of a form.
+The app creates a list of input fields.
+*/
 function ListEntry({ fields, setFields, label }) {
   const addInputElement = (event) => {
     let newField = { item: "" };
@@ -9,6 +13,7 @@ function ListEntry({ fields, setFields, label }) {
   };
 
   const removeInputElement = (index) => {
+    //Check if there is at least one field before deleting it.
     if(fields.length > 1){
         let data = [...fields];
     data.splice(index, 1);

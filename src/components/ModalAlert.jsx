@@ -5,6 +5,10 @@ import styles from '../../src/styles/ModalAlert.module.css';
 import warningImage from '../../src/assets/old-woman.png';
 import { Image } from 'react-bootstrap';
 
+/*
+This component is for displaying a modal alert dialog to the user when a delete operation is about to occur. The show prop is to control whether the alert is visible. The
+onConfirm and handleClose callbacs are passed in to determine what happens when the user presses the Delete button and the Close button.
+*/
 function ModalAlert({show,  handleClose, onConfirm, title, message}) {
   return (
     <Modal className={styles.ModalAlert} show={show} onHide={handleClose} onClose={handleClose}>

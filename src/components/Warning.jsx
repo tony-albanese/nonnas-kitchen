@@ -7,6 +7,9 @@ import styles from '../../src/styles/ModalAlert.module.css';
 import warningImage from '../../src/assets/old-woman.png';
 import { Image } from 'react-bootstrap';
 
+/*
+This modal is for warning the user that they have blank fields in the recipe forms.
+*/
 function Warning({show,  handleClose, title, message}) {
   return (
     <Modal className={styles.ModalAlert} show={show} onHide={handleClose} onClose={handleClose}>

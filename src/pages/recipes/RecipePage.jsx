@@ -13,6 +13,7 @@ export default function RecipePage() {
   const [ingredients, setIngredients] = useState([]);
   const [recipeSteps, setRecipeSteps] = useState([]);
 
+  //The useEffect hook is based on the Moments walkthrough.
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -21,6 +22,9 @@ export default function RecipePage() {
         ]);
         setRecipe({ results: [recipe] });
 
+        /*
+        The next set of code is to ensure that the ingredients and and instructions list from the api are updated as soon as they are ready.
+        */
         const newIngredientsList = [...recipe?.ingredients_list];
         setIngredients(newIngredientsList);
 

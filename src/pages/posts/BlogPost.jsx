@@ -39,6 +39,7 @@ const BlogPost = (props) => {
     remin: "Reminiscence",
   };
 
+  //The handleLike is based on the method in the Moments walkthrough.
   const handleLike = async () => {
     try {
       console.log(`id: ${id}`);
@@ -57,6 +58,7 @@ const BlogPost = (props) => {
     }
   };
 
+  //The handleUnlike is based on the method in the Moments walkthrough.
   const handleUnlike = async () => {
     try {
       await axiosResponse.delete(`/likes/${like_id}`);

@@ -1,5 +1,10 @@
 import {useEffect, useRef, useState} from 'react'
 
+/*
+This code is to for handling the behavior of the mouseclicks for the hamburger menu toggle.
+It is taken from the Moments walktrhough.
+https://github.com/Code-Institute-Solutions/moments/blob/master/src/hooks/useClickOutsideToggle.js
+*/
 export const useClickOutsideToggle = () => {
 
     const [expanded, setExpanded] = useState(false);

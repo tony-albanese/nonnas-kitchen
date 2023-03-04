@@ -42,6 +42,7 @@ const SignUpForm = () => {
     <Row>
       <Col md={8}>
       <Image src={SignUpImage} fluid alt="a grandmother and child cooking together."/>
+      <cite><a target="_target" rel="noreferrer" href="https://www.freepik.com/free-vector/happy-grandma-granddaughter-cooking-together-kitchen-interior-with-utensils-table-grandmother-grandchild-kneading-dough-baking-pie-with-berries-family-relationship_28849871.htm#query=grandmother%20kitchen&position=3&from_view=search&track=ais">Image by studio4rt</a> on Freepik</cite>
       </Col>
       <Col className="my-auto py-2 p-md-2" md={4}>
           <h2 className={styles.Header}>Sign Up</h2>

@@ -1,6 +1,10 @@
 import { axiosRequest } from "../api/axiosDefaults";
 import jwtDecode from "jwt-decode";
 
+/*
+These utility methods were taken from the Momemnts walkthrough.
+https://github.com/Code-Institute-Solutions/moments/blob/master/src/utils/utils.js
+*/
 export const fetchMoreData = async (resource, setResource) => {
   try {
     const { data } = await axiosRequest.get(resource.next);

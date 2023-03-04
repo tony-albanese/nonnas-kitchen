@@ -24,6 +24,7 @@ function PostsPage({message, filter=""}) {
     const [queryString, setQueryString] = useState("");
     const [filterOption, setFilterOption] = useState("")
 
+    //the useEffect hook is based on the code from the Moments walkthrough.
     useEffect(
         ()=>{
             const getPosts = async () => {
@@ -114,6 +115,7 @@ function PostsPage({message, filter=""}) {
             ) : (
               <Container>
                 <Asset src={NoResults} message={message} />
+                <cite><a target="_blank" rel="noreferrer" href="https://www.freepik.com/free-vector/refridgerator-with-opened-door_25538317.htm#query=empty%20refrigerator&position=33&from_view=search&track=ais">Image by brgfx</a> on Freepik</cite>
               </Container>
             )}
             </Col>

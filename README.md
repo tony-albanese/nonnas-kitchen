@@ -54,6 +54,7 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 # User Stories
+Many of the user stories are worded similarly to the Moments walkthrough project because the functionality is quite similar - especially with navigation and authentication, posts, likes and comments.
 ## Navigation and Authentication
 + As a user I can view a navbar from every page so that I can navigate easily between pages
 + As a user I can navigate through pages quickly so that I can view content seamlessly without page refresh
@@ -62,7 +63,6 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
 + Logged in Status: As a user I can tell if I am logged in or not so that I can log in if I need to
 + Refreshing access tokens: As a user I can maintain my logged-in status until I choose to log out so that my user experience is not compromised
 + Conditional rendering - As a logged out user I can see sign in and sign up options so that I can sign in/sign up
-
 
 ## BlogPost
 + As a logged in user, I can create a BlogPost so that I can share my food related content with other users on the platform.
@@ -487,7 +487,9 @@ An Agile approach was used to manage the completion of this project. Specificall
 What does minimally functioning mean in this context? As with any project, there are real constraints (time, energy, know-how) that force a developer to prioritize the work. Based on my abilities and constraints, I have prioritized the project requirements in the following way:
 * A functioning front-end with authentication, registration, CRUD operations for a BlogPost. The focus is on working code.
 * Implementation of code for adding likes and comments to a BlogPost.
-* Aesthetics/Design - This is of course important in an advanced front end project, but the goal here is to have just minimal styling at first and then as time permits improve the visual design. The reasons are two-fold. 1) Having a beautiful design is meaningless if the code behind it does not function and 2) My particular focus in learning is getting the code behind the front end as clean as possible.
+* Aesthetics/Design - This is of course important in an advanced front end project, but the goal here is to have just minimal styling at first and then as time permits improve the visual design. The reasons are two-fold. 
+1. Having a beautiful design is meaningless if the code behind it does not function and 
+2.  My particular focus in learning is getting the code behind the front end as clean as possible.
 
 ## Outline of Sprints
 The following is an outline of the sprints that were done during the completion of this project. Each sprint was designed to be from one to three full days' work.
@@ -577,7 +579,8 @@ The testing done here is BDD - each test is described as a story in which a desc
 
 # Unfixed bugs
 + Some of the elements that are rendered conditionally appear for a split second while the page is loading or refreshing. Upon final load, the state is correct. For example, while the recipe detail is loading, the icon for the delete is visible for a split second while, even though it should not be. The same goes for the comments on a post - while the comments are loading, the "No comments to display" text is visible. When the comments are loaded, the text is gone as it should be. This is a cosmetic issue that does not interfere with the overall experience of the site. However, it should be addressed in a future release.
-+ The unlike functionality does not work entirely as expected. The use can like a post - the icon and like count behave as expected. However, they cannot unlike a post immediately after liking it - the heart icon does not respond to clicks. If the user refreshes the page, they can unlike the post. This is a relatively small bug that does not severely impact the user experience but it should be addressed in a future release.
++ The unlike functionality does not work entirely as expected. The use can like a post - the icon and like count behave as expected. However, they cannot unlike a post immediately after liking it - the heart icon does not respond to clicks. If the user refreshes the page, they can unlike the post. This strange behavior was not present when running the code on the test server. This is a relatively small bug that does not severely impact the user experience but it should be addressed in a future release.
++ The like behavior could also be an artifact from the app's architecture in which the front end is responsible for updating the UI state (the number of likes) after making an API call. This effectively means that for this component there are two sources of truth - the actual number of likes according to the database, and the number of likes according to the front-end. Ideally, this component should observe the number of likes on the database and update itself when the database value changes.
 + Another small issue that should be addressed is when the user tries to edit the Recipe or BlogPost. Currently the form data is preloaded. the text fields, images, and recipe/ingredients list values are loaded into the form. The values that are for the dropdown menus (the dish type, the difficulty, and the category) are not. These dropdown lists are reset to the initial value. So if the user must reset these each time they edit a Recipe or a Post. Although not a breaking issue, it does decrease the quality of the user's experience with the site and should be addressed in a future release.
 
 # Features Left to Implement
@@ -631,6 +634,8 @@ The app is then deployed to Heroku by the following steps:
 
 # Credits
 + The initial template for this app was from Code Institute's [Moments project template](https://github.com/Code-Institute-Org/cra-template-moments.git). 
+
++ The Asset component which is used to display the spinner and other visual components is taken from the [Moments](https://github.com/Code-Institute-Solutions/moments/blob/master/src/components/Asset.js) and modified accordingly. 
 
 + The idea for building the dynamic form fields in the ListEntry component was taken from this excellent article on freeCodeCamp: [How to Build Dynamic Forms in React](https://www.freecodecamp.org/news/build-dynamic-forms-in-react/).
 ## Image Credits

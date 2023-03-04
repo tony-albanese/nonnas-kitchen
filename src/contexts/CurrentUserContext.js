@@ -4,7 +4,10 @@ import { axiosRequest, axiosResponse } from "../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 
-
+/*
+This object is for accessing the user object as a global variable. It is taken from the Moments walkthrough.
+https://github.com/Code-Institute-Solutions/moments/blob/master/src/contexts/CurrentUserContext.js
+*/
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
 

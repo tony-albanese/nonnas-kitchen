@@ -16,6 +16,7 @@ export default function PostPage() {
   const [post, setPost] = useState({ results: [] });
   const [comments, setComments] = useState({ results: [] });
 
+  //the useEffect hook is based on the code from the Moments walkthrough.
   useEffect(() => {
     const handleMount = async () => {
       try {

@@ -18,6 +18,7 @@ function RecipesPage({message}) {
   const [dataLoaded, setDataLoaded] = useState(false);
   const pathname = useLocation();
 
+  //The useEffect hook is based on the method from the Moments walkthrough.
   useEffect(
     ()=>{
         const getRecipes = async () => {

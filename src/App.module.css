@@ -40,3 +40,9 @@
     transition: color ease-in-out 0.3s;
     color: #622A0e;
   }
+
+  cite {
+
+      font-size: small;
+  
+  }
