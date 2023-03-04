@@ -11,6 +11,10 @@ import styles from "../styles/NavBar.module.css";
 import axios from "axios";
 import { removeTokenTimestamp } from "../utils/utils";
 
+/*
+The code for the NavBar component is based on the NavBar component from the Moments walkthrough.
+https://github.com/Code-Institute-Solutions/moments/blob/master/src/components/NavBar.js
+*/
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
