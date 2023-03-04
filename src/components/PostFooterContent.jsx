@@ -2,6 +2,9 @@ import React from "react";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+/*
+This component is for displaying the like and comment icons in a post.
+*/
 export default function PostFooterContent({
   isOwner,
   isLiked,
@@ -12,6 +15,8 @@ export default function PostFooterContent({
   onUnlike,
   postId,
 }) {
+  
+  // The components for the overlay trigger and tooltips are factored out for readability.
   const cantLikeOwnPostToolTip = <Tooltip>Can't like own post!</Tooltip>;
   const logInPromptToolTip = <Tooltip>Please log in.</Tooltip>;
 
@@ -55,6 +60,9 @@ export default function PostFooterContent({
     </Link>
   );
 
+  /*
+    The logic for rendering the icon was taken from the Moments walkthough. The components have been refactored out to increase readability.
+  */
   return (
     <Card.Footer className="text-muted text-center">
       <>

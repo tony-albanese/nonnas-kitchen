@@ -4,6 +4,9 @@ import Error from "../assets/page-not-found.jpg";
 import { NavLink } from "react-router-dom";
 import styles from "../styles/PageNotFound.module.css";
 
+/*
+This is the component that gets rendered when the user enters a url that the Router object cannot match.
+*/
 function PageNotFound() {
   return (
     <Container className="text-center">
