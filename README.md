@@ -635,6 +635,8 @@ The app is then deployed to Heroku by the following steps:
 # Credits
 + The initial template for this app was from Code Institute's [Moments project template](https://github.com/Code-Institute-Org/cra-template-moments.git). 
 
++ The Asset component which is used to display the spinner and other visual components is taken from the [Moments](https://github.com/Code-Institute-Solutions/moments/blob/master/src/components/Asset.js) and modified accordingly. 
+
 + The idea for building the dynamic form fields in the ListEntry component was taken from this excellent article on freeCodeCamp: [How to Build Dynamic Forms in React](https://www.freecodecamp.org/news/build-dynamic-forms-in-react/).
 ## Image Credits
 + The upload image was taken from Code Institute.
