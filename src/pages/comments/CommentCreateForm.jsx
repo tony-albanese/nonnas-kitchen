@@ -11,6 +11,7 @@ function CommentCreateForm({postId, setComments, setPost}) {
         setBody(event.target.value);
     };
 
+    //The handleSubmit is based on the method in the Moments walkthrough.
     const handleSubmit = async (event) => {
         event.preventDefault();
         const { data } = await axiosResponse.post("/comments/", {

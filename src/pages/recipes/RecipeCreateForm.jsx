@@ -58,9 +58,9 @@ function RecipeCreateForm() {
     event.preventDefault();
 
     const ingredientJsonString = JSON.stringify(ingredientFields);
-    const procedureJsonString = JSON.stringify(stepsFields)
+    const procedureJsonString = JSON.stringify(stepsFields);
     const formData = new FormData();
-    
+
     formData.append("title", title);
     formData.append("description", description);
     formData.append("recipe_image", recipe_image);
@@ -71,10 +71,13 @@ function RecipeCreateForm() {
     formData.append("tags", "default");
     formData.append("recipe_image", imageInput.current.files[0]);
 
-    if (checkListFieldsEmpty()){
+    /*
+    Check if any fields in the ingredients or instructions are empty. Show a warning if any are and allow the submit only
+    if none are empty.
+    */
+    if (checkListFieldsEmpty()) {
       setShow(true);
     } else {
-
       try {
         const { data } = await axiosRequest.post("/recipes/", formData);
         history.push(`/recipes/${data.id}`);
@@ -87,6 +90,9 @@ function RecipeCreateForm() {
     }
   };
 
+  /*
+  This method loops over the ingredients and instructions input fields to see if any are empty.
+  */
   const checkListFieldsEmpty = () =>{
     const ingredients = Object.values(ingredientFields);
     const steps = Object.values(stepsFields);

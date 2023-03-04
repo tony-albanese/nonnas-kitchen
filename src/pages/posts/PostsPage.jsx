@@ -24,6 +24,7 @@ function PostsPage({message, filter=""}) {
     const [queryString, setQueryString] = useState("");
     const [filterOption, setFilterOption] = useState("")
 
+    //the useEffect hook is based on the code from the Moments walkthrough.
     useEffect(
         ()=>{
             const getPosts = async () => {

@@ -52,6 +52,7 @@ function BlogPostEditForm() {
     });
   };
 
+  //The handleSubmit is based on the method in the Moments walkthrough.
   const handelSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -75,6 +76,7 @@ function BlogPostEditForm() {
     }
   };
 
+  //The handleChangeImageChoice is based on the method in the Moments walkthrough.
   const handleChangeImageChoice = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(post_image);

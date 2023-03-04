@@ -36,6 +36,7 @@ function BlogPostCreateForm() {
     });
   };
 
+  //The handleSubmit is based on the method in the Moments walkthrough.
   const handelSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();

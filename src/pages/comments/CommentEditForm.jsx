@@ -11,6 +11,7 @@ function CommentEditForm({id, body, setComments, setShowCommentEditForm}) {
         setFormBody(event.target.value);
     };
 
+    //The handleSubmit is based on the method in the Moments walkthrough.
     const handleSubmit = async (event) => {
         event.preventDefault();
 
