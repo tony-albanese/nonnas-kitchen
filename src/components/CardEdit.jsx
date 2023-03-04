@@ -1,6 +1,10 @@
 import React from "react";
 import { Card, Row } from "react-bootstrap";
 
+/*
+This component is for displaying an edit and delete icon for a card. The onDelete and onEdit callbacks are to handle the clicks on these
+icons respectively.
+*/
 function CardEdit({onDelete, onEdit, showEdit}) {
   return (
     <Card.Body>
