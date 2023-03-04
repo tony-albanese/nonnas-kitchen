@@ -54,7 +54,7 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 # User Stories
-
+Many of the user stories are worded similarly to the Moments walkthrough project because the functionality is quite similar - especially with navigation and authentication, posts, likes and comments.
 ## Navigation and Authentication
 + As a user I can view a navbar from every page so that I can navigate easily between pages
 + As a user I can navigate through pages quickly so that I can view content seamlessly without page refresh
