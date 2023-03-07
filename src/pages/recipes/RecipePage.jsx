@@ -25,10 +25,10 @@ export default function RecipePage() {
         /*
         The next set of code is to ensure that the ingredients and and instructions list from the api are updated as soon as they are ready.
         */
-        const newIngredientsList = [...recipe?.ingredients_list];
+        const newIngredientsList = [...recipe.ingredients_list];
         setIngredients(newIngredientsList);
 
-        const newInstructionsList = [...recipe?.procedure];
+        const newInstructionsList = [...recipe.procedure];
         setRecipeSteps(newInstructionsList);
 
       } catch (err) {
