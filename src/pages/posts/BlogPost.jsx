@@ -9,6 +9,11 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosResponse } from "../../api/axiosDefaults";
 import styles from "../../styles/BlogPost.module.css";
 
+/*
+The code for this component is modeled from the Post component of Code Institute's Moment's walkthrough project.
+It has been modified as needed.
+https://github.com/Code-Institute-Solutions/moments/blob/master/src/pages/posts/Post.js
+*/
 const BlogPost = (props) => {
   const {
     id,

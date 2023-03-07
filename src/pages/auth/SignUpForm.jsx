@@ -6,6 +6,12 @@ import axios from "axios";
 import styles from "../../styles/AuthenticationForm.module.css";
 import SignUpImage from "../../assets/elderly-cooking.jpg";
 
+/*
+The code for this component was modeled from the Moments walkthrough on Code Institute.
+It has been modified as needed.
+https://github.com/Code-Institute-Solutions/moments/blob/master/src/pages/auth/SignUpForm.js
+*/
+
 const SignUpForm = () => {
   //store data in variable and use setSignUpData to update state
   //destructure the variables and set the initial value in useState()

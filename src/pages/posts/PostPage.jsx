@@ -10,6 +10,12 @@ import { axiosRequest } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { fetchMoreData } from '../../utils/utils';
 
+
+/*
+The code for this component is modeled from the Post component of Code Institute's Moment's walkthrough project.
+It has been modified as needed.
+https://github.com/Code-Institute-Solutions/moments/blob/master/src/pages/posts/PostPage.js
+*/
 export default function PostPage() {
   const currentUser = useCurrentUser();
   const { id } = useParams();
