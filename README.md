@@ -53,7 +53,9 @@ The main type content on the site is a blog post in which users can share an ima
 
 There are many sites for sharing recipes and Twitter/Instagram/Facebook are full of food posts. However, this site is intended to focus on the *emotional* connection people have with food. It therefore will allow users to create and edit blog posts and recipes as well as like and comment upon content in an engaging way.
 
-## 
+## Deployed Site
++ The site uses the [Nonna's Kitchen API](https://nonnas-kitchen-api.herokuapp.com/) as the backend. The GitHub repo to the backend can be found here: [Nonna's Kitchen API on GitHub](https://github.com/tony-albanese/ci-project-5-nonnas-kitchen-api)
++ The deployed front end can be found here: [Nonna's Kitchen](https://nonnas-kitchen.herokuapp.com/)
 
 # User Stories
 Many of the user stories are worded similarly to the Moments walkthrough project because the functionality is quite similar - especially with navigation and authentication, posts, likes and comments.
