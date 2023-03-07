@@ -1,10 +1,3 @@
-# Nonna's Kitchen Frontend
-Nonna's kitchen is an online space for people who love food to share their experiences around food. The purpose of this site is not so much for people to share what they are eating but rather to share the emotional connection that often comes from a particular dish. The more specific purpose of this site is for people to share their emotional connections with a particular dish or type of food and to have other share in those experiences. That is why the site is called Nonna's Kitchen - "Nonna" is Italian for "grandmother" and the site is supposed to evoke memories, feelings, and connections to one's ancestors and culture.
-
-The main type content on the site is a blog post in which users can share an image of a particular food and provide a short (1-2 paragraph) description of their connection to that dish. For example, a user can share an image of a plate of *spaghetti al pomodorro*, (the classic spaghetti with tomato sauce) and then write how they are emotionally connected to that dish - that connection could be one of several types (Anecdote, History, Reminiscence, Tip). The idea here is for site users to be more specific in the type of information they are sharing and consuming. 
-
-There are many sites for sharing recipes and Twitter/Instagram/Facebook are full of food posts. However, this site is intended to focus on the *emotional* connection people have with food. That is how this site adds value to for its users.
-
 - [Nonna's Kitchen Frontend](#nonna-s-kitchen-frontend)
 - [User Stories](#user-stories)
   * [Navigation and Authentication](#navigation-and-authentication)
@@ -52,6 +45,15 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
   * [Image Credits](#image-credits)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+# Nonna's Kitchen Frontend
+Nonna's kitchen is an online space for people who love food to share their experiences around food. The purpose of this site is not so much for people to share what they are eating but rather to share the emotional connection that often comes from a particular dish. The more specific purpose of this site is for people to share their emotional connections with a particular dish or type of food and to have other share in those experiences. That is why the site is called Nonna's Kitchen - "Nonna" is Italian for "grandmother" and the site is supposed to evoke memories, feelings, and connections to one's ancestors and culture.
+
+The main type content on the site is a blog post in which users can share an image of a particular food and provide a short (1-2 paragraph) description of their connection to that dish. For example, a user can share an image of a plate of *spaghetti al pomodorro*, (the classic spaghetti with tomato sauce) and then write how they are emotionally connected to that dish - that connection could be one of several types (Anecdote, History, Reminiscence, Tip). The idea here is for site users to be more specific in the type of information they are sharing and consuming. 
+
+There are many sites for sharing recipes and Twitter/Instagram/Facebook are full of food posts. However, this site is intended to focus on the *emotional* connection people have with food. It therefore will allow users to create and edit blog posts and recipes as well as like and comment upon content in an engaging way.
+
+## 
 
 # User Stories
 Many of the user stories are worded similarly to the Moments walkthrough project because the functionality is quite similar - especially with navigation and authentication, posts, likes and comments.
@@ -316,7 +318,7 @@ The project uses Code Institute's [Moments](https://github.com/Code-Institute-So
 
 # Color Scheme
 The base color scheme for the site was generated with [coolers](https://coolors.co/) using the grandmother image as a starting point.  
-![color scheme](screenshots/pallete.png)
+![color scheme](screenshots/pallete.png). Overall, a soft and gentle color scheme was chosen as that fits the goal of the site to evoke and share warm memories around food.
 
 Throughout the site, images were also chosen which had colors similar to those in the palette so the site is unified. Where needed, the shades were adjusted for contrast. In addition, on the sign-in and sign-up forms the colors for the buttons were taken using a color picker from the images on those pages for a blend of consistency and contrast.
 
@@ -374,7 +376,7 @@ The final implementation of the designs are:
 + As a logged in user, I can create a BlogPost so that I can share my food related content with other users on the platform.
 
 # Post Component
-The Post component contains the details for a blog post. These components are arranged in a Bootstrap Card component. I wanted the category to be in a prominent place since that is more general in the hierarchy than the other elements - the users can select what type of post they want to read. The image element is also prominent so that the user can be attracted to a post by the image.
+The Post component contains the details for a blog post. These components are arranged in a Bootstrap Card component. I wanted the category to be in a prominent place since that is more general in the hierarchy than the other elements - the users can select what type of post they want to read. The image element is also prominent so that the user can be attracted to a post by the image. In other words, the image is used to grab focus since many people do "eat with their eyes" - meaning how food looks is what first draws our attention to a particular meal. (Of course, this in the abscence of smell!)
 
 > Wireframe sketch for the blog post 
 ![wireframe blog post](screenshots/blogpost/blogpost_wireframe.png)
@@ -436,7 +438,7 @@ If the user is logged in and goes to a post, a list of all the comments for that
 > + As a logged in user, I can delete a comment I have made so that I can remove content I no longer wish to share with the community.
 
 ## Recipe
-The Recipes page displays a list of recipes that are shared by the other users. On the page, the recipes are displayed in an infinitely scrolling list similar to the posts page except there is no search and filtering capability. Each recipe card shows the type, an image, a title, and a description.
+The Recipes page displays a list of recipes that are shared by the other users. On the page, the recipes are displayed in an infinitely scrolling list similar to the posts page except there is no search and filtering capability. Each recipe card shows the type, an image, a title, and a description. Just like in the Post page, it is the image that is prominent since people are drawn to food first by how it looks. 
 
 A recipe card has a similar design to a Post. A recipe has a difficulty associated with it and an ingredients list and steps for completing it.
 > This is the design for the recipe as displayed on the recipes page:
@@ -689,6 +691,7 @@ The app is then deployed to Heroku by the following steps:
 + The Asset component which is used to display the spinner and other visual components is taken from the [Moments](https://github.com/Code-Institute-Solutions/moments/blob/master/src/components/Asset.js) and modified accordingly. 
 
 + The idea for building the dynamic form fields in the ListEntry component was taken from this excellent article on freeCodeCamp: [How to Build Dynamic Forms in React](https://www.freecodecamp.org/news/build-dynamic-forms-in-react/).
+
 ## Image Credits
 + The upload image was taken from Code Institute.
 
