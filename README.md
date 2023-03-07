@@ -170,7 +170,7 @@ const logInPromptToolTip = <Tooltip>Please log in to like.</Tooltip>;
 ```
 This makes the code much easier to expand if I later decide to add more functions to the Footer.
 
-+ Reusable Form Dropdown
++ Reusable Form Dropdown  
 A dropdown form element is used on the BlogPostCreateForm component to allow the user to select a category for a BlogPost. There is need for a similar component in the PostsPage component to allow filtering the results of all the posts - the user should filter the posts they want to see based on category. Instead of building two components that behave in exactly the same way, I extracted this into a reusable component called FormSelections. To further increase the reusability, this object accepts a name, a change handler, and a list of objects representing the choices to be displayed.
 ```
 const FormSelections = ({ controlName, onChangeHandler, options }) => {
@@ -212,7 +212,7 @@ function CardEdit({onDelete, onEdit, showEdit}) {
 }
 ```
 
-+ Reusable Modal
++ Reusable Modal  
 This modal component can be called from multiple components to either display warnings to the user or ask for confirmation before an action takes place. The message, title, and handlers to handle click events on the button are passed in as props.
 ```
 function ModalAlert({show,  handleClose, onConfirm, title, message}) {
@@ -235,7 +235,7 @@ function ModalAlert({show,  handleClose, onConfirm, title, message}) {
 }
 ```
 
-+ List Display Component
++ List Display Component  
 Both the steps and the ingredients in a recipe must be displayed as lists. This functionality is a perfect candidate to be extracted into its own component. I therefore designed a list display component that accepts a list, a heading, and boolean as props. The component maps over the list and renders a list item element for each element in the list. The index is used for the key - this is not ideal but is acceptable in this case as there is no guarantee that the list item values will be different. The list unordered or ordered depending on the value set by the boolean called **ordered**. Since the list being passed in from the parent is a list of JSON objects, the Objects.value() method is used to extract the value. 
 
 ```
@@ -264,7 +264,7 @@ function ListDisplay({ list, ordered, heading }) {
 }
 ```
 
-+ List Entry Component
++ List Entry Component  
 The recipe steps and the ingredients must be entered in a similar way. Ideally, the user should have the ability to enter as many items as they like and delete the ones they do not. I therefore created a ListEntry component the accepts an initial set of fields, a setFields callback from the parent, and a label to display at the top of the form.
 
 ```
@@ -364,10 +364,12 @@ There is a Sign Up form that allows the user to create an account if they do not
 ![sign in wireframe](screenshots/signin-up/sign-in-wireframe.jpg)
 
 The final implementation is relatively close to the intended design:
-> The sign in screen on a large and small screen respectively.
+The sign in screen on a large and small screen respectively.  
 ![sign in large](screenshots/signin-up/sign_in_large.png)  
-![sign in small](screenshots/signin-up/sign_in_small.png)
-> The sign up screen on a large and small screen respectively.  
+![sign in small](screenshots/signin-up/sign_in_small.png)  
+The sign up screen on a large and small screen respectively.
+
+
 ![sign up large](screenshots/signin-up/signup_large.png)  
 ![sign up small](screenshots/signin-up/signup_small.png)
 > + As a user I can create a new account so that I can access all the features for signed up users
@@ -377,8 +379,8 @@ The final implementation is relatively close to the intended design:
 ## Create BlogPost Form
 The form to create a BlogPost has all the necessary fields for the user to create an entry. There is an option to select an image as well as a dropdown form for users to select the category. Upon successful submission, the user is taken to the post detail page for the newly created post. If they cancel the submission, they are redirected to the home page.
 
-I wanted simple design for this form. The sketch would have the form in two main sections. One section has an image of a granny which the user clicks on to select the image. The other half contains the form fields and submit/cancel buttons. On smaller screens, the image shifts to the top and the fields to the bottom in one column.
-> Sketches for the BlogPost create form for a large screen.
+I wanted simple design for this form. The sketch would have the form in two main sections. One section has an image of a granny which the user clicks on to select the image. The other half contains the form fields and submit/cancel buttons. On smaller screens, the image shifts to the top and the fields to the bottom in one column.  
+Sketches for the BlogPost create form for a large screen.
 ![wireframe large screen](screenshots/blogpost/wireframe_form_large.png)
 ![wireframe small screen](screenshots/blogpost/wireframe_form_small.png)
 
@@ -391,13 +393,15 @@ The final implementation of the designs are:
 + As a logged in user, I can create a BlogPost so that I can share my food related content with other users on the platform.
 
 # Post Component
-The Post component contains the details for a blog post. These components are arranged in a Bootstrap Card component. I wanted the category to be in a prominent place since that is more general in the hierarchy than the other elements - the users can select what type of post they want to read. The image element is also prominent so that the user can be attracted to a post by the image. In other words, the image is used to grab focus since many people do "eat with their eyes" - meaning how food looks is what first draws our attention to a particular meal. (Of course, this in the abscence of smell!)
+The Post component contains the details for a blog post. These components are arranged in a Bootstrap Card component. I wanted the category to be in a prominent place since that is more general in the hierarchy than the other elements - the users can select what type of post they want to read. The image element is also prominent so that the user can be attracted to a post by the image. In other words, the image is used to grab focus since many people do "eat with their eyes" - meaning how food looks is what first draws our attention to a particular meal. (Of course, this in the abscence of smell!)  
 
-> Wireframe sketch for the blog post 
+Wireframe sketch for the blog post:
+
 ![wireframe blog post](screenshots/blogpost/blogpost_wireframe.png)
 
-This the actual implementation.
-> Blog Post
+This the actual implementation.  
+Blog Post
+
 ![blog post card](screenshots/blogpost/blogpost.png)
 
 
@@ -409,10 +413,10 @@ When the user clicks on a post, they are redirected to the PostDetail page where
 
 If the user has written the post, a menu is shown with two icons. The trash icon is for deleting a post. When the user clicks on this icon, a modal popup appears asking the user to confirm their wish to delete the post. If they click on the edit icon, they are taken to a page with a form pre-populated with the post data. The user can change one or several of the fields. When they hit Save, the database is updated through the api and the user is redirected back to the post detail page. If they hit cancel, they are also taken back to the post detail page.
 
-> Post edit/delete icons
+Post edit/delete icons  
 ![edit delete icons](screenshots/blogpost/edit_delete_icons.png)
 
-> Confirm delete modal
+ Confirm delete modal  
 ![confirm delete modal](screenshots/blogpost/delete_modal.png)
 > + As a logged in user, I can delete a post I have made so that I can remove content I no longer wish to share.  
 > + As a logged in user, I can edit a post I have created so that I can update content or correct mistakes I have made.
@@ -422,9 +426,9 @@ The Post Page displays a list of all the posts. The posts are sorted by date so 
 
 I decided on a simple layout for the posts page. Under the navbar is the search bar followed by a dropdown where users can filter posts by category. The posts follow in a single infinitely scrolling column.
 
-> Wireframe sketch for the page.  
-![posts page wireframe](screenshots/blogpost/blogpost_wireframe.png)
-> This is the actual implementation
+Wireframe sketch for the page.  
+![posts page wireframe](screenshots/blogpost/blogpost_wireframe.png)  
+This is the actual implementation  
 ![posts page](screenshots/blogpost/posts_page.png) 
 
 > + As a user, I can view all the blog posts sorted by date created so that I can enjoy the most recently created content.
@@ -445,7 +449,7 @@ If a user is logged in, they can comment on a post. The form to enter a comment 
 
 If the user is logged in and goes to a post, a list of all the comments for that post is displayed. If the user is the author of a comment, two icons (edit and trash can) appear in the header of that icon that allow them to edit or delete the comment. If the user clicks on the trash can, a modal dialog appears asking them to confirm the delete. If they agree, the comment is deleted and removed from the list. If they cancel, the modal is dismissed. If the user clicks on the edit icon, a form is rendered right underneath the comment populated with the comment body data. The user can update the text as they see fit. Upon save, the database is updated through an api call and the comment list is updated as well. If they click on cancel, the form is dismissed.
 
-> This is the comment showing the edit icons
+This is the comment showing the edit icons
 ![comment icons](screenshots/comments/comment_with_icons.png)  
 ![comment edit](screenshots/comments/comment_edit.png)
 > + As a logged in user, I can see a list of comments for a post so that I can see what other users think of a particular post.
@@ -463,13 +467,15 @@ A recipe card has a similar design to a Post. A recipe has a difficulty associat
 
 When the user clicks on the recipe image, they are taken to the detail page where the recipe along with the ingredients and instructions are displayed. On large screens, the instructions and ingredients are side-by-side. On smaller screens they collapse into a single column.
 
-> Recipe detail design
+Recipe detail design
 ![recipe detail wireframe](screenshots/recipe/recipe_detail_wireframe.jpg)
 
-> This is the implementation. 
+This is the implementation.
+
 ![recipe detail](screenshots/recipe/recipe_detail.png)
 
-> This is the recipe detail on a small screen.
+This is the recipe detail on a small screen.
+
 ![recipe on small screen](screenshots/recipe/recipe_small_screen.png)
 
 > + As a user, I can see list of recipes on the site so that I have the chance to learn how to cook a new dish.
@@ -477,12 +483,14 @@ When the user clicks on the recipe image, they are taken to the detail page wher
 If the user is logged in and they click on a post they own, a trash icon appears at the bottom of the post that allows them to delete it. A modal dialog appears asking them to confirm the delete. If they do, the post is deleted and they are returned to the previous page. If they cancel, the modal is dismissed. There is also an icon to allow them to edit a recipe. Upon clicking the edit icon, they are taken to the RecipeEditForm and the data is loaded for them to edit.
 
 ![recipe with delete](screenshots/recipe/recipe_edit_delete_icons.png)
-This is the confirm delete modal.
+
+This is the confirm delete modal.  
 ![recipe delete modal](screenshots/recipe/confirm_delete_recipe_modal.png) 
 > + As a logged in user, I can delete a recipe I posted so that I can remove content I no longer wish others to see.
 
 ## Recipe Create Form
 The recipe create form follows the same layout principles as the post create form. Half of the screen is an image of a granny which the users click on to upload an image. The other half consists of the form fields for the user to enter recipe details. On smaller screens, all of the elements collapse into a single column. For the ingredients and instructions lists, users can add as many fields as they like by clicking on the plus buttons. Users can also delete fields they no longer want by clicking on the trash icon next to each field. They are not allowed to delete all the fields. There is a check to make sure there is at least one input field before it is allowed to be removed from the form. 
+
 ![recipe edit form](screenshots/recipe/recipe_create_form_large.png)  
 
 In addition, if there are any blank fields in either the recipe or the ingredients list, then a dialog appears telling them that blank entries are not allowed. They cannot submit with blank entries.  
@@ -638,7 +646,7 @@ The main pages of the deployed site was run through Lighthouse on Google Chrome 
 ![lighthouse report add post page](screenshots/lighthouse/lighthoust_add_post.png)
 
 ### Lighthouse Report Recipes Page
-![lighthouse report recipes page](screenshots/lighthouse/lighthouse_recipes_page.png)
+![lighthouse report recipes page](screenshots/lighthouse/lighthouse_recipes_page.png)  
 The lower score for best practices was that a low resolution image was used on this page. Although low quality images can indeed cause a bad user experience, in this case it is from a user upload.
 
 ### Lighthouse Report Add Recipe Page
