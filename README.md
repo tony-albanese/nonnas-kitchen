@@ -602,6 +602,32 @@ The following errors were addressed:
 The results from the lint are shown in the following screenshot. (Warnings are filtered out.) The errors shown are the ones that are ignored.
 ![eslint results](screenshots/eslint_results.png)
 
+## W3C Markup Validator
+The main pages of the deployed site was run through the [W3C Markup Validator](https://validator.w3.org/) and returned no errors.
+
+## Lighthouse Report
+The main pages of the deployed site was run through Lighthouse on Google Chrome using Desktop settings. The settings SEO, Best Practices, and Accessibility were checked. The results for the pages were acceptable and no serious issues (although in some the contrast could be improved) were found.
+
+### Lighhouse Report Sign In Page
+![lighthouse report sign in](screenshots/lighthouse/lighthouse_sign_in.png)
+
+### Lighthouse Report Sign Up Page
+![lighthouse report sign up](screenshots/lighthouse/lighthouse_sign_up.png)
+
+### Lighthouse Report Posts Page
+![lighthouse report posts page](screenshots/lighthouse/lighthouse_posts_page.png)
+
+### Lighthouse Report Add Post Page
+![lighthouse report add post page](screenshots/lighthouse/lighthoust_add_post.png)
+
+### Lighthouse Report Recipes Page
+![lighthouse report recipes page](screenshots/lighthouse/lighthouse_recipes_page.png)
+The lower score for best practices was that a low resolution image was used on this page. Although low quality images can indeed cause a bad user experience, in this case it is from a user upload.
+
+### Lighthouse Report Add Recipe Page
+![lighthouse report add recipe page](screenshots/lighthouse/lighthouse_add_recipe.png)
+
+
 # Unfixed bugs
 + Some of the elements that are rendered conditionally appear for a split second while the page is loading or refreshing. Upon final load, the state is correct. For example, while the recipe detail is loading, the icon for the delete is visible for a split second while, even though it should not be. The same goes for the comments on a post - while the comments are loading, the "No comments to display" text is visible. When the comments are loaded, the text is gone as it should be. This is a cosmetic issue that does not interfere with the overall experience of the site. However, it should be addressed in a future release.
 + The unlike functionality does not work entirely as expected. The use can like a post - the icon and like count behave as expected. However, they cannot unlike a post immediately after liking it - the heart icon does not respond to clicks. If the user refreshes the page, they can unlike the post. This strange behavior was not present when running the code on the test server. This is a relatively small bug that does not severely impact the user experience but it should be addressed in a future release.
