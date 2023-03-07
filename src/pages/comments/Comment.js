@@ -10,6 +10,11 @@ import { axiosResponse } from '../../api/axiosDefaults';
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import styles from "../../styles/Comment.module.css";
 
+/*
+This component is modeled on the Comment component from the Moments walktrhough. 
+The code has been modified as needed.
+https://github.com/Code-Institute-Solutions/moments/blob/master/src/pages/comments/Comment.js
+*/
 
 function Comment({ id, author, created_on, body, setPost, setComments }) {
     const [show, setShow] = useState(false);

@@ -14,7 +14,11 @@ import { axiosRequest } from "../../api/axiosDefaults";
 import { fetchMoreData } from '../../utils/utils';
 
 import styles from "../../styles/PostsPage.module.css";
-
+/*
+The code for this component is modeled from the Post component of Code Institute's Moment's walkthrough project.
+It has been modified as needed.
+https://github.com/Code-Institute-Solutions/moments/blob/master/src/pages/posts/PostsPage.js
+*/
 
 function PostsPage({message, filter=""}) {
 

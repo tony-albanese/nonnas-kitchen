@@ -1,11 +1,5 @@
-# Nonna's Kitchen Frontend
-Nonna's kitchen is an online space for people who love food to share their experiences around food. The purpose of this site is not so much for people to share what they are eating but rather to share the emotional connection that often comes from a particular dish. The more specific purpose of this site is for people to share their emotional connections with a particular dish or type of food and to have other share in those experiences. That is why the site is called Nonna's Kitchen - "Nonna" is Italian for "grandmother" and the site is supposed to evoke memories, feelings, and connections to one's ancestors and culture.
-
-The main type content on the site is a blog post in which users can share an image of a particular food and provide a short (1-2 paragraph) description of their connection to that dish. For example, a user can share an image of a plate of *spaghetti al pomodorro*, (the classic spaghetti with tomato sauce) and then write how they are emotionally connected to that dish - that connection could be one of several types (Anecdote, History, Reminiscence, Tip). The idea here is for site users to be more specific in the type of information they are sharing and consuming. 
-
-There are many sites for sharing recipes and Twitter/Instagram/Facebook are full of food posts. However, this site is intended to focus on the *emotional* connection people have with food. That is how this site adds value to for its users.
-
 - [Nonna's Kitchen Frontend](#nonna-s-kitchen-frontend)
+  * [Deployed Site](#deployed-site)
 - [User Stories](#user-stories)
   * [Navigation and Authentication](#navigation-and-authentication)
   * [BlogPost](#blogpost)
@@ -29,6 +23,7 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
   * [Post Comments](#post-comments)
   * [Recipe](#recipe)
   * [Recipe Create Form](#recipe-create-form)
+  * [Recipe Edit](#recipe-edit)
   * [Infinite Scroll](#infinite-scroll-1)
 - [Agile Development](#agile-development)
   * [Outline of Sprints](#outline-of-sprints)
@@ -43,6 +38,16 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
     + [Projects](#projects)
 - [Version Control](#version-control)
 - [Testing](#testing)
+- [Code Validation](#code-validation)
+  * [Linting Results](#linting-results)
+  * [W3C Markup Validator](#w3c-markup-validator)
+  * [Lighthouse Report](#lighthouse-report)
+    + [Lighhouse Report Sign In Page](#lighhouse-report-sign-in-page)
+    + [Lighthouse Report Sign Up Page](#lighthouse-report-sign-up-page)
+    + [Lighthouse Report Posts Page](#lighthouse-report-posts-page)
+    + [Lighthouse Report Add Post Page](#lighthouse-report-add-post-page)
+    + [Lighthouse Report Recipes Page](#lighthouse-report-recipes-page)
+    + [Lighthouse Report Add Recipe Page](#lighthouse-report-add-recipe-page)
 - [Unfixed bugs](#unfixed-bugs)
 - [Features Left to Implement](#features-left-to-implement)
 - [Technology Used](#technology-used)
@@ -52,6 +57,18 @@ There are many sites for sharing recipes and Twitter/Instagram/Facebook are full
   * [Image Credits](#image-credits)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
+# Nonna's Kitchen Frontend
+Nonna's kitchen is an online space for people who love food to share their experiences around food. The purpose of this site is not so much for people to share what they are eating but rather to share the emotional connection that often comes from a particular dish. The more specific purpose of this site is for people to share their emotional connections with a particular dish or type of food and to have other share in those experiences. That is why the site is called Nonna's Kitchen - "Nonna" is Italian for "grandmother" and the site is supposed to evoke memories, feelings, and connections to one's ancestors and culture.
+
+The main type content on the site is a blog post in which users can share an image of a particular food and provide a short (1-2 paragraph) description of their connection to that dish. For example, a user can share an image of a plate of *spaghetti al pomodorro*, (the classic spaghetti with tomato sauce) and then write how they are emotionally connected to that dish - that connection could be one of several types (Anecdote, History, Reminiscence, Tip). The idea here is for site users to be more specific in the type of information they are sharing and consuming. 
+
+There are many sites for sharing recipes and Twitter/Instagram/Facebook are full of food posts. However, this site is intended to focus on the *emotional* connection people have with food. It therefore will allow users to create and edit blog posts and recipes as well as like and comment upon content in an engaging way.
+
+## Deployed Site
++ The site uses the [Nonna's Kitchen API](https://nonnas-kitchen-api.herokuapp.com/) as the backend. The GitHub repo to the backend can be found here: [Nonna's Kitchen API on GitHub](https://github.com/tony-albanese/ci-project-5-nonnas-kitchen-api)
++ The deployed front end can be found here: [Nonna's Kitchen](https://nonnas-kitchen.herokuapp.com/)
 
 # User Stories
 Many of the user stories are worded similarly to the Moments walkthrough project because the functionality is quite similar - especially with navigation and authentication, posts, likes and comments.
@@ -153,7 +170,7 @@ const logInPromptToolTip = <Tooltip>Please log in to like.</Tooltip>;
 ```
 This makes the code much easier to expand if I later decide to add more functions to the Footer.
 
-+ Reusable Form Dropdown
++ Reusable Form Dropdown  
 A dropdown form element is used on the BlogPostCreateForm component to allow the user to select a category for a BlogPost. There is need for a similar component in the PostsPage component to allow filtering the results of all the posts - the user should filter the posts they want to see based on category. Instead of building two components that behave in exactly the same way, I extracted this into a reusable component called FormSelections. To further increase the reusability, this object accepts a name, a change handler, and a list of objects representing the choices to be displayed.
 ```
 const FormSelections = ({ controlName, onChangeHandler, options }) => {
@@ -195,7 +212,7 @@ function CardEdit({onDelete, onEdit, showEdit}) {
 }
 ```
 
-+ Reusable Modal
++ Reusable Modal  
 This modal component can be called from multiple components to either display warnings to the user or ask for confirmation before an action takes place. The message, title, and handlers to handle click events on the button are passed in as props.
 ```
 function ModalAlert({show,  handleClose, onConfirm, title, message}) {
@@ -218,7 +235,7 @@ function ModalAlert({show,  handleClose, onConfirm, title, message}) {
 }
 ```
 
-+ List Display Component
++ List Display Component  
 Both the steps and the ingredients in a recipe must be displayed as lists. This functionality is a perfect candidate to be extracted into its own component. I therefore designed a list display component that accepts a list, a heading, and boolean as props. The component maps over the list and renders a list item element for each element in the list. The index is used for the key - this is not ideal but is acceptable in this case as there is no guarantee that the list item values will be different. The list unordered or ordered depending on the value set by the boolean called **ordered**. Since the list being passed in from the parent is a list of JSON objects, the Objects.value() method is used to extract the value. 
 
 ```
@@ -247,7 +264,7 @@ function ListDisplay({ list, ordered, heading }) {
 }
 ```
 
-+ List Entry Component
++ List Entry Component  
 The recipe steps and the ingredients must be entered in a similar way. Ideally, the user should have the ability to enter as many items as they like and delete the ones they do not. I therefore created a ListEntry component the accepts an initial set of fields, a setFields callback from the parent, and a label to display at the top of the form.
 
 ```
@@ -316,7 +333,7 @@ The project uses Code Institute's [Moments](https://github.com/Code-Institute-So
 
 # Color Scheme
 The base color scheme for the site was generated with [coolers](https://coolors.co/) using the grandmother image as a starting point.  
-![color scheme](screenshots/pallete.png)
+![color scheme](screenshots/pallete.png). Overall, a soft and gentle color scheme was chosen as that fits the goal of the site to evoke and share warm memories around food.
 
 Throughout the site, images were also chosen which had colors similar to those in the palette so the site is unified. Where needed, the shades were adjusted for contrast. In addition, on the sign-in and sign-up forms the colors for the buttons were taken using a color picker from the images on those pages for a blend of consistency and contrast.
 
@@ -347,10 +364,12 @@ There is a Sign Up form that allows the user to create an account if they do not
 ![sign in wireframe](screenshots/signin-up/sign-in-wireframe.jpg)
 
 The final implementation is relatively close to the intended design:
-> The sign in screen on a large and small screen respectively.
+The sign in screen on a large and small screen respectively.  
 ![sign in large](screenshots/signin-up/sign_in_large.png)  
-![sign in small](screenshots/signin-up/sign_in_small.png)
-> The sign up screen on a large and small screen respectively.  
+![sign in small](screenshots/signin-up/sign_in_small.png)  
+The sign up screen on a large and small screen respectively.
+
+
 ![sign up large](screenshots/signin-up/signup_large.png)  
 ![sign up small](screenshots/signin-up/signup_small.png)
 > + As a user I can create a new account so that I can access all the features for signed up users
@@ -360,8 +379,8 @@ The final implementation is relatively close to the intended design:
 ## Create BlogPost Form
 The form to create a BlogPost has all the necessary fields for the user to create an entry. There is an option to select an image as well as a dropdown form for users to select the category. Upon successful submission, the user is taken to the post detail page for the newly created post. If they cancel the submission, they are redirected to the home page.
 
-I wanted simple design for this form. The sketch would have the form in two main sections. One section has an image of a granny which the user clicks on to select the image. The other half contains the form fields and submit/cancel buttons. On smaller screens, the image shifts to the top and the fields to the bottom in one column.
-> Sketches for the BlogPost create form for a large screen.
+I wanted simple design for this form. The sketch would have the form in two main sections. One section has an image of a granny which the user clicks on to select the image. The other half contains the form fields and submit/cancel buttons. On smaller screens, the image shifts to the top and the fields to the bottom in one column.  
+Sketches for the BlogPost create form for a large screen.
 ![wireframe large screen](screenshots/blogpost/wireframe_form_large.png)
 ![wireframe small screen](screenshots/blogpost/wireframe_form_small.png)
 
@@ -374,13 +393,15 @@ The final implementation of the designs are:
 + As a logged in user, I can create a BlogPost so that I can share my food related content with other users on the platform.
 
 # Post Component
-The Post component contains the details for a blog post. These components are arranged in a Bootstrap Card component. I wanted the category to be in a prominent place since that is more general in the hierarchy than the other elements - the users can select what type of post they want to read. The image element is also prominent so that the user can be attracted to a post by the image.
+The Post component contains the details for a blog post. These components are arranged in a Bootstrap Card component. I wanted the category to be in a prominent place since that is more general in the hierarchy than the other elements - the users can select what type of post they want to read. The image element is also prominent so that the user can be attracted to a post by the image. In other words, the image is used to grab focus since many people do "eat with their eyes" - meaning how food looks is what first draws our attention to a particular meal. (Of course, this in the abscence of smell!)  
 
-> Wireframe sketch for the blog post 
+Wireframe sketch for the blog post:
+
 ![wireframe blog post](screenshots/blogpost/blogpost_wireframe.png)
 
-This the actual implementation.
-> Blog Post
+This the actual implementation.  
+Blog Post
+
 ![blog post card](screenshots/blogpost/blogpost.png)
 
 
@@ -392,10 +413,10 @@ When the user clicks on a post, they are redirected to the PostDetail page where
 
 If the user has written the post, a menu is shown with two icons. The trash icon is for deleting a post. When the user clicks on this icon, a modal popup appears asking the user to confirm their wish to delete the post. If they click on the edit icon, they are taken to a page with a form pre-populated with the post data. The user can change one or several of the fields. When they hit Save, the database is updated through the api and the user is redirected back to the post detail page. If they hit cancel, they are also taken back to the post detail page.
 
-> Post edit/delete icons
+Post edit/delete icons  
 ![edit delete icons](screenshots/blogpost/edit_delete_icons.png)
 
-> Confirm delete modal
+ Confirm delete modal  
 ![confirm delete modal](screenshots/blogpost/delete_modal.png)
 > + As a logged in user, I can delete a post I have made so that I can remove content I no longer wish to share.  
 > + As a logged in user, I can edit a post I have created so that I can update content or correct mistakes I have made.
@@ -405,9 +426,9 @@ The Post Page displays a list of all the posts. The posts are sorted by date so 
 
 I decided on a simple layout for the posts page. Under the navbar is the search bar followed by a dropdown where users can filter posts by category. The posts follow in a single infinitely scrolling column.
 
-> Wireframe sketch for the page.  
-![posts page wireframe](screenshots/blogpost/blogpost_wireframe.png)
-> This is the actual implementation
+Wireframe sketch for the page.  
+![posts page wireframe](screenshots/blogpost/blogpost_wireframe.png)  
+This is the actual implementation  
 ![posts page](screenshots/blogpost/posts_page.png) 
 
 > + As a user, I can view all the blog posts sorted by date created so that I can enjoy the most recently created content.
@@ -428,7 +449,7 @@ If a user is logged in, they can comment on a post. The form to enter a comment 
 
 If the user is logged in and goes to a post, a list of all the comments for that post is displayed. If the user is the author of a comment, two icons (edit and trash can) appear in the header of that icon that allow them to edit or delete the comment. If the user clicks on the trash can, a modal dialog appears asking them to confirm the delete. If they agree, the comment is deleted and removed from the list. If they cancel, the modal is dismissed. If the user clicks on the edit icon, a form is rendered right underneath the comment populated with the comment body data. The user can update the text as they see fit. Upon save, the database is updated through an api call and the comment list is updated as well. If they click on cancel, the form is dismissed.
 
-> This is the comment showing the edit icons
+This is the comment showing the edit icons
 ![comment icons](screenshots/comments/comment_with_icons.png)  
 ![comment edit](screenshots/comments/comment_edit.png)
 > + As a logged in user, I can see a list of comments for a post so that I can see what other users think of a particular post.
@@ -436,7 +457,7 @@ If the user is logged in and goes to a post, a list of all the comments for that
 > + As a logged in user, I can delete a comment I have made so that I can remove content I no longer wish to share with the community.
 
 ## Recipe
-The Recipes page displays a list of recipes that are shared by the other users. On the page, the recipes are displayed in an infinitely scrolling list similar to the posts page except there is no search and filtering capability. Each recipe card shows the type, an image, a title, and a description.
+The Recipes page displays a list of recipes that are shared by the other users. On the page, the recipes are displayed in an infinitely scrolling list similar to the posts page except there is no search and filtering capability. Each recipe card shows the type, an image, a title, and a description. Just like in the Post page, it is the image that is prominent since people are drawn to food first by how it looks. 
 
 A recipe card has a similar design to a Post. A recipe has a difficulty associated with it and an ingredients list and steps for completing it.
 > This is the design for the recipe as displayed on the recipes page:
@@ -446,13 +467,15 @@ A recipe card has a similar design to a Post. A recipe has a difficulty associat
 
 When the user clicks on the recipe image, they are taken to the detail page where the recipe along with the ingredients and instructions are displayed. On large screens, the instructions and ingredients are side-by-side. On smaller screens they collapse into a single column.
 
-> Recipe detail design
+Recipe detail design
 ![recipe detail wireframe](screenshots/recipe/recipe_detail_wireframe.jpg)
 
-> This is the implementation. 
+This is the implementation.
+
 ![recipe detail](screenshots/recipe/recipe_detail.png)
 
-> This is the recipe detail on a small screen.
+This is the recipe detail on a small screen.
+
 ![recipe on small screen](screenshots/recipe/recipe_small_screen.png)
 
 > + As a user, I can see list of recipes on the site so that I have the chance to learn how to cook a new dish.
@@ -460,12 +483,14 @@ When the user clicks on the recipe image, they are taken to the detail page wher
 If the user is logged in and they click on a post they own, a trash icon appears at the bottom of the post that allows them to delete it. A modal dialog appears asking them to confirm the delete. If they do, the post is deleted and they are returned to the previous page. If they cancel, the modal is dismissed. There is also an icon to allow them to edit a recipe. Upon clicking the edit icon, they are taken to the RecipeEditForm and the data is loaded for them to edit.
 
 ![recipe with delete](screenshots/recipe/recipe_edit_delete_icons.png)
-This is the confirm delete modal.
+
+This is the confirm delete modal.  
 ![recipe delete modal](screenshots/recipe/confirm_delete_recipe_modal.png) 
 > + As a logged in user, I can delete a recipe I posted so that I can remove content I no longer wish others to see.
 
 ## Recipe Create Form
 The recipe create form follows the same layout principles as the post create form. Half of the screen is an image of a granny which the users click on to upload an image. The other half consists of the form fields for the user to enter recipe details. On smaller screens, all of the elements collapse into a single column. For the ingredients and instructions lists, users can add as many fields as they like by clicking on the plus buttons. Users can also delete fields they no longer want by clicking on the trash icon next to each field. They are not allowed to delete all the fields. There is a check to make sure there is at least one input field before it is allowed to be removed from the form. 
+
 ![recipe edit form](screenshots/recipe/recipe_create_form_large.png)  
 
 In addition, if there are any blank fields in either the recipe or the ingredients list, then a dialog appears telling them that blank entries are not allowed. They cannot submit with blank entries.  
@@ -577,6 +602,57 @@ Git was employed in this project and the project code hosted on GitHub. I used b
 # Testing
 The testing done here is BDD - each test is described as a story in which a description of the software requirements, the user actions, and the expected outcome are given along with a result of PASS or FAIL. To reduce the length of the readme, here is a link to the [testing tables](bdd_test_cases.md) describing the various test cases.
 
+# Code Validation
+I ran into several issues when trying to configure ESLint using GitPod - trying to install and configure ESLint on GitPod ended up breaking the node dependency tree. After restoring the original configuration, I decided to download a .zip of my respository from GitHub, open it on my local version of VSCode, and run the linter file by file. In this way, the original configuration on Gitpod is preserved. In configuring ESLint, the following settings were used:
++ Check syntax and find problems
++ JavaScript modules (import/export)
++ React
++ JavaScript export/import
++ Does not use TypeScript
++ Runs in node
++ JSON as config
+
+## Linting Results
+The following linting errors were ignored:
++ spelling errors or unknown word warnings
++ prop type validation: This is a an error about validating the data types for props passed in to components. Although the use of data types is an important check for code reusability, ignoring data types in a project of this size and complexity is ok. However, for components to be truly reusable, data type validation is an important check.
++ Do not pass children as props warning for Infinite Scroll component: This warning was also ignored since it is part of the implementation for the InfiniteScroll component and the the method is taken from the walkthrough.
++ Unused **event** object - In several handler methods, the event object is passed in but not used. I decided to leave the event object as a parameter to make these handlers easier to identify. 
++ An error about unescaped characters (in this case an apostrophe) was also ignored as using the escaped character sequence suggested resulted in the apostrophe not displaying on the test server.  
+
+The following errors were addressed:
++ In several components (App.js, CurrentUserContext.js, ), there was a React not in scope error that was easily fixed by importing React in the imports section of the file.
++ An unsafe chaining method in the RecipePage was fixed.
+
+The results from the lint are shown in the following screenshot. (Warnings are filtered out.) The errors shown are the ones that are ignored.
+![eslint results](screenshots/eslint_results.png)
+
+## W3C Markup Validator
+The main pages of the deployed site was run through the [W3C Markup Validator](https://validator.w3.org/) and returned no errors.
+
+## Lighthouse Report
+The main pages of the deployed site was run through Lighthouse on Google Chrome using Desktop settings. The settings SEO, Best Practices, and Accessibility were checked. The results for the pages were acceptable and no serious issues (although in some the contrast could be improved) were found.
+
+### Lighhouse Report Sign In Page
+![lighthouse report sign in](screenshots/lighthouse/lighthouse_sign_in.png)
+
+### Lighthouse Report Sign Up Page
+![lighthouse report sign up](screenshots/lighthouse/lighthouse_sign_up.png)
+
+### Lighthouse Report Posts Page
+![lighthouse report posts page](screenshots/lighthouse/lighthouse_posts_page.png)
+
+### Lighthouse Report Add Post Page
+![lighthouse report add post page](screenshots/lighthouse/lighthoust_add_post.png)
+
+### Lighthouse Report Recipes Page
+![lighthouse report recipes page](screenshots/lighthouse/lighthouse_recipes_page.png)  
+The lower score for best practices was that a low resolution image was used on this page. Although low quality images can indeed cause a bad user experience, in this case it is from a user upload.
+
+### Lighthouse Report Add Recipe Page
+![lighthouse report add recipe page](screenshots/lighthouse/lighthouse_add_recipe.png)
+
+
 # Unfixed bugs
 + Some of the elements that are rendered conditionally appear for a split second while the page is loading or refreshing. Upon final load, the state is correct. For example, while the recipe detail is loading, the icon for the delete is visible for a split second while, even though it should not be. The same goes for the comments on a post - while the comments are loading, the "No comments to display" text is visible. When the comments are loaded, the text is gone as it should be. This is a cosmetic issue that does not interfere with the overall experience of the site. However, it should be addressed in a future release.
 + The unlike functionality does not work entirely as expected. The use can like a post - the icon and like count behave as expected. However, they cannot unlike a post immediately after liking it - the heart icon does not respond to clicks. If the user refreshes the page, they can unlike the post. This strange behavior was not present when running the code on the test server. This is a relatively small bug that does not severely impact the user experience but it should be addressed in a future release.
@@ -638,6 +714,7 @@ The app is then deployed to Heroku by the following steps:
 + The Asset component which is used to display the spinner and other visual components is taken from the [Moments](https://github.com/Code-Institute-Solutions/moments/blob/master/src/components/Asset.js) and modified accordingly. 
 
 + The idea for building the dynamic form fields in the ListEntry component was taken from this excellent article on freeCodeCamp: [How to Build Dynamic Forms in React](https://www.freecodecamp.org/news/build-dynamic-forms-in-react/).
+
 ## Image Credits
 + The upload image was taken from Code Institute.
 

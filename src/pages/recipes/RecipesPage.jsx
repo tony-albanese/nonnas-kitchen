@@ -12,6 +12,12 @@ import { useLocation } from 'react-router-dom';
 import { axiosRequest } from "../../api/axiosDefaults";
 import { fetchMoreData } from '../../utils/utils';
 
+
+/*
+The code for this component is modeled from the Post component of Code Institute's Moment's walkthrough project.
+It has been modified as needed.
+https://github.com/Code-Institute-Solutions/moments/blob/master/src/pages/posts/PostsPage.js
+*/
 function RecipesPage({message}) {
 
   const [recipes, setRecipes] = useState({results: []});

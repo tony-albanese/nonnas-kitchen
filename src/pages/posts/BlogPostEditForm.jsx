@@ -16,6 +16,12 @@ import FormSelections from "../../components/FormSelections";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosRequest } from "../../api/axiosDefaults";
 
+/*
+The code for this component is modeled from the Post component of Code Institute's Moment's walkthrough project.
+It has been modified as needed.
+https://github.com/Code-Institute-Solutions/moments/blob/master/src/pages/posts/PostEditForm.js
+*/
+
 function BlogPostEditForm() {
   const [errors, setErrors] = useState();
   const [blogPostData, setBlogPostData] = useState({

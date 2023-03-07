@@ -14,6 +14,11 @@ import SignInImage from "../../assets/grandmother-child-cooking.jpg";
 import styles from "../../styles/AuthenticationForm.module.css";
 import { setTokenTimestamp } from "../../utils/utils";
 
+/*
+The code for this component was modeled on the Sign In form used in the Moments walkthrough from Code Institute. 
+It has been modified as need.
+https://github.com/Code-Institute-Solutions/moments/blob/master/src/pages/auth/SignInForm.js
+*/
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
   const [signInData, setSignInData] = useState({
