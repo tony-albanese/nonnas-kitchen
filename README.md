@@ -1,4 +1,5 @@
 - [Nonna's Kitchen Frontend](#nonna-s-kitchen-frontend)
+  * [Deployed Site](#deployed-site)
 - [User Stories](#user-stories)
   * [Navigation and Authentication](#navigation-and-authentication)
   * [BlogPost](#blogpost)
@@ -22,6 +23,7 @@
   * [Post Comments](#post-comments)
   * [Recipe](#recipe)
   * [Recipe Create Form](#recipe-create-form)
+  * [Recipe Edit](#recipe-edit)
   * [Infinite Scroll](#infinite-scroll-1)
 - [Agile Development](#agile-development)
   * [Outline of Sprints](#outline-of-sprints)
@@ -36,6 +38,16 @@
     + [Projects](#projects)
 - [Version Control](#version-control)
 - [Testing](#testing)
+- [Code Validation](#code-validation)
+  * [Linting Results](#linting-results)
+  * [W3C Markup Validator](#w3c-markup-validator)
+  * [Lighthouse Report](#lighthouse-report)
+    + [Lighhouse Report Sign In Page](#lighhouse-report-sign-in-page)
+    + [Lighthouse Report Sign Up Page](#lighthouse-report-sign-up-page)
+    + [Lighthouse Report Posts Page](#lighthouse-report-posts-page)
+    + [Lighthouse Report Add Post Page](#lighthouse-report-add-post-page)
+    + [Lighthouse Report Recipes Page](#lighthouse-report-recipes-page)
+    + [Lighthouse Report Add Recipe Page](#lighthouse-report-add-recipe-page)
 - [Unfixed bugs](#unfixed-bugs)
 - [Features Left to Implement](#features-left-to-implement)
 - [Technology Used](#technology-used)
@@ -45,6 +57,7 @@
   * [Image Credits](#image-credits)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 # Nonna's Kitchen Frontend
 Nonna's kitchen is an online space for people who love food to share their experiences around food. The purpose of this site is not so much for people to share what they are eating but rather to share the emotional connection that often comes from a particular dish. The more specific purpose of this site is for people to share their emotional connections with a particular dish or type of food and to have other share in those experiences. That is why the site is called Nonna's Kitchen - "Nonna" is Italian for "grandmother" and the site is supposed to evoke memories, feelings, and connections to one's ancestors and culture.
