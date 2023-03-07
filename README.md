@@ -577,6 +577,31 @@ Git was employed in this project and the project code hosted on GitHub. I used b
 # Testing
 The testing done here is BDD - each test is described as a story in which a description of the software requirements, the user actions, and the expected outcome are given along with a result of PASS or FAIL. To reduce the length of the readme, here is a link to the [testing tables](bdd_test_cases.md) describing the various test cases.
 
+# Code Validation
+I ran into several issues when trying to configure ESLint using GitPod - trying to install and configure ESLint on GitPod ended up breaking the node dependency tree. After restoring the original configuration, I decided to download a .zip of my respository from GitHub, open it on my local version of VSCode, and run the linter file by file. In this way, the original configuration on Gitpod is preserved. In configuring ESLint, the following settings were used:
++ Check syntax and find problems
++ JavaScript modules (import/export)
++ React
++ JavaScript export/import
++ Does not use TypeScript
++ Runs in node
++ JSON as config
+
+## Linting Results
+The following linting errors were ignored:
++ spelling errors or unknown word warnings
++ prop type validation: This is a an error about validating the data types for props passed in to components. Although the use of data types is an important check for code reusability, ignoring data types in a project of this size and complexity is ok. However, for components to be truly reusable, data type validation is an important check.
++ Do not pass children as props warning for Infinite Scroll component: This warning was also ignored since it is part of the implementation for the InfiniteScroll component and the the method is taken from the walkthrough.
++ Unused **event** object - In several handler methods, the event object is passed in but not used. I decided to leave the event object as a parameter to make these handlers easier to identify. 
++ An error about unescaped characters (in this case an apostrophe) was also ignored as using the escaped character sequence suggested resulted in the apostrophe not displaying on the test server.  
+
+The following errors were addressed:
++ In several components (App.js, CurrentUserContext.js, ), there was a React not in scope error that was easily fixed by importing React in the imports section of the file.
++ An unsafe chaining method in the RecipePage was fixed.
+
+The results from the lint are shown in the following screenshot. (Warnings are filtered out.) The errors shown are the ones that are ignored.
+![eslint results](screenshots/eslint_results.png)
+
 # Unfixed bugs
 + Some of the elements that are rendered conditionally appear for a split second while the page is loading or refreshing. Upon final load, the state is correct. For example, while the recipe detail is loading, the icon for the delete is visible for a split second while, even though it should not be. The same goes for the comments on a post - while the comments are loading, the "No comments to display" text is visible. When the comments are loaded, the text is gone as it should be. This is a cosmetic issue that does not interfere with the overall experience of the site. However, it should be addressed in a future release.
 + The unlike functionality does not work entirely as expected. The use can like a post - the icon and like count behave as expected. However, they cannot unlike a post immediately after liking it - the heart icon does not respond to clicks. If the user refreshes the page, they can unlike the post. This strange behavior was not present when running the code on the test server. This is a relatively small bug that does not severely impact the user experience but it should be addressed in a future release.
